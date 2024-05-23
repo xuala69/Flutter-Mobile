@@ -70,6 +70,7 @@ class Course {
       "featured": featured,
       "image_path": imagePath,
       "category_id": categoryId,
+      "organization": organization?.toJson(),
     };
   }
 }

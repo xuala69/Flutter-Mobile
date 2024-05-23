@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:prep_pro/models/courses.dart';
 import 'package:prep_pro/models/subjects.dart';
 import 'package:prep_pro/models/users.dart';
 import 'package:prep_pro/utils/strings.dart';
@@ -14,5 +15,15 @@ class GetStorageController extends GetxController {
 
   void saveSubjects(List<Subject> newData) {
     box.write(LocalKeys.subjects, newData.map((e) => e.toJson()).toList());
+  }
+
+  void savePopularCourses(List<Course> newData) {
+    box.write(
+        LocalKeys.popularCourses, newData.map((e) => e.toJson()).toList());
+  }
+
+  void saveFeaturedCourses(List<Course> newData) {
+    box.write(
+        LocalKeys.featuredCourses, newData.map((e) => e.toJson()).toList());
   }
 }

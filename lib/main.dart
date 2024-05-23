@@ -4,6 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:prep_pro/controllers/get_storage_controller.dart';
 import 'package:prep_pro/controllers/user_controller.dart';
 
+import 'controllers/courses_controller.dart';
 import 'controllers/dio_controller.dart';
 import 'controllers/subjects_controller.dart';
 import 'ui/auth/root.dart';
@@ -19,6 +20,7 @@ initControllers() {
   Get.put(UserController(), permanent: true);
   Get.put(DioController());
   Get.put(SubjectsController());
+  Get.put(CoursesController());
 }
 
 class MyApp extends StatelessWidget {
