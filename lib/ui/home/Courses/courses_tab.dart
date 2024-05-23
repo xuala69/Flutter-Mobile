@@ -5,6 +5,8 @@ import 'package:prep_pro/ui/home/Subjects/widgets/subjects_grid.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/nums.dart';
 
+import 'widgets/course_history.dart';
+import 'widgets/featured_courses_grid.dart';
 import 'widgets/popular_courses_grid.dart';
 
 class HomeCoursesTab extends StatefulWidget {
@@ -23,16 +25,19 @@ class _HomeCoursesTabState extends State<HomeCoursesTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return ListView(
+      physics: const BouncingScrollPhysics(),
       padding: EdgeInsets.all(Nums.paddingNormal),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          PopularCoursesGrid(),
-          vs(15),
-          SubjectsGrid(),
-        ],
-      ),
+      children: [
+        FeaturedCoursesGrid(),
+        vs(15),
+        const CourseHistoryGrid(),
+        vs(15),
+        SubjectsGrid(),
+        vs(15),
+        PopularCoursesGrid(),
+        vs(15),
+      ],
     );
   }
 }

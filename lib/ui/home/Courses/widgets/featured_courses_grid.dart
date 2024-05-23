@@ -5,8 +5,8 @@ import 'package:prep_pro/controllers/courses_controller.dart';
 
 import 'carousel.dart';
 
-class PopularCoursesGrid extends StatelessWidget {
-  PopularCoursesGrid({super.key});
+class FeaturedCoursesGrid extends StatelessWidget {
+  FeaturedCoursesGrid({super.key});
   final courseCtrl = CoursesController().to;
 
   @override
@@ -16,7 +16,7 @@ class PopularCoursesGrid extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          "Popular Courses",
+          "Featured Courses",
           style: GoogleFonts.spectral(
             fontSize: 18,
             color: Colors.grey[900],
@@ -29,7 +29,7 @@ class PopularCoursesGrid extends StatelessWidget {
               return const Placeholder();
             } else {
               return CourseCarouselWidget(
-                courses: courseCtrl.popularCourses,
+                courses: courseCtrl.featuredCourses,
                 onTap: (p0) {
                   //TODO goto new page
                 },
