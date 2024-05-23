@@ -33,13 +33,14 @@ class CourseHistoryGrid extends StatelessWidget {
           } else {
             return Container(
               width: double.infinity,
-              height: 150,
+              height: 120,
               decoration: BoxDecoration(
                 color: Colors.grey[100],
                 borderRadius: BorderRadius.all(
                   Radius.circular(Nums.searchbarRadius),
                 ),
               ),
+              padding: EdgeInsets.only(left: Nums.paddingNormal),
               child: Stack(
                 children: [
                   Center(
@@ -53,6 +54,8 @@ class CourseHistoryGrid extends StatelessWidget {
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                         ),
                         Text(
                           courseHistoryCtrl
@@ -60,6 +63,8 @@ class CourseHistoryGrid extends StatelessWidget {
                           style: GoogleFonts.spectral(
                             fontSize: 14,
                           ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
                         Text(
                           "Opened: ${DTFunctions().savedAt(courseHistoryCtrl.courseHistories.first.savedAt)}",
