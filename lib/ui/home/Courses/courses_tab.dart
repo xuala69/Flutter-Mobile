@@ -31,12 +31,12 @@ class _HomeCoursesTabState extends State<HomeCoursesTab> {
       children: [
         FeaturedCoursesGrid(),
         vs(15),
-        const CourseHistoryGrid(),
+        CourseHistoryGrid(),
         vs(15),
         SubjectsGrid(),
         vs(15),
         PopularCoursesGrid(),
-        vs(15),
+        vs(105),
       ],
     );
   }
