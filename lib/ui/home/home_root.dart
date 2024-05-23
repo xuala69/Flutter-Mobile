@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
-import 'package:prep_pro/ui/home/Courses/courses.dart';
+import 'package:prep_pro/ui/home/Courses/courses_tab.dart';
 import 'package:prep_pro/ui/home/Exams/exams.dart';
 import 'package:prep_pro/ui/home/Main/main.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
@@ -77,7 +77,7 @@ class _HomeRootPageState extends State<HomeRootPage> {
                 inactiveIcon: Icon(MdiIcons.homeVariantOutline)),
           ),
           PersistentTabConfig(
-            screen: const HomeCoursesPage(),
+            screen: const HomeCoursesTab(),
             item: ItemConfig(
                 icon: Icon(MdiIcons.school),
                 iconSize: 35,

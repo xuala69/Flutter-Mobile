@@ -1,15 +1,23 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:prep_pro/ui/home/Subjects/widgets/subjects_grid.dart';
 import 'package:prep_pro/utils/nums.dart';
 
-class HomeExamsPage extends StatefulWidget {
-  const HomeExamsPage({super.key});
+class HomeCoursesTab extends StatefulWidget {
+  const HomeCoursesTab({super.key});
 
   @override
-  State<HomeExamsPage> createState() => _HomeExamsPageState();
+  State<HomeCoursesTab> createState() => _HomeCoursesTabState();
 }
 
-class _HomeExamsPageState extends State<HomeExamsPage> {
+class _HomeCoursesTabState extends State<HomeCoursesTab> {
+  @override
+  void initState() {
+    log("init called");
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(

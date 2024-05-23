@@ -15,7 +15,7 @@ class UserController extends GetxController {
   }
 
   _listenUser() {
-    GetStorageController().to.box.listenKey(Strings.user, (value) {
+    GetStorageController().to.box.listenKey(LocalKeys.user, (value) {
       if (value == null) {
         user.value = null;
       } else {
@@ -26,7 +26,7 @@ class UserController extends GetxController {
   }
 
   _getUser() {
-    final data = GetStorageController().to.box.read(Strings.user);
+    final data = GetStorageController().to.box.read(LocalKeys.user);
     if (data != null) {
       user.value = User.fromJson(data);
     }

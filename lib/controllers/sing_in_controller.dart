@@ -2,11 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:prep_pro/controllers/api_controller.dart';
+import 'package:prep_pro/controllers/dio_controller.dart';
 import 'package:prep_pro/controllers/user_controller.dart';
 import 'package:prep_pro/models/users.dart';
 import 'package:prep_pro/ui/widgets/function_widgets.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+
+import 'get_storage_controller.dart';
 
 class SignInController extends GetxController {
   final GoogleSignIn _googleSignIn = GoogleSignIn(
@@ -31,7 +33,7 @@ class SignInController extends GetxController {
       "email": account.email,
       "token": auth.idToken,
     };
-    final response = await ApiController().to.signInGoogle(credentials);
+    final response = await DioController().to.signInGoogle(credentials);
     //remove loader dialog
     Get.back();
     if (response == null) {
@@ -72,7 +74,7 @@ class SignInController extends GetxController {
         "token": credential.identityToken,
         "email": credential.email,
       };
-      final response = await ApiController().to.signInApple(credentials);
+      final response = await DioController().to.signInApple(credentials);
       //remove loader dialog
       Get.back();
       if (response == null) {
@@ -88,6 +90,7 @@ class SignInController extends GetxController {
     await Future.delayed(const Duration(seconds: 1));
     Get.back();
     final user = User(id: '1', name: "John Doe", email: "johndoe@gmail.com");
+    GetStorageController().to.saveUser(user);
     UserController().to.user.value = user;
   }
 }

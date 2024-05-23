@@ -4,6 +4,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:prep_pro/controllers/get_storage_controller.dart';
 import 'package:prep_pro/controllers/user_controller.dart';
 
+import 'controllers/dio_controller.dart';
+import 'controllers/subjects_controller.dart';
 import 'ui/auth/root.dart';
 
 void main() async {
@@ -15,6 +17,8 @@ void main() async {
 initControllers() {
   Get.put(GetStorageController(), permanent: true);
   Get.put(UserController(), permanent: true);
+  Get.put(DioController());
+  Get.put(SubjectsController());
 }
 
 class MyApp extends StatelessWidget {

@@ -8,13 +8,13 @@ class User {
   String? status;
 
   User({
-    required String id,
-    required String name,
-    required String email,
-    String? address,
-    String? phoneNUmber,
-    String? avatarPath,
-    String? status,
+    required this.id,
+    required this.name,
+    required this.email,
+    this.address,
+    this.phoneNumber,
+    this.avatarPath,
+    this.status,
   });
 
   User.fromJson(Map<String, dynamic> json) {

@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:prep_pro/utils/strings.dart';
 
-class ApiController extends GetxController {
-  ApiController get to => Get.find();
+import '../ui/widgets/dialogs/error.dart';
+
+class DioController extends GetxController {
+  DioController get to => Get.find();
 
   late Dio dio;
 
@@ -39,7 +41,7 @@ class ApiController extends GetxController {
         return {"message": msg ?? "Unknown error occured"};
       }
     } catch (e) {
-      log("Error ApiController->signInGoogle$e");
+      log("Error DioController->signInGoogle$e");
       return {"message": "Unknown error occured"};
     }
   }
@@ -62,8 +64,39 @@ class ApiController extends GetxController {
         return {"message": msg ?? "Unknown error occured"};
       }
     } catch (e) {
-      log("Error ApiController->signInGoogle$e");
+      log("Error DioController->signInGoogle$e");
       return {"message": "Unknown error occured"};
+    }
+  }
+
+  Future<dynamic> get(String path, Map<String, dynamic> data) async {
+    try {
+      final res = await dio.getUri(Uri(
+        scheme: 'https',
+        host: 'api.themoviedb.org',
+        path: path,
+        queryParameters: data,
+      ));
+      if (res.statusCode == 200) {
+        return res.data;
+      } else {
+        final msg = res.data['message'] ?? "Unknown error occured";
+        Future.delayed(const Duration(seconds: 1)).then((value) {
+          Get.dialog(NetworkErrorDialog(
+            errorMsg: msg,
+          ));
+        });
+        return null;
+      }
+    } catch (e) {
+      log("GET Error:$e");
+      final msg = e.toString();
+      Future.delayed(const Duration(seconds: 1)).then((value) {
+        Get.dialog(NetworkErrorDialog(
+          errorMsg: msg,
+        ));
+      });
+      return null;
     }
   }
 }
