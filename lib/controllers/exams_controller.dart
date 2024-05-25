@@ -231,7 +231,7 @@ class ExamsController extends GetxController {
         Exam(
           id: "1",
           organizationId: "1",
-          name: "Chiko | JEE",
+          name: "JEE Mock Test 1",
           slug: 'JEE',
           description: "JEE Mains description",
           mode: "mode",
@@ -240,7 +240,7 @@ class ExamsController extends GetxController {
           price: 1500.0,
           published: true,
           featured: true,
-          imagePath: "https://picsum.photos/id/1/400/200",
+          imagePath: null,
           categoryId: "1",
           organization: Organization(
             id: "1",
@@ -251,7 +251,7 @@ class ExamsController extends GetxController {
         Exam(
           id: "2",
           organizationId: "1",
-          name: "Chiko | NEET",
+          name: "NEET Mock Test 2",
           slug: 'NEET',
           description: "NEET description",
           mode: "mode",
@@ -260,7 +260,7 @@ class ExamsController extends GetxController {
           price: 1600.0,
           published: true,
           featured: true,
-          imagePath: "https://picsum.photos/id/2/400/200",
+          imagePath: null,
           categoryId: "1",
           organization:
               Organization(id: "1", name: "Chiko Tuition Centre", slug: "slug"),
@@ -268,7 +268,7 @@ class ExamsController extends GetxController {
         Exam(
           id: "3",
           organizationId: "1",
-          name: "Chiko | Class 12 Chemistry",
+          name: "Class 12 Chemistry Mock Test",
           slug: 'Class 12 Chemistry',
           description: "Class 12 Chemistry description",
           mode: "mode",
@@ -277,7 +277,7 @@ class ExamsController extends GetxController {
           price: 1700.0,
           published: true,
           featured: true,
-          imagePath: "https://picsum.photos/id/3/400/200",
+          imagePath: null,
           categoryId: "1",
           organization:
               Organization(id: "1", name: "Chiko Tuition Centre", slug: "slug"),
@@ -374,7 +374,7 @@ class ExamsController extends GetxController {
         Exam(
           id: "5",
           organizationId: "1",
-          name: "Zirlaite Puitu | NEET",
+          name: "NEET Mock Test | Zirlaite Puitu",
           slug: 'NEET',
           description: "NEET description",
           mode: "mode",
@@ -391,7 +391,7 @@ class ExamsController extends GetxController {
         Exam(
           id: "3",
           organizationId: "1",
-          name: "Zawlbuk Zirna Run | Class 12 Chemistry",
+          name: "Class 12 Chemistry | Zawlbuk Zirna Run",
           slug: 'Class 12 Chemistry',
           description: "Class 12 Chemistry description",
           mode: "mode",
@@ -408,7 +408,7 @@ class ExamsController extends GetxController {
         Exam(
           id: "1",
           organizationId: "1",
-          name: "Chiko | JEE",
+          name: "JEE Mock Test 3 | Chiko",
           slug: 'JEE',
           description: "JEE Mains description",
           mode: "mode",
