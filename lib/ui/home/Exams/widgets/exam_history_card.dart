@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:prep_pro/controllers/course_history_controller.dart';
+import 'package:prep_pro/controllers/exam_history_controller.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/colors.dart';
 import 'package:prep_pro/utils/datetime_functions.dart';
 import 'package:prep_pro/utils/nums.dart';
 
-class CourseHistoryGrid extends StatelessWidget {
-  CourseHistoryGrid({super.key});
+class ExamHistoryGrid extends StatelessWidget {
+  ExamHistoryGrid({super.key});
 
-  final courseHistoryCtrl = Get.put(CourseHistoryController());
+  final examHistoryCtrl = Get.put(ExamHistoryController());
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class CourseHistoryGrid extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          "Ongoing Course",
+          "Ongoing Exam",
           style: GoogleFonts.spectral(
             fontSize: 16,
           ),
@@ -27,7 +27,7 @@ class CourseHistoryGrid extends StatelessWidget {
         ),
         vs(5),
         Obx(() {
-          if (courseHistoryCtrl.courseHistories.isEmpty) {
+          if (examHistoryCtrl.examHistories.isEmpty) {
             return vs(0);
           } else {
             return Container(
@@ -48,7 +48,7 @@ class CourseHistoryGrid extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         Text(
-                          courseHistoryCtrl.courseHistories.first.course!.name,
+                          examHistoryCtrl.examHistories.first.exam!.name,
                           style: GoogleFonts.spectral(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -57,8 +57,8 @@ class CourseHistoryGrid extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
-                          courseHistoryCtrl
-                              .courseHistories.first.course!.organization!.name,
+                          examHistoryCtrl
+                              .examHistories.first.exam!.organization!.name,
                           style: GoogleFonts.spectral(
                             fontSize: 14,
                           ),
@@ -66,7 +66,7 @@ class CourseHistoryGrid extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
-                          "Opened: ${DTFunctions().savedAt(courseHistoryCtrl.courseHistories.first.savedAt)}",
+                          "Opened: ${DTFunctions().savedAt(examHistoryCtrl.examHistories.first.savedAt)}",
                           style: GoogleFonts.spectral(
                             fontSize: 12,
                             color: Colors.grey[600],

@@ -6,6 +6,7 @@ import 'package:prep_pro/controllers/user_controller.dart';
 
 import 'controllers/courses_controller.dart';
 import 'controllers/dio_controller.dart';
+import 'controllers/exams_controller.dart';
 import 'controllers/subjects_controller.dart';
 import 'ui/auth/root.dart';
 
@@ -21,6 +22,7 @@ initControllers() {
   Get.put(DioController());
   Get.put(SubjectsController());
   Get.put(CoursesController());
+  Get.put(ExamsController());
 }
 
 class MyApp extends StatelessWidget {
