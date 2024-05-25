@@ -5,4 +5,6 @@ class Nums {
   static double paddingNormal = 15.0;
   static double paddingHigh = 25.0;
   static double tileImage = 50.0;
+  static double avatarSize = 80.0;
+  static double iconSizeProfile = 30.0;
 }
