@@ -18,4 +18,5 @@ class LocalKeys {
   static String popularExams = "popular_exams";
   static String featuredExams = "featured_exams";
   static String examHistory = "exam_history";
+  static String categories = "categories";
 }

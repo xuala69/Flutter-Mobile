@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:prep_pro/models/category.dart';
 import 'package:prep_pro/models/course_history.dart';
 import 'package:prep_pro/models/courses.dart';
 import 'package:prep_pro/models/exam_history.dart';
@@ -67,5 +68,9 @@ class GetStorageController extends GetxController {
       tempList.add(newData);
     }
     box.write(LocalKeys.examHistory, tempList.map((e) => e.toJson()).toList());
+  }
+
+  void saveAllCategories(List<Category> newData) {
+    box.write(LocalKeys.categories, newData.map((e) => e.toJson()).toList());
   }
 }

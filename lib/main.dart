@@ -4,6 +4,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:prep_pro/controllers/get_storage_controller.dart';
 import 'package:prep_pro/controllers/user_controller.dart';
 
+import 'controllers/categories_controller.dart';
 import 'controllers/courses_controller.dart';
 import 'controllers/dio_controller.dart';
 import 'controllers/exams_controller.dart';
@@ -22,6 +23,7 @@ initControllers() {
   Get.put(InfoController(), permanent: true);
   Get.put(UserController(), permanent: true);
   Get.put(DioController());
+  Get.put(CategoriesController());
   Get.put(SubjectsController());
   Get.put(CoursesController());
   Get.put(ExamsController());
