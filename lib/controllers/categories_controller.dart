@@ -12,6 +12,7 @@ class CategoriesController extends GetxController {
   final dio = DioController().to.dio;
 
   final categories = RxList<Category>([]);
+  final RxString selectedCatId = "777".obs;
 
   @override
   void onReady() {
@@ -72,6 +73,14 @@ class CategoriesController extends GetxController {
           slug: "cuet-pg",
         ),
       ];
+      data.insert(
+        0,
+        Category(
+          id: "777",
+          name: "  All  ",
+          slug: "all-categories",
+        ),
+      );
       GetStorageController().to.saveAllCategories(data);
 
       // final params = filter.putIfAbsent("page", () => pageNo);
