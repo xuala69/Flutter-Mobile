@@ -15,6 +15,8 @@ class CoursesController extends GetxController {
   final popularCourses = RxList<Course>([]);
   final featuredCourses = RxList<Course>([]);
 
+  final courses = RxList<Course>([]);
+
   @override
   void onReady() {
     _getPopularCourses();
