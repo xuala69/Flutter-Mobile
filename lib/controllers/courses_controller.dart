@@ -511,4 +511,32 @@ class CoursesController extends GetxController {
       return null;
     }
   }
+  //sampleCourseJs
+
+  Future<Course?> getCourseById(String id) async {
+    try {
+      final res = await dio.getUri(
+        Uri(
+          scheme: 'https',
+          host: 'api.onepercent.com',
+          path: "${Strings.coursesUrl}/$id",
+          // queryParameters: params,
+        ),
+      );
+      if (res.statusCode == 200) {
+        final data = res.data['data'];
+        final model = Course.fromJson(data);
+        return model;
+      } else {
+        final msg = res.data['message'] ?? "Unknown error occured";
+        showErrorDialog(msg);
+        return null;
+      }
+    } catch (e) {
+      log("GET Error:$e");
+      final msg = e.toString();
+      showErrorDialog(msg);
+      return null;
+    }
+  }
 }
