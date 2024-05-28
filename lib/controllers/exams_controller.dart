@@ -144,6 +144,7 @@ class ExamsController extends GetxController {
         ),
       ];
       // final params = filter.putIfAbsent("page", () => pageNo);
+      // filter.putIfAbsent("type", () => "paginate");
       // final res = await dio.getUri(Uri(
       //   scheme: 'https',
       //   host: 'api.onepercent.com',

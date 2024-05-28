@@ -7,6 +7,7 @@ class Subject {
   late bool published;
   late bool featured;
   String? imagePath;
+  late bool isSelected;
 
   Subject({
     required this.id,
@@ -17,6 +18,7 @@ class Subject {
     required this.published,
     required this.featured,
     this.imagePath,
+    this.isSelected = false,
   });
 
   Subject.fromJson(Map<String, dynamic> json) {
@@ -28,6 +30,7 @@ class Subject {
     published = json['published'];
     featured = json['featured'];
     imagePath = json['image_path'];
+    isSelected = json['is_selected'] ?? false;
   }
 
   Map<String, dynamic> toJson() {
@@ -40,6 +43,7 @@ class Subject {
       "published": published,
       "featured": featured,
       "image_path": imagePath,
+      "is_selected": isSelected,
     };
   }
 }

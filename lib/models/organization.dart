@@ -4,6 +4,7 @@ class Organization {
   late String slug;
   String? imagePath;
   String? description;
+  late bool isSelected;
 
   Organization({
     required this.id,
@@ -11,6 +12,7 @@ class Organization {
     required this.slug,
     this.description,
     this.imagePath,
+    this.isSelected = false,
   });
 
   Organization.fromJson(Map<String, dynamic> json) {
@@ -19,6 +21,7 @@ class Organization {
     slug = json['slug'];
     description = json['description'];
     imagePath = json['image_path'];
+    isSelected = json['is_selected'] ?? false;
   }
 
   Map<String, dynamic> toJson() {
@@ -28,6 +31,7 @@ class Organization {
       "slug": slug,
       "image_path": imagePath,
       "description": description,
+      "is_selected": isSelected,
     };
   }
 }

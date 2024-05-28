@@ -1,87 +1,76 @@
 import 'dart:developer';
-
 import 'package:get/get.dart';
 import 'package:prep_pro/controllers/dio_controller.dart';
-import 'package:prep_pro/models/category.dart';
+import 'package:prep_pro/models/organization.dart';
 import 'package:prep_pro/utils/strings.dart';
 import '../ui/widgets/function_widgets.dart';
 import 'get_storage_controller.dart';
 
-class CategoriesController extends GetxController {
-  CategoriesController get to => Get.find();
+class OrganizationsController extends GetxController {
+  OrganizationsController get to => Get.find();
   final dio = DioController().to.dio;
 
-  final categories = RxList<Category>([]);
-  final RxString selectedCatId = "777".obs;
+  final organizations = RxList<Organization>([]);
+  final RxString selectedOrgId = "777".obs;
 
   @override
   void onReady() {
-    _getAllCategories();
-    _listenCategories();
+    _getAllorganizations();
+    _listenOrganizations();
     //server atangin app open ah fetch that a save zel, local ami zel hman tur
-    getCategoriesFromServer();
+    getOrganizationsFromServer();
     super.onReady();
   }
 
-  _listenCategories() {
-    GetStorageController().to.box.listenKey(LocalKeys.categories, (value) {
+  _listenOrganizations() {
+    GetStorageController().to.box.listenKey(LocalKeys.organizations, (value) {
       if (value == null) {
-        categories.value = [];
+        organizations.value = [];
       } else {
-        categories.clear();
+        organizations.clear();
         final List ls = value;
         for (var element in ls) {
-          final model = Category.fromJson(element);
-          categories.add(model);
+          final model = Organization.fromJson(element);
+          organizations.add(model);
         }
       }
     });
   }
 
-  _getAllCategories() {
-    final data = GetStorageController().to.box.read(LocalKeys.categories);
+  _getAllorganizations() {
+    final data = GetStorageController().to.box.read(LocalKeys.organizations);
     if (data != null) {
       final List ls = data;
       for (var element in ls) {
-        final model = Category.fromJson(element);
-        categories.add(model);
+        final model = Organization.fromJson(element);
+        organizations.add(model);
       }
     }
   }
 
-  void getCategoriesFromServer() async {
+  void getOrganizationsFromServer() async {
     try {
       final data = [
-        Category(
+        Organization(
           id: "1",
-          name: "CUET PG",
-          slug: "cuet-pg",
+          name: "Chiko Tuition Centre",
+          slug: "chiko-tuition-centre",
+          description: "Chiko tuition description",
         ),
-        Category(
+        Organization(
           id: "2",
-          name: "Civil Services",
-          slug: "cuet-pg",
+          name: "Zawlbuk zirna run",
+          slug: "zawlbuk",
+          description: "Chiko tuition description",
         ),
-        Category(
+        Organization(
           id: "3",
-          name: "Computer Engineering",
-          slug: "cuet-pg",
-        ),
-        Category(
-          id: "4",
-          name: "UPSC",
-          slug: "cuet-pg",
+          name: "Zirlaite puitu",
+          slug: "zirlaite-puitu",
+          description: "Zirlaite puitu tuition description",
         ),
       ];
-      // data.insert(
-      //   0,
-      //   Category(
-      //     id: "777",
-      //     name: "  All  ",
-      //     slug: "all-categories",
-      //   ),
-      // );
-      GetStorageController().to.saveAllCategories(data);
+      GetStorageController().to.saveAllOrganizations(data);
 
       // final params = filter.putIfAbsent("page", () => pageNo);
       // final res = await dio.getUri(Uri(

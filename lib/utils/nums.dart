@@ -7,4 +7,5 @@ class Nums {
   static double tileImage = 50.0;
   static double avatarSize = 80.0;
   static double iconSizeProfile = 30.0;
+  static const int debounceMs = 500;
 }

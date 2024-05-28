@@ -19,4 +19,6 @@ class LocalKeys {
   static String featuredExams = "featured_exams";
   static String examHistory = "exam_history";
   static String categories = "categories";
+  static String organizations = "organizations";
+  static String sortOptions = "sort_options";
 }

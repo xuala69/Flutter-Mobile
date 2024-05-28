@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:prep_pro/controllers/categories_controller.dart';
 import 'package:prep_pro/controllers/exams_controller.dart';
 import 'package:prep_pro/models/category.dart';
 import 'package:prep_pro/models/exams.dart';
+import 'package:prep_pro/utils/nums.dart';
 
 class ExamsUIController extends GetxController {
   static const _pageSize = 10;
@@ -13,15 +16,39 @@ class ExamsUIController extends GetxController {
   final PagingController<int, Exam> pagingController =
       PagingController(firstPageKey: 1);
 
+  final searchText = "".obs;
+
+  var sortOptions = <String, dynamic>{}.obs;
+
   @override
   void onInit() {
     pagingController.addPageRequestListener((pageKey) {
-      fetchPage(pageKey);
+      _fetchPage(pageKey);
     });
+    debounce(
+      searchText,
+      (value) {
+        refresh();
+      },
+      time: const Duration(milliseconds: Nums.debounceMs),
+    );
     super.onInit();
   }
 
-  Future<void> fetchPage(int pageKey) async {
+  void submitSort(Map<String, dynamic> newOption) {
+    searchText.value = "";
+    sortOptions.value = newOption;
+    refresh();
+  }
+
+  @override
+  void refresh() {
+    pagingController.itemList?.clear();
+    // _pagingController.refresh();
+    _fetchPage(1);
+  }
+
+  Future<void> _fetchPage(int pageKey) async {
     try {
       // Replace with your API call
       final newItems = await fetchItemsFromApi(pageKey);
@@ -39,7 +66,16 @@ class ExamsUIController extends GetxController {
 
   Future<List<Exam>> fetchItemsFromApi(int page) async {
     final ctrl = ExamsController().to;
-    final data = await ctrl.getExams(pageNo: page, filter: {});
+    // ignore: invalid_use_of_protected_member
+    final sortMap = sortOptions.value;
+    final data = await ctrl.getExams(pageNo: page, filter: {
+      "search": searchText.value,
+      "category_ids": sortMap['categories'],
+      "subject_ids": sortMap['subjects'],
+      "organization_ids": sortMap['organizations'],
+      "sort": sortMap['sort'],
+    });
+    log("Returned value from api with search:${searchText.value} $data");
     return data ?? [];
   }
 

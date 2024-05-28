@@ -10,9 +10,19 @@ class InfoController extends GetxController {
 
   Rxn<PhoneInfo> info = Rxn<PhoneInfo>();
 
+  RxList<String> sortOptions = [
+    "Featured",
+    "Price:High to Low",
+    "Price:Low to High",
+    "Latest",
+  ].obs;
+
+  RxString selectedSortOption = "".obs;
+
   @override
   void onReady() {
     getDeviceInfo();
+    selectedSortOption.value = sortOptions.first;
     super.onReady();
   }
 
