@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:prep_pro/controllers/categories_controller.dart';
+import 'package:prep_pro/models/exams.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/nums.dart';
+
+import 'exams_ui_controller.dart';
 
 class HomeExamsPage extends StatefulWidget {
   const HomeExamsPage({super.key});
@@ -13,6 +17,7 @@ class HomeExamsPage extends StatefulWidget {
 
 class _HomeExamsPageState extends State<HomeExamsPage> {
   final categoriesCtrl = CategoriesController().to;
+  final uiCtrl = Get.put(ExamsUIController());
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +41,6 @@ class _HomeExamsPageState extends State<HomeExamsPage> {
                     onTap: () {
                       categoriesCtrl.selectedCatId.value = item.id;
                     },
-                    // materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                    // visualDensity: VisualDensity.compact,
-                    // padding: EdgeInsets.zero,
                     child: Container(
                       padding: EdgeInsets.symmetric(
                         horizontal: Nums.paddingSmall,
@@ -64,7 +66,22 @@ class _HomeExamsPageState extends State<HomeExamsPage> {
           ),
         ),
         Expanded(
-          child: ListView(),
+          child: PagedListView(
+            padding: EdgeInsets.symmetric(
+              horizontal: Nums.paddingNormal,
+            ),
+            pagingController: uiCtrl.pagingController,
+            builderDelegate: PagedChildBuilderDelegate<Exam>(
+              itemBuilder: (context, item, index) {
+                return Card(
+                  child: ListTile(
+                    title: Text(item.name),
+                    subtitle: Text(item.organization?.name ?? ""),
+                  ),
+                );
+              },
+            ),
+          ),
         ),
       ],
     );
