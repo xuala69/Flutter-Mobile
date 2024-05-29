@@ -1,3 +1,4 @@
+import 'package:prep_pro/models/category.dart';
 import 'package:prep_pro/models/organization.dart';
 
 class Exam {
@@ -15,6 +16,7 @@ class Exam {
   String? imagePath;
   late String categoryId;
   Organization? organization;
+  Category? category;
 
   Exam({
     required this.id,
@@ -31,6 +33,7 @@ class Exam {
     this.imagePath,
     required this.categoryId,
     this.organization,
+    this.category,
   });
 
   Exam.fromJson(Map<String, dynamic> json) {
@@ -53,6 +56,11 @@ class Exam {
       final model = Organization.fromJson(orgJs);
       organization = model;
     }
+    final catJs = json['category'];
+    if (catJs != null) {
+      final model = Category.fromJson(orgJs);
+      category = model;
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -71,6 +79,7 @@ class Exam {
       "image_path": imagePath,
       "category_id": categoryId,
       "organization": organization?.toJson(),
+      "category": category?.toJson(),
     };
   }
 }

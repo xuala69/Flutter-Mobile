@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:prep_pro/controllers/dio_controller.dart';
+import 'package:prep_pro/models/category.dart';
 import 'package:prep_pro/models/exams.dart';
 import 'package:prep_pro/models/organization.dart';
 import 'package:prep_pro/utils/strings.dart';
@@ -81,6 +82,118 @@ class ExamsController extends GetxController {
     }
   }
 
+  Future<Exam?> getExam(String examId) async {
+    try {
+      log("Coming to get Exam with id $examId");
+      final data = Exam(
+        id: "3",
+        organizationId: "1",
+        name: "Class 12 Chemistry Mock Test",
+        slug: 'Class 12 Chemistry',
+        description: "Class 12 Chemistry description",
+        mode: "mode",
+        contentsCount: 6,
+        duration: 600,
+        price: 1700.0,
+        published: true,
+        featured: true,
+        imagePath: null,
+        categoryId: "1",
+        organization: Organization(
+          id: "1",
+          name: "Chiko Tuition Centre",
+          slug: "slug",
+        ),
+        category: Category(
+          id: "1",
+          name: "JEE Mains",
+          slug: "jee-mains",
+        ),
+      );
+      return data;
+      // final params = filter.putIfAbsent("page", () => pageNo);
+      // filter.putIfAbsent("type", () => "paginate");
+      // final res = await dio.getUri(Uri(
+      //   scheme: 'https',
+      //   host: 'api.onepercent.com',
+      //   path: Strings.ExamsUrl,
+      //   queryParameters: params,
+      // ));
+      // if (res.statusCode == 200) {
+      //   final List<Exam> Exams = [
+      //     Exam(
+      //       id: "1",
+      //       organizationId: "1",
+      //       name: "Chiko | JEE",
+      //       slug: 'JEE',
+      //       description: "JEE Mains description",
+      //       mode: "mode",
+      //       contentsCount: 6,
+      //       duration: 600,
+      //       price: 1500.0,
+      //       published: true,
+      //       featured: true,
+      //       imagePath: null,
+      //       categoryId: "1",
+      //       organization: Organization(
+      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //     ),
+      //     Exam(
+      //       id: "2",
+      //       organizationId: "1",
+      //       name: "Chiko | NEET",
+      //       slug: 'NEET',
+      //       description: "NEET description",
+      //       mode: "mode",
+      //       contentsCount: 6,
+      //       duration: 600,
+      //       price: 1600.0,
+      //       published: true,
+      //       featured: true,
+      //       imagePath: null,
+      //       categoryId: "1",
+      //       organization: Organization(
+      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //     ),
+      //     Exam(
+      //       id: "3",
+      //       organizationId: "1",
+      //       name: "Chiko | Class 12 Chemistry",
+      //       slug: 'Class 12 Chemistry',
+      //       description: "Class 12 Chemistry description",
+      //       mode: "mode",
+      //       contentsCount: 6,
+      //       duration: 600,
+      //       price: 1700.0,
+      //       published: true,
+      //       featured: true,
+      //       imagePath: null,
+      //       categoryId: "1",
+      //       organization: Organization(
+      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //     ),
+      //   ];
+      //   final data = res.data['data'];
+      //   if (data is List) {
+      //     for (var element in data) {
+      //       final model = Exam.fromJson(element);
+      //       Exams.add(model);
+      //     }
+      //   }
+      //   return Exams;
+      // } else {
+      //   final msg = res.data['message'] ?? "Unknown error occured";
+      //   showErrorDialog(msg);
+      //   return null;
+      // }
+    } catch (e) {
+      log("GET Error:$e");
+      final msg = e.toString();
+      showErrorDialog(msg);
+      return null;
+    }
+  }
+
   Future<List<Exam>?> getExams({
     required int pageNo,
     required Map<String, dynamic> filter,
@@ -107,6 +220,11 @@ class ExamsController extends GetxController {
             name: "Chiko Tuition Centre",
             slug: "slug",
           ),
+          category: Category(
+            id: "1",
+            name: "JEE Mains",
+            slug: "jee-mains",
+          ),
         ),
         Exam(
           id: "2",
@@ -122,8 +240,16 @@ class ExamsController extends GetxController {
           featured: true,
           imagePath: null,
           categoryId: "1",
-          organization:
-              Organization(id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+          organization: Organization(
+            id: "1",
+            name: "Chiko Tuition Centre",
+            slug: "slug",
+          ),
+          category: Category(
+            id: "1",
+            name: "JEE Mains",
+            slug: "jee-mains",
+          ),
         ),
         Exam(
           id: "3",
@@ -139,8 +265,16 @@ class ExamsController extends GetxController {
           featured: true,
           imagePath: null,
           categoryId: "1",
-          organization:
-              Organization(id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+          organization: Organization(
+            id: "1",
+            name: "Chiko Tuition Centre",
+            slug: "slug",
+          ),
+          category: Category(
+            id: "1",
+            name: "JEE Mains",
+            slug: "jee-mains",
+          ),
         ),
       ];
       // final params = filter.putIfAbsent("page", () => pageNo);
