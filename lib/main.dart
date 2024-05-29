@@ -40,9 +40,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.deepPurple,
+          seedColor: Colors.deepPurple[900]!,
         ),
-        primaryColor: Colors.deepPurple[800],
+        primaryColor: Colors.deepPurple[900]!,
         useMaterial3: true,
       ),
       home: const RootPage(),

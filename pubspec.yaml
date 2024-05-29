@@ -43,7 +43,6 @@ dependencies:
   infinite_scroll_pagination: ^4.0.0
   persistent_bottom_nav_bar_v2: ^5.2.3
   shimmer: ^3.0.0
-  flutter_html: ^2.1.2
   google_sign_in: ^6.2.1
   intl: ^0.19.0
   carousel_slider: ^4.2.1
@@ -57,7 +56,8 @@ dependencies:
   riverpod: ^2.5.1
   freezed: ^2.5.2
   animations: ^2.0.11
-  # easy_stepper: ^0.8.5
+  easy_stepper: ^0.8.5
+  flutter_widget_from_html_core: ^0.14.12
 
 dev_dependencies:
   flutter_test:
