@@ -513,7 +513,7 @@ class CoursesController extends GetxController {
   }
   //sampleCourseJs
 
-  Future<Course?> getCourseById(String id) async {
+  Future<Course?> getCourse(String id) async {
     try {
       final res = await dio.getUri(
         Uri(

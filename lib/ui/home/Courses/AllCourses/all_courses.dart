@@ -8,7 +8,7 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 import '../../../../controllers/courses_controller.dart';
 import '../../../widgets/spacing.dart';
-import '../course_tile.dart';
+import '../widgets/course_tile.dart';
 
 class HomeCoursesPage extends StatefulWidget {
   const HomeCoursesPage({super.key});

@@ -9,7 +9,7 @@ import 'package:prep_pro/ui/home/Filter/filter_sheet.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/nums.dart';
 
-import 'course_tile.dart';
+import 'widgets/course_tile.dart';
 
 class HomeCoursesTab extends StatefulWidget {
   const HomeCoursesTab({super.key});
