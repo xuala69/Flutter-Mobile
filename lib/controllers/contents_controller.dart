@@ -5,6 +5,7 @@ import 'package:prep_pro/controllers/dio_controller.dart';
 import 'package:prep_pro/models/content.dart';
 import 'package:prep_pro/models/courses.dart';
 import 'package:prep_pro/models/organization.dart';
+import 'package:prep_pro/utils/strings.dart';
 import '../ui/widgets/function_widgets.dart';
 import 'get_storage_controller.dart';
 
@@ -26,6 +27,7 @@ class ContentsController extends GetxController {
           duration: 60,
           price: 1000,
           published: true,
+          filePath: Strings.pdfLink,
         ),
         Content(
           id: "2",
@@ -36,6 +38,7 @@ class ContentsController extends GetxController {
           mode: "Free",
           duration: 60,
           price: 1000,
+          videoLink: Strings.videoLink,
           published: true,
         ),
         Content(
@@ -46,6 +49,7 @@ class ContentsController extends GetxController {
           type: "Text",
           mode: "Free",
           duration: 60,
+          content: sampleTextContent,
           price: 1000,
           published: true,
         ),

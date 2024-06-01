@@ -8,6 +8,9 @@ class Strings {
   static String appleUrl = 'auth/apple-auth-redirect';
   static String avatarDefault =
       "https://firebasestorage.googleapis.com/v0/b/exam-prep-pro.appspot.com/o/adventurer-1716143676740.png?alt=media&token=263ae486-ce31-429f-bb4a-253a4058f95d";
+  static String pdfLink =
+      "https://www.clickdimensions.com/links/TestPDFfile.pdf";
+  static String videoLink = "https://youtu.be/7g1WEB6aY34?si=MtdOKtepVuXQ4Rd6";
 }
 
 class LocalKeys {
@@ -73,4 +76,86 @@ String sampleCourseJs = """
         "deleted_at": null
     }
 }
+""";
+String sampleTextContent = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Flutter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        p {
+            color: #34495e;
+        }
+        code {
+            background-color: transparent;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Introduction to Flutter</h1>
+
+<p>Flutter is an open-source UI software development toolkit created by Google. It is used to develop cross-platform applications for Android, iOS, Linux, Mac, Windows, Google Fuchsia, and the web from a single codebase.</p>
+
+<h2>Getting Started</h2>
+
+<p>To get started with Flutter, you need to have Flutter SDK and a suitable IDE (such as Android Studio or Visual Studio Code) installed on your machine.</p>
+
+<pre>
+<code>
+// Install Flutter
+
+// Add Flutter to your PATH
+
+// Verify the installation
+</code>
+</pre>
+
+<h2>Your First Flutter App</h2>
+
+<p>Let's create a simple "Hello, World!" app in Flutter.</p>
+
+<h2>Understanding the Code</h2>
+
+<p>In the above code:</p>
+<ul>
+    <li><code>main()</code> function calls <code>runApp()</code>, which takes a <code>Widget</code> and makes it the root of the widget tree.</li>
+    <li><code>MyApp</code> is a stateless widget. A stateless widget is a widget that does not require mutable state.</li>
+    <li>The <code>build()</code> method describes how to display the widget in the UI. It returns a <code>MaterialApp</code> widget which is the root of the application.</li>
+</ul>
+
+<h2>Hot Reload</h2>
+
+<p>One of the most powerful features of Flutter is <strong>hot reload</strong>. It allows you to quickly see the results of your code changes without restarting your app. This significantly speeds up the development process.</p>
+
+<p>To use hot reload, simply:</p>
+<ul>
+    <li>Make changes to your Dart code.</li>
+    <li>Save the changes.</li>
+    <li>Observe the changes in the emulator or device.</li>
+</ul>
+
+<h2>Next Steps</h2>
+
+<p>To learn more about Flutter, visit the <a href="https://flutter.dev/docs" target="_blank">official Flutter documentation</a>.</p>
+
+</body>
+</html>
 """;

@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/controllers/contents_controller.dart';
+import 'package:prep_pro/ui/home/Courses/ActualContent/actual_content_root.dart';
 import 'package:prep_pro/ui/widgets/m_appbar.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
@@ -186,7 +187,13 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
                 itemBuilder: (context, index) {
                   final item = uiCtrl.contents[index];
                   return MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.to(
+                        () => ActualContentRoot(
+                          content: item,
+                        ),
+                      );
+                    },
                     padding: const EdgeInsets.symmetric(
                       vertical: 10,
                       horizontal: 5,
