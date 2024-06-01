@@ -1,32 +1,46 @@
 import 'package:get/get.dart';
+import 'package:prep_pro/controllers/contents_controller.dart';
 import 'package:prep_pro/controllers/courses_controller.dart';
+import 'package:prep_pro/models/content.dart';
 import 'package:prep_pro/models/courses.dart';
 
 class CourseDetailUIController extends GetxController {
-  final ctrl = CoursesController().to;
+  final courseCtrl = CoursesController().to;
+  final contentCtrl = ContentsController().to;
+
   final loading = true.obs;
 
   Rxn<Course> course = Rxn<Course>();
 
-  void getCourse(String courseId) async {
-    final data = await ctrl.getCourse(courseId);
-    course.value = data;
+  final contents = RxList<Content>([]);
+  RxString courseId = "".obs;
+
+  void initiateController(String newId) async {
+    courseId.value = newId;
+    final results = await Future.wait([
+      getCourse(),
+      getCourseContents(),
+    ]);
+    final res1 = results[0] as Course?;
+    final res2 = results[1] as List<Content>?;
+    course.value = res1;
+    if (res2 != null) {
+      contents.value = res2;
+    }
+    contents.refresh();
     loading.value = false;
   }
 
-  // Future<List<Course>> fetchItemsFromApi(int page) async {
-  //   // ignore: invalid_use_of_protected_member
-  //   final sortMap = sortOptions.value;
-  //   final data = await ctrl.getCourses(pageNo: page, filter: {
-  //     "search": searchText.value,
-  //     "category_ids": sortMap['categories'],
-  //     "subject_ids": sortMap['subjects'],
-  //     "organization_ids": sortMap['organizations'],
-  //     "sort": sortMap['sort'],
-  //   });
-  //   log("Returned value from api with search:${searchText.value} $data");
-  //   return data ?? [];
-  // }
+  Future<Course?> getCourse() async {
+    final data = await courseCtrl.getCourse(courseId.value);
+
+    return data;
+  }
+
+  Future<List<Content>?> getCourseContents() async {
+    final data = await contentCtrl.getContents(courseId: courseId.value);
+    return data;
+  }
 
   @override
   void dispose() {

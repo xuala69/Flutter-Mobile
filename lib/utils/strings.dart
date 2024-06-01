@@ -1,4 +1,6 @@
 class Strings {
+  static final Runes rupees = Runes(' \u{20B9}');
+  static final Runes dollar = Runes(' \u{0024}');
   static String baseUrl = "https://onepercent.com";
   static String coursesUrl = "api/courses";
   static String examsUrl = "api/exams";

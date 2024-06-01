@@ -53,6 +53,7 @@ class CourseHistoryController extends GetxController {
                 slug: 'JEE',
                 description: "JEE Mains description",
                 mode: "mode",
+                createdAt: DateTime.now().toIso8601String(),
                 contentsCount: 6,
                 duration: 600,
                 price: 1500.0,

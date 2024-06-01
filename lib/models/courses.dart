@@ -15,6 +15,7 @@ class Course {
   String? imagePath;
   late String categoryId;
   Organization? organization;
+  late String createdAt;
 
   Course({
     required this.id,
@@ -31,6 +32,7 @@ class Course {
     this.imagePath,
     required this.categoryId,
     this.organization,
+    required this.createdAt,
   });
 
   Course.fromJson(Map<String, dynamic> json) {
@@ -46,6 +48,7 @@ class Course {
     published = json['published'];
     featured = json['featured'];
     imagePath = json['image_path'];
+    createdAt = json['created_at'];
     categoryId = json['category_id'];
     //organization
     final orgJs = json['organization'];
@@ -70,6 +73,7 @@ class Course {
       "featured": featured,
       "image_path": imagePath,
       "category_id": categoryId,
+      "created_at": createdAt,
       "organization": organization?.toJson(),
     };
   }

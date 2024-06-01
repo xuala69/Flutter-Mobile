@@ -19,4 +19,9 @@ class DTFunctions {
       return DateFormat('E, h:mm a').format(dt);
     }
   }
+
+  String getDate(String dt) {
+    final parsed = DateFormat("yyyy-MM-dd").parse(dt);
+    return DateFormat('d MMM, yyyy').format(parsed);
+  }
 }

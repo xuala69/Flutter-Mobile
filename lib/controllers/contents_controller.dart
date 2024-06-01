@@ -2,152 +2,55 @@ import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:prep_pro/controllers/dio_controller.dart';
+import 'package:prep_pro/models/content.dart';
 import 'package:prep_pro/models/courses.dart';
 import 'package:prep_pro/models/organization.dart';
-import 'package:prep_pro/utils/strings.dart';
 import '../ui/widgets/function_widgets.dart';
 import 'get_storage_controller.dart';
 
-class CoursesController extends GetxController {
-  CoursesController get to => Get.find();
+class ContentsController extends GetxController {
+  ContentsController get to => Get.find();
   final dio = DioController().to.dio;
 
-  final popularCourses = RxList<Course>([]);
-  final featuredCourses = RxList<Course>([]);
-
-  final courses = RxList<Course>([]);
-
-  @override
-  void onReady() {
-    _getPopularCourses();
-    _listenPopularCourses();
-    //server atangin app open ah fetch that a save zel, local ami zel hman tur
-    getPopularCourses();
-    //courses
-    _getFeaturedCourses();
-    _listenFeaturedCourses();
-    //server atangin app open ah fetch that a save zel, local ami zel hman tur
-    getFeaturedCourses();
-    super.onReady();
-  }
-
-  _listenPopularCourses() {
-    GetStorageController().to.box.listenKey(LocalKeys.subjects, (value) {
-      if (value == null) {
-        popularCourses.value = [];
-      } else {
-        popularCourses.clear();
-        final List ls = value;
-        for (var element in ls) {
-          final model = Course.fromJson(element);
-          popularCourses.add(model);
-        }
-      }
-    });
-  }
-
-  _getPopularCourses() {
-    final data = GetStorageController().to.box.read(LocalKeys.popularCourses);
-    if (data != null) {
-      final List ls = data;
-      for (var element in ls) {
-        final model = Course.fromJson(element);
-        popularCourses.add(model);
-      }
-    }
-  }
-
-  _listenFeaturedCourses() {
-    GetStorageController().to.box.listenKey(LocalKeys.featuredCourses, (value) {
-      if (value == null) {
-        featuredCourses.value = [];
-      } else {
-        featuredCourses.clear();
-        final List ls = value;
-        for (var element in ls) {
-          final model = Course.fromJson(element);
-          featuredCourses.add(model);
-        }
-      }
-    });
-  }
-
-  _getFeaturedCourses() {
-    final data = GetStorageController().to.box.read(LocalKeys.popularCourses);
-    if (data != null) {
-      final List ls = data;
-      for (var element in ls) {
-        final model = Course.fromJson(element);
-        featuredCourses.add(model);
-      }
-    }
-  }
-
-  Future<List<Course>?> getCourses({
-    required int pageNo,
-    required Map<String, dynamic> filter,
-  }) async {
+  Future<List<Content>?> getContents({required String courseId}) async {
     try {
       log("Coming to get Courses");
-      return [
-        Course(
+      final data = [
+        Content(
           id: "1",
-          organizationId: "1",
-          name: "Chiko | JEE",
-          slug: 'JEE',
-          description: "JEE Mains description",
-          mode: "mode",
-          contentsCount: 6,
-          duration: 600,
-          price: 1500.0,
-          createdAt: DateTime.now().toIso8601String(),
+          courseId: "1",
+          name: "Flutter for beginners: Setting up the environment",
+          slug: "slug",
+          type: "Pdf",
+          mode: "Free",
+          duration: 60,
+          price: 1000,
           published: true,
-          featured: true,
-          imagePath: null,
-          categoryId: "1",
-          organization: Organization(
-            id: "1",
-            name: "Chiko Tuition Centre",
-            slug: "slug",
-          ),
         ),
-        Course(
+        Content(
           id: "2",
-          organizationId: "1",
-          name: "Chiko | NEET",
-          slug: 'NEET',
-          description: "NEET description",
-          mode: "mode",
-          contentsCount: 6,
-          duration: 600,
-          price: 1600.0,
+          courseId: "1",
+          name: "Flutter for beginners: Creating your first project",
+          slug: "slug",
+          type: "Video_link",
+          mode: "Free",
+          duration: 60,
+          price: 1000,
           published: true,
-          featured: true,
-          createdAt: DateTime.now().toIso8601String(),
-          imagePath: null,
-          categoryId: "1",
-          organization:
-              Organization(id: "1", name: "Chiko Tuition Centre", slug: "slug"),
         ),
-        Course(
+        Content(
           id: "3",
-          organizationId: "1",
-          name: "Chiko | Class 12 Chemistry",
-          slug: 'Class 12 Chemistry',
-          description: "Class 12 Chemistry description",
-          mode: "mode",
-          contentsCount: 6,
-          duration: 600,
-          price: 1700.0,
+          courseId: "1",
+          name: "Flutter for beginners: What is widget?",
+          slug: "slug",
+          type: "Text",
+          mode: "Free",
+          duration: 60,
+          price: 1000,
           published: true,
-          createdAt: DateTime.now().toIso8601String(),
-          featured: true,
-          imagePath: null,
-          categoryId: "1",
-          organization:
-              Organization(id: "1", name: "Chiko Tuition Centre", slug: "slug"),
         ),
       ];
+      return data;
       // final params = filter.putIfAbsent("page", () => pageNo);
       // final res = await dio.getUri(Uri(
       //   scheme: 'https',
@@ -242,7 +145,6 @@ class CoursesController extends GetxController {
           mode: "mode",
           contentsCount: 6,
           duration: 600,
-          createdAt: DateTime.now().toIso8601String(),
           price: 1500.0,
           published: true,
           featured: true,
@@ -253,6 +155,7 @@ class CoursesController extends GetxController {
             name: "Chiko Tuition Centre",
             slug: "slug",
           ),
+          createdAt: DateTime.now().toIso8601String(),
         ),
         Course(
           id: "2",
@@ -265,10 +168,10 @@ class CoursesController extends GetxController {
           duration: 600,
           price: 1600.0,
           published: true,
-          createdAt: DateTime.now().toIso8601String(),
           featured: true,
           imagePath: "https://picsum.photos/id/2/400/200",
           categoryId: "1",
+          createdAt: DateTime.now().toIso8601String(),
           organization:
               Organization(id: "1", name: "Chiko Tuition Centre", slug: "slug"),
         ),
@@ -280,9 +183,9 @@ class CoursesController extends GetxController {
           description: "Class 12 Chemistry description",
           mode: "mode",
           contentsCount: 6,
-          createdAt: DateTime.now().toIso8601String(),
           duration: 600,
           price: 1700.0,
+          createdAt: DateTime.now().toIso8601String(),
           published: true,
           featured: true,
           imagePath: "https://picsum.photos/id/3/400/200",
@@ -388,8 +291,8 @@ class CoursesController extends GetxController {
           mode: "mode",
           contentsCount: 6,
           duration: 600,
-          price: 1600.0,
           createdAt: DateTime.now().toIso8601String(),
+          price: 1600.0,
           published: true,
           featured: true,
           imagePath: "https://picsum.photos/id/4/400/200",
@@ -405,9 +308,9 @@ class CoursesController extends GetxController {
           description: "Class 12 Chemistry description",
           mode: "mode",
           contentsCount: 6,
-          createdAt: DateTime.now().toIso8601String(),
           duration: 600,
           price: 1700.0,
+          createdAt: DateTime.now().toIso8601String(),
           published: true,
           featured: true,
           imagePath: "https://picsum.photos/id/5/400/200",
@@ -425,8 +328,8 @@ class CoursesController extends GetxController {
           contentsCount: 6,
           duration: 600,
           price: 1500.0,
-          createdAt: DateTime.now().toIso8601String(),
           published: true,
+          createdAt: DateTime.now().toIso8601String(),
           featured: true,
           imagePath: "https://picsum.photos/id/6/400/200",
           categoryId: "1",
@@ -534,15 +437,10 @@ class CoursesController extends GetxController {
         contentsCount: 2,
         duration: 30,
         price: 1000,
+        createdAt: DateTime.now().toIso8601String(),
         published: true,
         featured: true,
-        createdAt: DateTime.now().toIso8601String(),
         categoryId: "1",
-        organization: Organization(
-          id: "2",
-          name: "Chiko Tuition Center",
-          slug: "chiko-tuition-center",
-        ),
       );
       // final res = await dio.getUri(
       //   Uri(
