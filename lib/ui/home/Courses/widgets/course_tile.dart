@@ -18,7 +18,7 @@ class CourseListTile extends StatelessWidget {
       onPressed: () {
         Get.to(
           () => CourseDetailPage(
-            courseId: course.id,
+            courseId: course.slug,
           ),
         );
       },

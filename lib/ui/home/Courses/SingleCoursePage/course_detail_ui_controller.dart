@@ -13,10 +13,10 @@ class CourseDetailUIController extends GetxController {
   Rxn<Course> course = Rxn<Course>();
 
   final contents = RxList<Content>([]);
-  RxString courseId = "".obs;
+  RxString courseSlug = "".obs;
 
   void initiateController(String newId) async {
-    courseId.value = newId;
+    courseSlug.value = newId;
     final results = await Future.wait([
       getCourse(),
       getCourseContents(),
@@ -32,13 +32,13 @@ class CourseDetailUIController extends GetxController {
   }
 
   Future<Course?> getCourse() async {
-    final data = await courseCtrl.getCourse(courseId.value);
+    final data = await courseCtrl.getCourse(slug: courseSlug.value);
 
     return data;
   }
 
   Future<List<Content>?> getCourseContents() async {
-    final data = await contentCtrl.getContents(courseId: courseId.value);
+    final data = await contentCtrl.getContents(courseId: courseSlug.value);
     return data;
   }
 
