@@ -16,7 +16,7 @@ class DioController extends GetxController {
   void onInit() {
     dio = Dio(
       BaseOptions(
-        baseUrl: Strings.baseUrl,
+        baseUrl: Endpoints.baseUrl,
       ),
     );
     dio.options.headers = {};
@@ -25,7 +25,7 @@ class DioController extends GetxController {
 
   Future<Map<String, dynamic>?> signInGoogle(Map<String, dynamic> data) async {
     try {
-      final res = await dio.post(Strings.googleUrl, data: data);
+      final res = await dio.post(Endpoints.googleUrl, data: data);
       if (res.statusCode == 200) {
         var data = res.data;
         return data;
@@ -48,7 +48,7 @@ class DioController extends GetxController {
 
   Future<Map<String, dynamic>?> signInApple(Map<String, dynamic> data) async {
     try {
-      final res = await dio.post(Strings.googleUrl, data: data);
+      final res = await dio.post(Endpoints.googleUrl, data: data);
       if (res.statusCode == 200) {
         var data = res.data;
         return data;

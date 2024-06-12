@@ -48,7 +48,7 @@ class Course {
     published = json['published'];
     featured = json['featured'];
     imagePath = json['image_path'];
-    createdAt = json['created_at'];
+    createdAt = json['created_at'] ?? DateTime.now().toIso8601String();
     categoryId = json['category_id'];
     //organization
     final orgJs = json['organization'];

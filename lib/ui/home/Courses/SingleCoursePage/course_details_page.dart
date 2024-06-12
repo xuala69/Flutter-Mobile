@@ -118,6 +118,7 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
         ),
         vs(10),
         Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               formatToIndianRupees(uiCtrl.course.value!.price),

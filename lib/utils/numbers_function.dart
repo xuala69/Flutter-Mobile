@@ -14,3 +14,11 @@ String formatToIndianRupees(double amount) {
 
   return formattedAmount;
 }
+
+double progressValue({
+  required int currentValue,
+  required int length,
+}) {
+  final done = (currentValue / length - 1);
+  return done;
+}

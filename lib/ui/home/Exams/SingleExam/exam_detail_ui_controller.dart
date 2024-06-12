@@ -1,16 +1,30 @@
 import 'package:get/get.dart';
 import 'package:prep_pro/controllers/exams_controller.dart';
 import 'package:prep_pro/models/exams.dart';
+import 'package:prep_pro/models/questions.dart';
 
 class ExamDetailUIController extends GetxController {
+  ExamDetailUIController get to => Get.find();
+
   final ctrl = ExamsController().to;
   final loading = true.obs;
 
   Rxn<Exam> exam = Rxn<Exam>();
+  RxList<Question> questions = RxList();
+  RxnInt currentStep = RxnInt();
 
   void getExam(String examId) async {
-    final data = await ctrl.getExam(examId);
-    exam.value = data;
+    final res = await Future.wait(
+      [
+        ctrl.getExam(examId),
+        ctrl.getExamQuestions(examId),
+      ],
+    );
+    exam.value = res[0] as Exam?;
+    if (exam.value!.mode.toLowerCase() == "free") {
+      //TODO lei tawh check la tih belh ngai
+    }
+    questions.value = res[1] as List<Question>;
     loading.value = false;
   }
 

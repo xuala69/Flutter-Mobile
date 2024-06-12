@@ -27,6 +27,7 @@ class _ActualVideoState extends State<ActualVideo> {
         enableCaption: true,
       ),
     )..addListener(listener);
+    _controller.toggleFullScreenMode();
     // _idController = TextEditingController();
     // _seekToController = TextEditingController();
     // _videoMetaData = const YoutubeMetaData();
@@ -59,8 +60,8 @@ class _ActualVideoState extends State<ActualVideo> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: YoutubePlayerBuilder(
+    return Material(
+      child: YoutubePlayerBuilder(
         player: YoutubePlayer(controller: _controller),
         builder: (context, player) {
           return Column(
