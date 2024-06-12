@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
+import 'package:prep_pro/utils/datetime_functions.dart';
 import 'package:prep_pro/utils/numbers_function.dart';
 import 'package:prep_pro/utils/nums.dart';
 
@@ -25,7 +26,7 @@ class ExamProgressIndicator extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  "Question: ${ctrl.currentStep.value! + 1} of ${(ctrl.questions.length - 1).toString()}",
+                  "Question: ${ctrl.currentStep.value! + 1} of ${(ctrl.questions.length).toString()}",
                   style: GoogleFonts.spectral(
                     fontSize: 18,
                   ),
@@ -35,10 +36,12 @@ class ExamProgressIndicator extends StatelessWidget {
                   Icons.timer_outlined,
                 ),
                 hs(5),
-                Text(
-                  "01:45",
-                  style: GoogleFonts.spectral(
-                    fontSize: 18,
+                Obx(
+                  () => Text(
+                    DTFunctions().formatDuration(ctrl.secRemaining.value ?? 0),
+                    style: GoogleFonts.spectral(
+                      fontSize: 18,
+                    ),
                   ),
                 ),
               ],

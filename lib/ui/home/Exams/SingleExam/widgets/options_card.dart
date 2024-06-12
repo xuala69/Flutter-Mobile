@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/models/questions.dart';
@@ -11,7 +12,7 @@ class OptionsCard extends StatelessWidget {
   final Question question;
   OptionsCard({required this.question, super.key});
   final ctrl = ExamDetailUIController().to;
-  final RxnString selectedKey = RxnString();
+  final Rxn<Option> selectedOption = Rxn<Option>();
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +45,10 @@ class OptionsCard extends StatelessWidget {
         Obx(
           () => ListTile(
             onTap: () {
-              selectedKey.value = element.key;
+              selectedOption.value = element;
             },
             leading: Icon(
-              selectedKey.value == element.key
+              selectedOption.value?.key == element.key
                   ? Icons.radio_button_checked
                   : Icons.radio_button_off,
             ),
@@ -68,12 +69,35 @@ class OptionsCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 15),
             color: AppColors.primary,
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(
-              Nums.searchbarRadius,
-            ))),
-            onPressed: () {},
+              borderRadius: BorderRadius.all(
+                Radius.circular(
+                  Nums.searchbarRadius,
+                ),
+              ),
+            ),
+            onPressed: () {
+              if (selectedOption.value == null) {
+                Fluttertoast.showToast(
+                  msg: "Please select an answer",
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.BOTTOM,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.red,
+                  textColor: Colors.white,
+                  fontSize: 16.0,
+                );
+                return;
+              }
+              if (ctrl.currentStep.value == (ctrl.questions.length - 1)) {
+                Get.back();
+                return;
+              }
+              ctrl.saveAnswerNext(selectedOption.value!);
+            },
             child: Text(
-              "SAVE AND NEXT",
+              ctrl.currentStep.value == (ctrl.questions.length - 1)
+                  ? "SAVE AND SUBMIT"
+                  : "SAVE AND NEXT",
               style: GoogleFonts.spectral(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,

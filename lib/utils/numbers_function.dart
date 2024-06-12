@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:intl/intl.dart';
 
 String formatToIndianRupees(double amount) {
@@ -19,6 +21,7 @@ double progressValue({
   required int currentValue,
   required int length,
 }) {
-  final done = (currentValue / length - 1);
+  final done = ((currentValue + 1) / length);
+  log("Progress:$done");
   return done;
 }

@@ -5,6 +5,7 @@ class Question {
   String? image;
   late List<Option> options;
   late String correctOption;
+  Option? answer;
 
   Question({
     required this.id,
@@ -13,6 +14,7 @@ class Question {
     this.image,
     required this.options,
     required this.correctOption,
+    this.answer,
   });
 
   Question.fromJson(Map<String, dynamic> json) {
@@ -21,6 +23,7 @@ class Question {
     explanation = json['explanation'];
     image = json['image'];
     correctOption = json['correct_option'];
+    answer = json['answer'] == null ? null : Option.fromJson(json['answer']);
     options = [];
     final js = json['options'];
     if (js is List) {
@@ -38,7 +41,8 @@ class Question {
       "explanation": explanation,
       "image": image,
       "correct_option": correctOption,
-      "options": options.map((e) => e.toJson()).toList()
+      "options": options.map((e) => e.toJson()).toList(),
+      "answer": answer?.toJson(),
     };
   }
 }
@@ -46,25 +50,21 @@ class Question {
 class Option {
   late String key;
   late String value;
-  String? answer;
 
   Option({
     required this.key,
     required this.value,
-    this.answer,
   });
 
   Option.fromJson(Map<String, dynamic> json) {
     key = json['key'];
     value = json['value'];
-    answer = json['answer'];
   }
 
   Map<String, dynamic> toJson() {
     return {
       "key": key,
       "value": value,
-      "answer": answer,
     };
   }
 }

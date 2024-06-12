@@ -173,6 +173,8 @@ class _ExamDetailPageState extends State<ExamDetailPage> {
               final res = await Get.dialog(ExamIntroSummary());
               if (res != null) {
                 uiCtrl.currentStep.value = 0;
+                uiCtrl.setTimer(uiCtrl.exam.value!.duration);
+                uiCtrl.startTimer();
               }
             },
             shape: RoundedRectangleBorder(
