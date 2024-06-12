@@ -87,9 +87,13 @@ class SignInController extends GetxController {
 
   void testSignIn() async {
     showLoader();
-    await Future.delayed(const Duration(seconds: 1));
+    final response = await DioController().to.signInEmailPw();
     Get.back();
-    final user = User(id: '1', name: "John Doe", email: "johndoe@gmail.com");
+    if (response == null) {
+      return;
+    }
+    final user = User.fromJson(response);
+    UserController().to.user.value = user;
     GetStorageController().to.saveUser(user);
     UserController().to.user.value = user;
   }

@@ -26,8 +26,9 @@ class Endpoints {
   static String mockTests = "mock-tests"; // popular/paginate
   static String mockTest = "mock-test/"; // slug
 
-  static String googleUrl = '/v1/auth/google-auth-redirect';
-  static String appleUrl = '/v1/auth/apple-auth-redirect';
+  static String googleUrl = 'auth/google-auth-redirect';
+  static String appleUrl = 'auth/apple-auth-redirect';
+  static String emailpw = 'auth/login';
 }
 
 class LocalKeys {

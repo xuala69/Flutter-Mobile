@@ -18,6 +18,14 @@ class GetStorageController extends GetxController {
     box.write(LocalKeys.user, newData.toJson());
   }
 
+  void saveToken(String token) {
+    box.write(LocalKeys.userToken, token);
+  }
+
+  String getToken() {
+    return box.read(LocalKeys.userToken) ?? "";
+  }
+
   void saveSubjects(List<Subject> newData) {
     box.write(LocalKeys.subjects, newData.map((e) => e.toJson()).toList());
   }
