@@ -33,6 +33,13 @@ class DTFunctions {
     final int minutes = seconds ~/ 60;
     seconds %= 60;
 
-    return '$days days : $hours hr : $minutes mins : $seconds secs';
+    final List<String> parts = [];
+
+    if (days > 0) parts.add('$days days');
+    if (hours > 0) parts.add('$hours hr');
+    if (minutes > 0) parts.add('$minutes mins');
+    if (seconds > 0 || parts.isEmpty) parts.add('$seconds secs');
+
+    return parts.join(' : ');
   }
 }

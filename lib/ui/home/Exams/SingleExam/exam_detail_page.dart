@@ -8,8 +8,10 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:prep_pro/ui/widgets/m_appbar.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/colors.dart';
+import 'package:prep_pro/utils/datetime_functions.dart';
 import 'package:prep_pro/utils/numbers_function.dart';
 import 'package:prep_pro/utils/nums.dart';
+import 'package:prep_pro/utils/string_functions.dart';
 import 'package:prep_pro/utils/strings.dart';
 
 import 'exam_detail_ui_controller.dart';
@@ -100,10 +102,59 @@ class _ExamDetailPageState extends State<ExamDetailPage> {
               MdiIcons.timerOutline,
             ),
             hs(10),
-            Text("${uiCtrl.exam.value!.duration} Minutes"),
+            Text(
+              DTFunctions().formatDuration(uiCtrl.exam.value!.duration),
+            ),
           ],
         ),
         vs(25),
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Obx(() {
+              if (uiCtrl.showExcerpt.isTrue) {
+                return Text(
+                  getExcerpt(uiCtrl.exam.value?.description),
+                  style: GoogleFonts.spectral(
+                    fontSize: 16,
+                  ),
+                  textAlign: TextAlign.left,
+                  maxLines: 5,
+                  overflow: TextOverflow.ellipsis,
+                );
+              } else {
+                return HtmlWidget(
+                  uiCtrl.exam.value?.description ?? "",
+                  textStyle: const TextStyle(
+                    fontSize: 16,
+                  ),
+                );
+              }
+            }),
+            Row(
+              children: [
+                const Spacer(),
+                MaterialButton(
+                  onPressed: () {
+                    uiCtrl.showExcerpt.value = !uiCtrl.showExcerpt.value;
+                  },
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  padding: EdgeInsets.zero,
+                  child: Obx(
+                    () => Text(
+                      uiCtrl.showExcerpt.isTrue ? "See more" : "See less",
+                      style: GoogleFonts.spectral(
+                        color: Colors.blue,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
         HtmlWidget(
           uiCtrl.exam.value?.description ?? "",
           textStyle: const TextStyle(

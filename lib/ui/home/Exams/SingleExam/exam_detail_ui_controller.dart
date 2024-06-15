@@ -10,6 +10,7 @@ class ExamDetailUIController extends GetxController {
 
   final ctrl = ExamsController().to;
   final loading = true.obs;
+  final showExcerpt = true.obs;
 
   Rxn<Exam> exam = Rxn<Exam>();
   RxList<Question> questions = RxList();
