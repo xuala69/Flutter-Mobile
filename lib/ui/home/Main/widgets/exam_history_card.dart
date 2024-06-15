@@ -7,10 +7,10 @@ import 'package:prep_pro/utils/colors.dart';
 import 'package:prep_pro/utils/datetime_functions.dart';
 import 'package:prep_pro/utils/nums.dart';
 
-class ExamHistoryGrid extends StatelessWidget {
-  ExamHistoryGrid({super.key});
+class TestHistoryGrid extends StatelessWidget {
+  TestHistoryGrid({super.key});
 
-  final examHistoryCtrl = Get.put(ExamHistoryController());
+  final examHistoryCtrl = Get.put(TestHistoryController());
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class ExamHistoryGrid extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          "Ongoing Exam",
+          "Ongoing Test",
           style: GoogleFonts.spectral(
             fontSize: 16,
           ),

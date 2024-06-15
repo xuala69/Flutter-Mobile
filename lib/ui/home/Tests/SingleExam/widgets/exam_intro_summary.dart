@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/colors.dart';
+import 'package:prep_pro/utils/datetime_functions.dart';
 import 'package:prep_pro/utils/nums.dart';
 
 import '../exam_detail_ui_controller.dart';
 
-class ExamIntroSummary extends StatelessWidget {
-  ExamIntroSummary({super.key});
-  final ctrl = ExamDetailUIController().to;
+class TestIntroSummary extends StatelessWidget {
+  TestIntroSummary({super.key});
+  final ctrl = TestDetailUIController().to;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,7 @@ class ExamIntroSummary extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
                 vs(5),
@@ -63,7 +66,9 @@ class ExamIntroSummary extends StatelessWidget {
                       MdiIcons.timerOutline,
                     ),
                     hs(10),
-                    Text("${ctrl.exam.value!.duration} Minutes"),
+                    Text(
+                      DTFunctions().formatDuration(ctrl.exam.value!.duration),
+                    ),
                   ],
                 ),
                 vs(5),
@@ -83,27 +88,30 @@ class ExamIntroSummary extends StatelessWidget {
                     fontSize: 16,
                   ),
                 ),
-                vs(10),
-                MaterialButton(
-                  onPressed: () {
-                    Get.back(result: true);
-                  },
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(
-                        Nums.searchbarRadius,
+                vs(15),
+                Align(
+                  alignment: Alignment.center,
+                  child: MaterialButton(
+                    onPressed: () {
+                      Get.back(result: true);
+                    },
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(
+                          Nums.searchbarRadius,
+                        ),
                       ),
                     ),
-                  ),
-                  color: AppColors.primary,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 45),
-                  child: Text(
-                    "Start Test",
-                    style: GoogleFonts.spectral(
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                    color: AppColors.primary,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 45),
+                    child: Text(
+                      "Start Test",
+                      style: GoogleFonts.spectral(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),

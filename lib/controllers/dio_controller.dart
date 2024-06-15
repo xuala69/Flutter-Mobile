@@ -144,4 +144,36 @@ class DioController extends GetxController {
       return null;
     }
   }
+
+  Future<dynamic> post(String path, Map<String, dynamic> data) async {
+    try {
+      final res = await dio.post(path, data: data);
+      if (res.statusCode == 200) {
+        return res.data;
+      } else {
+        final msg = res.data['message'] ?? "Unknown error occured";
+        log("Error posting data on dioController(): $msg");
+        Future.delayed(const Duration(seconds: 1)).then((value) {
+          Get.dialog(NetworkErrorDialog(
+            errorMsg: msg,
+          ));
+        });
+        return null;
+      }
+    } catch (e) {
+      log("GET Error2 posting data on dioController():$e");
+      final msg = e.toString();
+      Future.delayed(const Duration(seconds: 1)).then((value) {
+        Get.dialog(NetworkErrorDialog(
+          errorMsg: msg,
+        ));
+      });
+      return null;
+    }
+  }
+
+  Future<dynamic> delete(String uri) async {
+    log("DELETE: $uri");
+    return dio.delete(uri);
+  }
 }

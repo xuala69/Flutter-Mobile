@@ -12,7 +12,7 @@ class FilterSheet extends StatelessWidget {
   final Function(dynamic) onSubmit;
   FilterSheet({required this.onSubmit, super.key});
 
-  final examsCtrl = ExamsController().to;
+  final examsCtrl = TestsController().to;
   final coursesCtrl = CoursesController().to;
 
   final uiCtrl = Get.put(FilterUIController());

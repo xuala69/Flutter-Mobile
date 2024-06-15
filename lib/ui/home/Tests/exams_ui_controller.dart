@@ -5,15 +5,15 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:prep_pro/controllers/categories_controller.dart';
 import 'package:prep_pro/controllers/exams_controller.dart';
 import 'package:prep_pro/models/category.dart';
-import 'package:prep_pro/models/exams.dart';
+import 'package:prep_pro/models/tests.dart';
 import 'package:prep_pro/utils/nums.dart';
 
-class ExamsUIController extends GetxController {
+class TestsUIController extends GetxController {
   static const _pageSize = 10;
 
   RxList<Category> categories = CategoriesController().to.categories;
   var isLoadingCategories = true.obs;
-  final PagingController<int, Exam> pagingController =
+  final PagingController<int, Test> pagingController =
       PagingController(firstPageKey: 1);
 
   final searchText = "".obs;
@@ -64,11 +64,11 @@ class ExamsUIController extends GetxController {
     }
   }
 
-  Future<List<Exam>> fetchItemsFromApi(int page) async {
-    final ctrl = ExamsController().to;
+  Future<List<Test>> fetchItemsFromApi(int page) async {
+    final ctrl = TestsController().to;
     // ignore: invalid_use_of_protected_member
     final sortMap = sortOptions.value;
-    final data = await ctrl.getExams(pageNo: page, filter: {
+    final data = await ctrl.getTests(pageNo: page, filter: {
       "search": searchText.value,
       "category_ids": sortMap['categories'],
       "subject_ids": sortMap['subjects'],

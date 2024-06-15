@@ -8,7 +8,7 @@ import 'package:prep_pro/utils/nums.dart';
 import '../Courses/widgets/course_history.dart';
 import '../Courses/widgets/featured_courses_grid.dart';
 import '../Courses/widgets/popular_courses_grid.dart';
-import '../Exams/widgets/popular_exams_card.dart';
+import '../Tests/widgets/popular_exams_card.dart';
 
 class HomeMain extends StatefulWidget {
   const HomeMain({super.key});
@@ -24,13 +24,13 @@ class _HomeMainState extends State<HomeMain> {
       physics: const BouncingScrollPhysics(),
       padding: EdgeInsets.all(Nums.paddingNormal),
       children: [
-        FeaturedExamsGrid(),
+        FeaturedTestsGrid(),
         vs(15),
-        ExamHistoryGrid(),
+        TestHistoryGrid(),
         vs(15),
         SubjectsGrid(),
         vs(15),
-        PopularExamsGrid(),
+        PopularTestsGrid(),
         vs(15),
         FeaturedCoursesGrid(),
         vs(15),

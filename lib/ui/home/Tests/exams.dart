@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:prep_pro/controllers/categories_controller.dart';
-import 'package:prep_pro/models/exams.dart';
+import 'package:prep_pro/models/tests.dart';
 import 'package:prep_pro/ui/home/Filter/filter_sheet.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/nums.dart';
@@ -10,16 +10,16 @@ import 'exams_ui_controller.dart';
 import 'widgets/exam_grid.dart';
 import 'widgets/searchbar.dart';
 
-class HomeExamsPage extends StatefulWidget {
-  const HomeExamsPage({super.key});
+class HomeTestsPage extends StatefulWidget {
+  const HomeTestsPage({super.key});
 
   @override
-  State<HomeExamsPage> createState() => _HomeExamsPageState();
+  State<HomeTestsPage> createState() => _HomeTestsPageState();
 }
 
-class _HomeExamsPageState extends State<HomeExamsPage> {
+class _HomeTestsPageState extends State<HomeTestsPage> {
   final categoriesCtrl = CategoriesController().to;
-  final uiCtrl = Get.put(ExamsUIController());
+  final uiCtrl = Get.put(TestsUIController());
 
   @override
   Widget build(BuildContext context) {
@@ -56,9 +56,9 @@ class _HomeExamsPageState extends State<HomeExamsPage> {
                 mainAxisSpacing: Nums.paddingSmall,
                 crossAxisSpacing: Nums.paddingSmall,
               ),
-              builderDelegate: PagedChildBuilderDelegate<Exam>(
+              builderDelegate: PagedChildBuilderDelegate<Test>(
                 itemBuilder: (context, item, index) {
-                  return ExamGrid(
+                  return TestGrid(
                     exam: item,
                   );
                 },

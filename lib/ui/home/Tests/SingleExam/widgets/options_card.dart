@@ -11,7 +11,7 @@ import '../exam_detail_ui_controller.dart';
 class OptionsCard extends StatelessWidget {
   final Question question;
   OptionsCard({required this.question, super.key});
-  final ctrl = ExamDetailUIController().to;
+  final ctrl = TestDetailUIController().to;
   final Rxn<Option> selectedOption = Rxn<Option>();
 
   @override

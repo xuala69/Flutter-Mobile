@@ -1,25 +1,25 @@
-import 'package:prep_pro/models/exams.dart';
+import 'package:prep_pro/models/tests.dart';
 
-class ExamHistory {
+class TestHistory {
   late int id;
   late int currentStep;
   late DateTime savedAt;
-  Exam? exam;
+  Test? exam;
 
-  ExamHistory({
+  TestHistory({
     required this.id,
     required this.currentStep,
     required this.savedAt,
     required this.exam,
   });
 
-  ExamHistory.fromJson(Map<String, dynamic> json) {
+  TestHistory.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     currentStep = json['current_step'];
     savedAt = DateTime.parse(json['saved_at']);
     final examJs = json['exam'];
     if (examJs != null) {
-      final model = Exam.fromJson(examJs);
+      final model = Test.fromJson(examJs);
       exam = model;
     }
   }

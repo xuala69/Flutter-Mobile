@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:prep_pro/ui/widgets/m_appbar.dart';
 
-class ExamOngoingScreen extends StatelessWidget {
-  const ExamOngoingScreen({super.key});
+class TestOngoingScreen extends StatelessWidget {
+  const TestOngoingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

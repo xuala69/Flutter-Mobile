@@ -63,7 +63,7 @@ class ProfileMainPage extends StatelessWidget {
           const SubDivider(),
           iconTextCard(
             icon: Icons.checklist_outlined,
-            title: "Exam History",
+            title: "Test History",
             subtitle: "View past Tests",
             onTap: () {},
           ),

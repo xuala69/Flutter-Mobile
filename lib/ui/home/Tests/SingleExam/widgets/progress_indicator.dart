@@ -8,9 +8,9 @@ import 'package:prep_pro/utils/nums.dart';
 
 import '../exam_detail_ui_controller.dart';
 
-class ExamProgressIndicator extends StatelessWidget {
-  ExamProgressIndicator({super.key});
-  final ctrl = ExamDetailUIController().to;
+class TestProgressIndicator extends StatelessWidget {
+  TestProgressIndicator({super.key});
+  final ctrl = TestDetailUIController().to;
 
   @override
   Widget build(BuildContext context) {

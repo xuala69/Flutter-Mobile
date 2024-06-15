@@ -3,8 +3,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:prep_pro/models/category.dart';
 import 'package:prep_pro/models/course_history.dart';
 import 'package:prep_pro/models/courses.dart';
-import 'package:prep_pro/models/exam_history.dart';
-import 'package:prep_pro/models/exams.dart';
+import 'package:prep_pro/models/test_history.dart';
+import 'package:prep_pro/models/tests.dart';
 import 'package:prep_pro/models/organization.dart';
 import 'package:prep_pro/models/subjects.dart';
 import 'package:prep_pro/models/users.dart';
@@ -16,6 +16,15 @@ class GetStorageController extends GetxController {
 
   void saveUser(User newData) {
     box.write(LocalKeys.user, newData.toJson());
+  }
+
+  User? getUser() {
+    final js = box.read(LocalKeys.user);
+    if (js != null && js != "") {
+      User user = User.fromJson(js);
+      return user;
+    }
+    return null;
   }
 
   void saveToken(String token) {
@@ -56,20 +65,20 @@ class GetStorageController extends GetxController {
     //     LocalKeys.courseHistory, tempList.map((e) => e.toJson()).toList());
   }
 
-  void savePopularExams(List<Exam> newData) {
-    // box.write(LocalKeys.popularExams, newData.map((e) => e.toJson()).toList());
+  void savePopularTests(List<Test> newData) {
+    // box.write(LocalKeys.popularTests, newData.map((e) => e.toJson()).toList());
   }
 
-  void saveFeaturedExams(List<Exam> newData) {
-    // box.write(LocalKeys.featuredExams, newData.map((e) => e.toJson()).toList());
+  void saveFeaturedTests(List<Test> newData) {
+    // box.write(LocalKeys.featuredTests, newData.map((e) => e.toJson()).toList());
   }
 
-  void saveExamHistory(ExamHistory newData) {
+  void saveTestHistory(TestHistory newData) {
     // final data = box.read(LocalKeys.examHistory);
-    // final List<ExamHistory> tempList = [];
+    // final List<TestHistory> tempList = [];
     // if (data != null && data is List) {
     //   for (var element in data) {
-    //     ExamHistory model = ExamHistory.fromJson(element);
+    //     TestHistory model = TestHistory.fromJson(element);
     //     tempList.insert(0, model);
     //   }
     //   tempList.insert(0, newData);

@@ -19,20 +19,20 @@ import 'widgets/exam_intro_summary.dart';
 import 'widgets/options_card.dart';
 import 'widgets/progress_indicator.dart';
 
-class ExamDetailPage extends StatefulWidget {
+class TestDetailPage extends StatefulWidget {
   final int examId;
-  const ExamDetailPage({required this.examId, super.key});
+  const TestDetailPage({required this.examId, super.key});
 
   @override
-  State<ExamDetailPage> createState() => _ExamDetailPageState();
+  State<TestDetailPage> createState() => _TestDetailPageState();
 }
 
-class _ExamDetailPageState extends State<ExamDetailPage> {
-  final uiCtrl = Get.put(ExamDetailUIController());
+class _TestDetailPageState extends State<TestDetailPage> {
+  final uiCtrl = Get.put(TestDetailUIController());
 
   @override
   void initState() {
-    ExamDetailUIController().to.getExam(widget.examId);
+    TestDetailUIController().to.getTest(widget.examId);
     super.initState();
   }
 
@@ -197,7 +197,7 @@ class _ExamDetailPageState extends State<ExamDetailPage> {
           ],
         ),
         vs(10),
-        if (!canExam())
+        if (!canTest())
           MaterialButton(
             onPressed: () {},
             shape: RoundedRectangleBorder(
@@ -221,7 +221,7 @@ class _ExamDetailPageState extends State<ExamDetailPage> {
         else
           MaterialButton(
             onPressed: () async {
-              final res = await Get.dialog(ExamIntroSummary());
+              final res = await Get.dialog(TestIntroSummary());
               if (res != null) {
                 uiCtrl.currentStep.value = 0;
                 uiCtrl.setTimer(uiCtrl.exam.value!.duration);
@@ -238,7 +238,7 @@ class _ExamDetailPageState extends State<ExamDetailPage> {
             color: AppColors.primary,
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: Text(
-              "Start Exam",
+              "Start Test",
               style: GoogleFonts.spectral(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
@@ -259,7 +259,7 @@ class _ExamDetailPageState extends State<ExamDetailPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ExamProgressIndicator(),
+              TestProgressIndicator(),
               Obx(
                 () => HtmlWidget(
                   uiCtrl.questions[uiCtrl.currentStep.value!].name,
@@ -281,7 +281,7 @@ class _ExamDetailPageState extends State<ExamDetailPage> {
     );
   }
 
-  bool canExam() {
+  bool canTest() {
     return true;
   }
 }

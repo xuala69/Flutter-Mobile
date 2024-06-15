@@ -2,14 +2,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:prep_pro/models/exams.dart';
-import 'package:prep_pro/ui/home/Exams/SingleExam/exam_detail_page.dart';
+import 'package:prep_pro/models/tests.dart';
+import 'package:prep_pro/ui/home/Tests/SingleExam/exam_detail_page.dart';
 import 'package:prep_pro/utils/nums.dart';
 import 'package:prep_pro/utils/strings.dart';
 
-class ExamGrid extends StatelessWidget {
-  final Exam exam;
-  const ExamGrid({required this.exam, super.key});
+class TestGrid extends StatelessWidget {
+  final Test exam;
+  const TestGrid({required this.exam, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class ExamGrid extends StatelessWidget {
       padding: EdgeInsets.zero,
       onPressed: () {
         Get.to(
-          () => ExamDetailPage(examId: exam.id),
+          () => TestDetailPage(examId: exam.id),
         );
       },
       child: GridTile(

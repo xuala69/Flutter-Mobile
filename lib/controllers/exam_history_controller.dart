@@ -1,23 +1,23 @@
 import 'package:get/get.dart';
-import 'package:prep_pro/models/exam_history.dart';
-import 'package:prep_pro/models/exams.dart';
+import 'package:prep_pro/models/test_history.dart';
+import 'package:prep_pro/models/tests.dart';
 import 'package:prep_pro/models/organization.dart';
 import '../utils/strings.dart';
 import 'get_storage_controller.dart';
 
-class ExamHistoryController extends GetxController {
-  ExamHistoryController get to => Get.find();
+class TestHistoryController extends GetxController {
+  TestHistoryController get to => Get.find();
 
-  final examHistories = RxList<ExamHistory>([]);
+  final examHistories = RxList<TestHistory>([]);
 
   @override
   void onReady() {
-    _getExamHistory();
-    _listenExamHistory();
+    _getTestHistory();
+    _listenTestHistory();
     super.onReady();
   }
 
-  _listenExamHistory() {
+  _listenTestHistory() {
     GetStorageController().to.box.listenKey(LocalKeys.examHistory, (value) {
       if (value == null) {
         examHistories.value = [];
@@ -25,28 +25,28 @@ class ExamHistoryController extends GetxController {
         examHistories.clear();
         final List ls = value;
         for (var element in ls) {
-          final model = ExamHistory.fromJson(element);
+          final model = TestHistory.fromJson(element);
           examHistories.add(model);
         }
       }
     });
   }
 
-  _getExamHistory() {
+  _getTestHistory() {
     final data = GetStorageController().to.box.read(LocalKeys.examHistory);
     if (data != null) {
       final List ls = data;
       for (var element in ls) {
-        final model = ExamHistory.fromJson(element);
+        final model = TestHistory.fromJson(element);
         examHistories.add(model);
       }
     } else {
-      GetStorageController().to.saveExamHistory(
-            ExamHistory(
+      GetStorageController().to.saveTestHistory(
+            TestHistory(
               id: 1,
               currentStep: 3,
               savedAt: DateTime.now(),
-              exam: Exam(
+              exam: Test(
                 id: 1,
                 organizationId: 1,
                 name: "JEE Mock Test",

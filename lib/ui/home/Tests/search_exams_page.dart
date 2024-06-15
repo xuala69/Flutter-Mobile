@@ -5,7 +5,7 @@ import 'package:flutter/material.dart' hide SearchController;
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:prep_pro/controllers/exams_controller.dart';
-import 'package:prep_pro/models/exams.dart';
+import 'package:prep_pro/models/tests.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/nums.dart';
 import 'package:prep_pro/utils/strings.dart';
@@ -26,9 +26,9 @@ class SearchItemsPage extends StatefulWidget {
 
 class _SearchItemsPageState extends State<SearchItemsPage> {
   // late String _selectedFilter;
-  final ctrl = Get.put(ExamsController());
+  final ctrl = Get.put(TestsController());
 
-  final PagingController<int, Exam> _pagingController =
+  final PagingController<int, Test> _pagingController =
       PagingController(firstPageKey: 1);
   final searchText = "".obs;
 
@@ -81,9 +81,9 @@ class _SearchItemsPageState extends State<SearchItemsPage> {
     }
   }
 
-  Future<List<Exam>> fetch({required int pageNo}) async {
+  Future<List<Test>> fetch({required int pageNo}) async {
     log("fetch called with text ${searchText.value}");
-    var res = await ctrl.getExams(
+    var res = await ctrl.getTests(
       filter: {
         "search": searchText.value,
       },
@@ -109,7 +109,7 @@ class _SearchItemsPageState extends State<SearchItemsPage> {
     );
   }
 
-  Widget _buildResultCard(Exam model) {
+  Widget _buildResultCard(Test model) {
     return InkWell(
       onTap: () {
         // Get.bottomSheet(
@@ -188,7 +188,7 @@ class _SearchItemsPageState extends State<SearchItemsPage> {
         () => _pagingController.refresh(),
       ),
       child: PagedListView.separated(
-          builderDelegate: PagedChildBuilderDelegate<Exam>(
+          builderDelegate: PagedChildBuilderDelegate<Test>(
             itemBuilder: (context, item, index) {
               return _buildResultCard(item);
             },

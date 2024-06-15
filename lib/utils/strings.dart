@@ -30,6 +30,10 @@ class Endpoints {
   static String googleUrl = 'v1/auth/google-auth-redirect';
   static String appleUrl = 'v1/auth/apple-auth-redirect';
   static String emailpw = 'v1/auth/login';
+  //TODO update discord url
+  static String discord = 'https://discord/channel/id/webhook';
+  static String payment = '/payment';
+  static String paymentVerify = "/payment/verify";
 }
 
 class LocalKeys {
@@ -39,8 +43,8 @@ class LocalKeys {
   static String popularCourses = "popular_courses";
   static String featuredCourses = "featured_courses";
   static String courseHistory = "course_history";
-  static String popularExams = "popular_exams";
-  static String featuredExams = "featured_exams";
+  static String popularTests = "popular_exams";
+  static String featuredTests = "featured_exams";
   static String examHistory = "exam_history";
   static String categories = "categories";
   static String organizations = "organizations";

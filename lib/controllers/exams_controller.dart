@@ -3,90 +3,90 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:prep_pro/controllers/dio_controller.dart';
 import 'package:prep_pro/models/category.dart';
-import 'package:prep_pro/models/exams.dart';
+import 'package:prep_pro/models/tests.dart';
 import 'package:prep_pro/models/organization.dart';
 import 'package:prep_pro/models/questions.dart';
 import 'package:prep_pro/utils/strings.dart';
 import '../ui/widgets/function_widgets.dart';
 import 'get_storage_controller.dart';
 
-class ExamsController extends GetxController {
-  ExamsController get to => Get.find();
+class TestsController extends GetxController {
+  TestsController get to => Get.find();
   final dio = DioController().to.dio;
 
-  final popularExams = RxList<Exam>([]);
-  final featuredExams = RxList<Exam>([]);
+  final popularTests = RxList<Test>([]);
+  final featuredTests = RxList<Test>([]);
 
   @override
   void onReady() {
-    _getPopularExams();
-    _listenPopularExams();
+    _getPopularTests();
+    _listenPopularTests();
     //server atangin app open ah fetch that a save zel, local ami zel hman tur
-    getPopularExams();
-    //Exams
-    _getFeaturedExams();
-    _listenFeaturedExams();
+    getPopularTests();
+    //Tests
+    _getFeaturedTests();
+    _listenFeaturedTests();
     //server atangin app open ah fetch that a save zel, local ami zel hman tur
-    getFeaturedExams();
+    getFeaturedTests();
     super.onReady();
   }
 
-  _listenPopularExams() {
+  _listenPopularTests() {
     GetStorageController().to.box.listenKey(LocalKeys.subjects, (value) {
       if (value == null) {
-        popularExams.value = [];
+        popularTests.value = [];
       } else {
-        popularExams.clear();
+        popularTests.clear();
         final List ls = value;
         for (var element in ls) {
-          final model = Exam.fromJson(element);
-          popularExams.add(model);
+          final model = Test.fromJson(element);
+          popularTests.add(model);
         }
       }
     });
   }
 
-  _getPopularExams() {
-    final data = GetStorageController().to.box.read(LocalKeys.popularExams);
+  _getPopularTests() {
+    final data = GetStorageController().to.box.read(LocalKeys.popularTests);
     if (data != null) {
       final List ls = data;
       for (var element in ls) {
-        final model = Exam.fromJson(element);
-        popularExams.add(model);
+        final model = Test.fromJson(element);
+        popularTests.add(model);
       }
     }
   }
 
-  _listenFeaturedExams() {
-    GetStorageController().to.box.listenKey(LocalKeys.featuredExams, (value) {
+  _listenFeaturedTests() {
+    GetStorageController().to.box.listenKey(LocalKeys.featuredTests, (value) {
       if (value == null) {
-        featuredExams.value = [];
+        featuredTests.value = [];
       } else {
-        featuredExams.clear();
+        featuredTests.clear();
         final List ls = value;
         for (var element in ls) {
-          final model = Exam.fromJson(element);
-          featuredExams.add(model);
+          final model = Test.fromJson(element);
+          featuredTests.add(model);
         }
       }
     });
   }
 
-  _getFeaturedExams() {
-    final data = GetStorageController().to.box.read(LocalKeys.popularExams);
+  _getFeaturedTests() {
+    final data = GetStorageController().to.box.read(LocalKeys.popularTests);
     if (data != null) {
       final List ls = data;
       for (var element in ls) {
-        final model = Exam.fromJson(element);
-        featuredExams.add(model);
+        final model = Test.fromJson(element);
+        featuredTests.add(model);
       }
     }
   }
 
-  Future<Exam?> getExam(int examId) async {
+  Future<Test?> getTest(int examId) async {
     try {
-      log("Coming to get Exam with id $examId");
-      final data = Exam(
+      log("Coming to get Test with id $examId");
+      final data = Test(
         id: 3,
         organizationId: 1,
         name: "Class 12 Chemistry Mock Test",
@@ -117,12 +117,12 @@ class ExamsController extends GetxController {
       // final res = await dio.getUri(Uri(
       //   scheme: 'https',
       //   host: 'api.onepercent.com',
-      //   path: Strings.ExamsUrl,
+      //   path: Strings.TestsUrl,
       //   queryParameters: params,
       // ));
       // if (res.statusCode == 200) {
-      //   final List<Exam> Exams = [
-      //     Exam(
+      //   final List<Test> Tests = [
+      //     Test(
       //       id: 1,
       //       organizationId: 1,
       //       name: "Chiko | JEE",
@@ -139,7 +139,7 @@ class ExamsController extends GetxController {
       //       organization: Organization(
       //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
-      //     Exam(
+      //     Test(
       //       id: "2",
       //       organizationId: 1,
       //       name: "Chiko | NEET",
@@ -156,7 +156,7 @@ class ExamsController extends GetxController {
       //       organization: Organization(
       //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
-      //     Exam(
+      //     Test(
       //       id: "3",
       //       organizationId: 1,
       //       name: "Chiko | Class 12 Chemistry",
@@ -177,11 +177,11 @@ class ExamsController extends GetxController {
       //   final data = res.data['data'];
       //   if (data is List) {
       //     for (var element in data) {
-      //       final model = Exam.fromJson(element);
-      //       Exams.add(model);
+      //       final model = Test.fromJson(element);
+      //       Tests.add(model);
       //     }
       //   }
-      //   return Exams;
+      //   return Tests;
       // } else {
       //   final msg = res.data['message'] ?? "Unknown error occured";
       //   showErrorDialog(msg);
@@ -195,9 +195,9 @@ class ExamsController extends GetxController {
     }
   }
 
-  Future<List<Question>?> getExamQuestions(int examId) async {
+  Future<List<Question>?> getTestQuestions(int examId) async {
     try {
-      log("Coming to get Exam Question with id $examId");
+      log("Coming to get Test Question with id $examId");
       final data = [
         Question(
           id: '1',
@@ -440,7 +440,7 @@ class ExamsController extends GetxController {
           correctOption: "B",
         ),
       ];
-      // Exam(
+      // Test(
       //   id: "3",
       //   organizationId: 1,
       //   name: "Class 12 Chemistry Mock Test",
@@ -471,12 +471,12 @@ class ExamsController extends GetxController {
       // final res = await dio.getUri(Uri(
       //   scheme: 'https',
       //   host: 'api.onepercent.com',
-      //   path: Strings.ExamsUrl,
+      //   path: Strings.TestsUrl,
       //   queryParameters: params,
       // ));
       // if (res.statusCode == 200) {
-      //   final List<Exam> Exams = [
-      //     Exam(
+      //   final List<Test> Tests = [
+      //     Test(
       //       id: 1,
       //       organizationId: 1,
       //       name: "Chiko | JEE",
@@ -493,7 +493,7 @@ class ExamsController extends GetxController {
       //       organization: Organization(
       //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
-      //     Exam(
+      //     Test(
       //       id: "2",
       //       organizationId: 1,
       //       name: "Chiko | NEET",
@@ -510,7 +510,7 @@ class ExamsController extends GetxController {
       //       organization: Organization(
       //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
-      //     Exam(
+      //     Test(
       //       id: "3",
       //       organizationId: 1,
       //       name: "Chiko | Class 12 Chemistry",
@@ -531,11 +531,11 @@ class ExamsController extends GetxController {
       //   final data = res.data['data'];
       //   if (data is List) {
       //     for (var element in data) {
-      //       final model = Exam.fromJson(element);
-      //       Exams.add(model);
+      //       final model = Test.fromJson(element);
+      //       Tests.add(model);
       //     }
       //   }
-      //   return Exams;
+      //   return Tests;
       // } else {
       //   final msg = res.data['message'] ?? "Unknown error occured";
       //   showErrorDialog(msg);
@@ -549,14 +549,14 @@ class ExamsController extends GetxController {
     }
   }
 
-  Future<List<Exam>?> getExams({
+  Future<List<Test>?> getTests({
     required int pageNo,
     required Map<String, dynamic> filter,
   }) async {
     try {
-      log("Coming to get Exams");
+      log("Coming to get Tests");
       return [
-        Exam(
+        Test(
           id: 1,
           organizationId: 1,
           name: "JEE Mock Test 1",
@@ -581,7 +581,7 @@ class ExamsController extends GetxController {
             slug: "jee-mains",
           ),
         ),
-        Exam(
+        Test(
           id: 2,
           organizationId: 1,
           name: "NEET Mock Test 2",
@@ -606,7 +606,7 @@ class ExamsController extends GetxController {
             slug: "jee-mains",
           ),
         ),
-        Exam(
+        Test(
           id: 3,
           organizationId: 1,
           name: "Class 12 Chemistry Mock Test",
@@ -637,12 +637,12 @@ class ExamsController extends GetxController {
       // final res = await dio.getUri(Uri(
       //   scheme: 'https',
       //   host: 'api.onepercent.com',
-      //   path: Strings.ExamsUrl,
+      //   path: Strings.TestsUrl,
       //   queryParameters: params,
       // ));
       // if (res.statusCode == 200) {
-      //   final List<Exam> Exams = [
-      //     Exam(
+      //   final List<Test> Tests = [
+      //     Test(
       //       id: 1,
       //       organizationId: 1,
       //       name: "Chiko | JEE",
@@ -659,7 +659,7 @@ class ExamsController extends GetxController {
       //       organization: Organization(
       //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
-      //     Exam(
+      //     Test(
       //       id: "2",
       //       organizationId: 1,
       //       name: "Chiko | NEET",
@@ -676,7 +676,7 @@ class ExamsController extends GetxController {
       //       organization: Organization(
       //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
-      //     Exam(
+      //     Test(
       //       id: "3",
       //       organizationId: 1,
       //       name: "Chiko | Class 12 Chemistry",
@@ -697,11 +697,11 @@ class ExamsController extends GetxController {
       //   final data = res.data['data'];
       //   if (data is List) {
       //     for (var element in data) {
-      //       final model = Exam.fromJson(element);
-      //       Exams.add(model);
+      //       final model = Test.fromJson(element);
+      //       Tests.add(model);
       //     }
       //   }
-      //   return Exams;
+      //   return Tests;
       // } else {
       //   final msg = res.data['message'] ?? "Unknown error occured";
       //   showErrorDialog(msg);
@@ -715,10 +715,10 @@ class ExamsController extends GetxController {
     }
   }
 
-  void getPopularExams() async {
+  void getPopularTests() async {
     try {
       final data = [
-        Exam(
+        Test(
           id: 1,
           organizationId: 1,
           name: "JEE Mock Test 1",
@@ -738,7 +738,7 @@ class ExamsController extends GetxController {
             slug: "slug",
           ),
         ),
-        Exam(
+        Test(
           id: 2,
           organizationId: 1,
           name: "NEET Mock Test 2",
@@ -755,7 +755,7 @@ class ExamsController extends GetxController {
           organization:
               Organization(id: 1, name: "Chiko Tuition Centre", slug: "slug"),
         ),
-        Exam(
+        Test(
           id: 3,
           organizationId: 1,
           name: "Class 12 Chemistry Mock Test",
@@ -773,18 +773,18 @@ class ExamsController extends GetxController {
               Organization(id: 1, name: "Chiko Tuition Centre", slug: "slug"),
         ),
       ];
-      GetStorageController().to.savePopularExams(data);
+      GetStorageController().to.savePopularTests(data);
 
       // final params = filter.putIfAbsent("page", () => pageNo);
       // final res = await dio.getUri(Uri(
       //   scheme: 'https',
       //   host: 'api.onepercent.com',
-      //   path: Strings.ExamsUrl,
+      //   path: Strings.TestsUrl,
       //   queryParameters: params,
       // ));
       // if (res.statusCode == 200) {
-      //   final List<Exam> Exams = [
-      //     Exam(
+      //   final List<Test> Tests = [
+      //     Test(
       //       id: 1,
       //       organizationId: 1,
       //       name: "Chiko | JEE",
@@ -801,7 +801,7 @@ class ExamsController extends GetxController {
       //       organization: Organization(
       //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
-      //     Exam(
+      //     Test(
       //       id: "2",
       //       organizationId: 1,
       //       name: "Chiko | NEET",
@@ -818,7 +818,7 @@ class ExamsController extends GetxController {
       //       organization: Organization(
       //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
-      //     Exam(
+      //     Test(
       //       id: "3",
       //       organizationId: 1,
       //       name: "Chiko | Class 12 Chemistry",
@@ -839,11 +839,11 @@ class ExamsController extends GetxController {
       //   final data = res.data['data'];
       //   if (data is List) {
       //     for (var element in data) {
-      //       final model = Exam.fromJson(element);
-      //       Exams.add(model);
+      //       final model = Test.fromJson(element);
+      //       Tests.add(model);
       //     }
       //   }
-      //   return Exams;
+      //   return Tests;
       // } else {
       //   final msg = res.data['message'] ?? "Unknown error occured";
       //   showErrorDialog(msg);
@@ -852,16 +852,16 @@ class ExamsController extends GetxController {
     } catch (e) {
       log("GET Error:$e");
       final msg = e.toString();
-      showErrorDialog(msg, "getPopularExams dummy");
+      showErrorDialog(msg, "getPopularTests dummy");
       return null;
     }
   }
 
-  void getFeaturedExams() async {
+  void getFeaturedTests() async {
     try {
-      // log("Coming to get Featured Exams");
+      // log("Coming to get Featured Tests");
       // final data = [
-      //   Exam(
+      //   Test(
       //     id: 5,
       //     organizationId: 1,
       //     name: "NEET Mock Test | Zirlaite Puitu",
@@ -878,7 +878,7 @@ class ExamsController extends GetxController {
       //     organization:
       //         Organization(id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //   ),
-      //   Exam(
+      //   Test(
       //     id: 3,
       //     organizationId: 1,
       //     name: "Class 12 Chemistry | Zawlbuk Zirna Run",
@@ -895,7 +895,7 @@ class ExamsController extends GetxController {
       //     organization:
       //         Organization(id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //   ),
-      //   Exam(
+      //   Test(
       //     id: 1,
       //     organizationId: 1,
       //     name: "JEE Mock Test 3 | Chiko",
@@ -916,18 +916,18 @@ class ExamsController extends GetxController {
       //     ),
       //   ),
       // ];
-      // GetStorageController().to.saveFeaturedExams(data);
+      // GetStorageController().to.saveFeaturedTests(data);
 
       // final params = filter.putIfAbsent("page", () => pageNo);
       // final res = await dio.getUri(Uri(
       //   scheme: 'https',
       //   host: 'api.onepercent.com',
-      //   path: Strings.ExamsUrl,
+      //   path: Strings.TestsUrl,
       //   queryParameters: params,
       // ));
       // if (res.statusCode == 200) {
-      //   final List<Exam> Exams = [
-      //     Exam(
+      //   final List<Test> Tests = [
+      //     Test(
       //       id: 1,
       //       organizationId: 1,
       //       name: "Chiko | JEE",
@@ -944,7 +944,7 @@ class ExamsController extends GetxController {
       //       organization: Organization(
       //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
-      //     Exam(
+      //     Test(
       //       id: "2",
       //       organizationId: 1,
       //       name: "Chiko | NEET",
@@ -961,7 +961,7 @@ class ExamsController extends GetxController {
       //       organization: Organization(
       //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
-      //     Exam(
+      //     Test(
       //       id: "3",
       //       organizationId: 1,
       //       name: "Chiko | Class 12 Chemistry",
@@ -982,11 +982,11 @@ class ExamsController extends GetxController {
       //   final data = res.data['data'];
       //   if (data is List) {
       //     for (var element in data) {
-      //       final model = Exam.fromJson(element);
-      //       Exams.add(model);
+      //       final model = Test.fromJson(element);
+      //       Tests.add(model);
       //     }
       //   }
-      //   return Exams;
+      //   return Tests;
       // } else {
       //   final msg = res.data['message'] ?? "Unknown error occured";
       //   showErrorDialog(msg);
@@ -995,7 +995,7 @@ class ExamsController extends GetxController {
     } catch (e) {
       log("GET Error:$e");
       final msg = e.toString();
-      showErrorDialog(msg, "getFeaturedExams dummy2");
+      showErrorDialog(msg, "getFeaturedTests dummy2");
       return null;
     }
   }

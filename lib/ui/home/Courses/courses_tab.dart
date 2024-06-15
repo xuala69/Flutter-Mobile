@@ -4,7 +4,7 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:prep_pro/controllers/courses_controller.dart';
 import 'package:prep_pro/models/courses.dart';
 import 'package:prep_pro/ui/home/Courses/courses_ui_controller.dart';
-import 'package:prep_pro/ui/home/Exams/widgets/searchbar.dart';
+import 'package:prep_pro/ui/home/Tests/widgets/searchbar.dart';
 import 'package:prep_pro/ui/home/Filter/filter_sheet.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/nums.dart';

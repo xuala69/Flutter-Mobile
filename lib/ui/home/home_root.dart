@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:prep_pro/ui/home/Courses/courses_tab.dart';
-import 'package:prep_pro/ui/home/Exams/exams.dart';
+import 'package:prep_pro/ui/home/Tests/exams.dart';
 import 'package:prep_pro/ui/home/Main/main.dart';
 import '../widgets/m_appbar.dart';
 
@@ -43,11 +43,11 @@ class _HomeRootPageState extends State<HomeRootPage> {
                 inactiveIcon: Icon(MdiIcons.schoolOutline)),
           ),
           PersistentTabConfig(
-            screen: const HomeExamsPage(),
+            screen: const HomeTestsPage(),
             item: ItemConfig(
               icon: const Icon(Icons.note_alt),
               iconSize: 35,
-              title: "Exams",
+              title: "Mock Tests",
               activeForegroundColor: Colors.purple[800]!,
               inactiveForegroundColor: Colors.grey[900]!,
               inactiveIcon: const Icon(Icons.note_alt_outlined),

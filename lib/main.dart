@@ -28,7 +28,7 @@ initControllers() {
   Get.put(OrganizationsController());
   Get.put(SubjectsController());
   Get.put(CoursesController());
-  Get.put(ExamsController());
+  Get.put(TestsController());
 }
 
 class MyApp extends StatelessWidget {

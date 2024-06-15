@@ -3,23 +3,23 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:prep_pro/models/exams.dart';
+import 'package:prep_pro/models/tests.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/nums.dart';
 
-class ExamsCarouselWidget extends StatefulWidget {
-  final List<Exam> exams;
-  final Function(Exam) onTap;
-  const ExamsCarouselWidget(
+class TestsCarouselWidget extends StatefulWidget {
+  final List<Test> exams;
+  final Function(Test) onTap;
+  const TestsCarouselWidget(
       {required this.onTap, required this.exams, super.key});
 
   @override
-  State<ExamsCarouselWidget> createState() => ExamsCarouselWidgetState();
+  State<TestsCarouselWidget> createState() => TestsCarouselWidgetState();
 }
 
-class ExamsCarouselWidgetState extends State<ExamsCarouselWidget> {
+class TestsCarouselWidgetState extends State<TestsCarouselWidget> {
   int _current = 0;
-  List<Exam> exams = [];
+  List<Test> exams = [];
 
   @override
   initState() {
