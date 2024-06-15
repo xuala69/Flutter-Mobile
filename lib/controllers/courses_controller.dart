@@ -16,19 +16,19 @@ class CoursesController extends GetxController {
 
   final courses = RxList<Course>([]);
 
-  @override
-  void onReady() {
-    _getPopularCourses();
-    _listenPopularCourses();
-    //server atangin app open ah fetch that a save zel, local ami zel hman tur
-    getPopularCourses();
-    //courses
-    _getFeaturedCourses();
-    _listenFeaturedCourses();
-    //server atangin app open ah fetch that a save zel, local ami zel hman tur
-    getFeaturedCourses();
-    super.onReady();
-  }
+  // @override
+  // void onReady() {
+  //   _getPopularCourses();
+  //   _listenPopularCourses();
+  //   //server atangin app open ah fetch that a save zel, local ami zel hman tur
+  //   getPopularCourses();
+  //   //courses
+  //   _getFeaturedCourses();
+  //   _listenFeaturedCourses();
+  //   //server atangin app open ah fetch that a save zel, local ami zel hman tur
+  //   getFeaturedCourses();
+  //   super.onReady();
+  // }
 
   _listenPopularCourses() {
     GetStorageController().to.box.listenKey(LocalKeys.subjects, (value) {
@@ -109,13 +109,13 @@ class CoursesController extends GetxController {
         return courses;
       } else {
         final msg = res.data['message'] ?? "Unknown error occured";
-        showErrorDialog(msg);
+        showErrorDialog(msg, "getCourses1");
         return null;
       }
     } catch (e) {
       log("GET Error:$e");
       final msg = e.toString();
-      showErrorDialog(msg);
+      showErrorDialog(msg, "getCourses2");
       return null;
     }
   }
@@ -134,13 +134,13 @@ class CoursesController extends GetxController {
         }
       } else {
         final msg = res.data['message'] ?? "Unknown error occured";
-        showErrorDialog(msg);
+        showErrorDialog(msg, "getPopularCourses");
         return null;
       }
     } catch (e) {
       log("GET Error:$e");
       final msg = e.toString();
-      showErrorDialog(msg);
+      showErrorDialog(msg, "getPopularCourses");
       return null;
     }
   }
@@ -160,13 +160,13 @@ class CoursesController extends GetxController {
         }
       } else {
         final msg = res.data['message'] ?? "Unknown error occured";
-        showErrorDialog(msg);
+        showErrorDialog(msg, "getFeaturedCourses");
         return null;
       }
     } catch (e) {
       log("GET Error:$e");
       final msg = e.toString();
-      showErrorDialog(msg);
+      showErrorDialog(msg, "getFeaturedCourses");
       return null;
     }
   }
@@ -176,18 +176,18 @@ class CoursesController extends GetxController {
     try {
       final res = await dio.get("${Endpoints.course}$slug");
       if (res.statusCode == 200) {
-        final data = res.data['data'];
+        final data = res.data;
         final model = Course.fromJson(data);
         return model;
       } else {
         final msg = res.data['message'] ?? "Unknown error occured";
-        showErrorDialog(msg);
+        showErrorDialog(msg, "getCourse");
         return null;
       }
     } catch (e) {
       log("GET Error:$e");
       final msg = e.toString();
-      showErrorDialog(msg);
+      showErrorDialog(msg, "getCourse");
       return null;
     }
   }

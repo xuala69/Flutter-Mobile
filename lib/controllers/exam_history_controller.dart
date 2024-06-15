@@ -43,12 +43,12 @@ class ExamHistoryController extends GetxController {
     } else {
       GetStorageController().to.saveExamHistory(
             ExamHistory(
-              id: "1",
+              id: 1,
               currentStep: 3,
               savedAt: DateTime.now(),
               exam: Exam(
-                id: "1",
-                organizationId: "1",
+                id: 1,
+                organizationId: 1,
                 name: "JEE Mock Test",
                 slug: "slug",
                 description: "description",
@@ -58,9 +58,9 @@ class ExamHistoryController extends GetxController {
                 price: 0,
                 published: true,
                 featured: true,
-                categoryId: "1",
+                categoryId: 1,
                 organization: Organization(
-                  id: "1",
+                  id: 1,
                   name: "Chiko Tuition Centre",
                   slug: "slug",
                 ),

@@ -83,12 +83,12 @@ class ExamsController extends GetxController {
     }
   }
 
-  Future<Exam?> getExam(String examId) async {
+  Future<Exam?> getExam(int examId) async {
     try {
       log("Coming to get Exam with id $examId");
       final data = Exam(
-        id: "3",
-        organizationId: "1",
+        id: 3,
+        organizationId: 1,
         name: "Class 12 Chemistry Mock Test",
         slug: 'Class 12 Chemistry',
         description: "Class 12 Chemistry description",
@@ -99,14 +99,14 @@ class ExamsController extends GetxController {
         published: true,
         featured: true,
         imagePath: null,
-        categoryId: "1",
+        categoryId: 1,
         organization: Organization(
-          id: "1",
+          id: 1,
           name: "Chiko Tuition Centre",
           slug: "slug",
         ),
         category: Category(
-          id: "1",
+          id: 1,
           name: "JEE Mains",
           slug: "jee-mains",
         ),
@@ -123,8 +123,8 @@ class ExamsController extends GetxController {
       // if (res.statusCode == 200) {
       //   final List<Exam> Exams = [
       //     Exam(
-      //       id: "1",
-      //       organizationId: "1",
+      //       id: 1,
+      //       organizationId: 1,
       //       name: "Chiko | JEE",
       //       slug: 'JEE',
       //       description: "JEE Mains description",
@@ -135,13 +135,13 @@ class ExamsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //     Exam(
       //       id: "2",
-      //       organizationId: "1",
+      //       organizationId: 1,
       //       name: "Chiko | NEET",
       //       slug: 'NEET',
       //       description: "NEET description",
@@ -152,13 +152,13 @@ class ExamsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //     Exam(
       //       id: "3",
-      //       organizationId: "1",
+      //       organizationId: 1,
       //       name: "Chiko | Class 12 Chemistry",
       //       slug: 'Class 12 Chemistry',
       //       description: "Class 12 Chemistry description",
@@ -169,9 +169,9 @@ class ExamsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //   ];
       //   final data = res.data['data'];
@@ -188,14 +188,14 @@ class ExamsController extends GetxController {
       //   return null;
       // }
     } catch (e) {
-      log("GET Error:$e");
+      log("GET Error exam ctrl:$e");
       final msg = e.toString();
-      showErrorDialog(msg);
+      showErrorDialog(msg, "dummz");
       return null;
     }
   }
 
-  Future<List<Question>?> getExamQuestions(String examId) async {
+  Future<List<Question>?> getExamQuestions(int examId) async {
     try {
       log("Coming to get Exam Question with id $examId");
       final data = [
@@ -442,7 +442,7 @@ class ExamsController extends GetxController {
       ];
       // Exam(
       //   id: "3",
-      //   organizationId: "1",
+      //   organizationId: 1,
       //   name: "Class 12 Chemistry Mock Test",
       //   slug: 'Class 12 Chemistry',
       //   description: "Class 12 Chemistry description",
@@ -453,14 +453,14 @@ class ExamsController extends GetxController {
       //   published: true,
       //   featured: true,
       //   imagePath: null,
-      //   categoryId: "1",
+      //   categoryId: 1,
       //   organization: Organization(
-      //     id: "1",
+      //     id: 1,
       //     name: "Chiko Tuition Centre",
       //     slug: "slug",
       //   ),
       //   category: Category(
-      //     id: "1",
+      //     id: 1,
       //     name: "JEE Mains",
       //     slug: "jee-mains",
       //   ),
@@ -477,8 +477,8 @@ class ExamsController extends GetxController {
       // if (res.statusCode == 200) {
       //   final List<Exam> Exams = [
       //     Exam(
-      //       id: "1",
-      //       organizationId: "1",
+      //       id: 1,
+      //       organizationId: 1,
       //       name: "Chiko | JEE",
       //       slug: 'JEE',
       //       description: "JEE Mains description",
@@ -489,13 +489,13 @@ class ExamsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //     Exam(
       //       id: "2",
-      //       organizationId: "1",
+      //       organizationId: 1,
       //       name: "Chiko | NEET",
       //       slug: 'NEET',
       //       description: "NEET description",
@@ -506,13 +506,13 @@ class ExamsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //     Exam(
       //       id: "3",
-      //       organizationId: "1",
+      //       organizationId: 1,
       //       name: "Chiko | Class 12 Chemistry",
       //       slug: 'Class 12 Chemistry',
       //       description: "Class 12 Chemistry description",
@@ -523,9 +523,9 @@ class ExamsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //   ];
       //   final data = res.data['data'];
@@ -542,9 +542,9 @@ class ExamsController extends GetxController {
       //   return null;
       // }
     } catch (e) {
-      log("GET Error:$e");
+      log("GET Error exam ctrl:$e");
       final msg = e.toString();
-      showErrorDialog(msg);
+      showErrorDialog(msg, "DUmmy exams ctrl");
       return null;
     }
   }
@@ -557,8 +557,8 @@ class ExamsController extends GetxController {
       log("Coming to get Exams");
       return [
         Exam(
-          id: "1",
-          organizationId: "1",
+          id: 1,
+          organizationId: 1,
           name: "JEE Mock Test 1",
           slug: 'JEE',
           description: "JEE Mains description",
@@ -569,21 +569,21 @@ class ExamsController extends GetxController {
           published: true,
           featured: true,
           imagePath: null,
-          categoryId: "1",
+          categoryId: 1,
           organization: Organization(
-            id: "1",
+            id: 1,
             name: "Chiko Tuition Centre",
             slug: "slug",
           ),
           category: Category(
-            id: "1",
+            id: 1,
             name: "JEE Mains",
             slug: "jee-mains",
           ),
         ),
         Exam(
-          id: "2",
-          organizationId: "1",
+          id: 2,
+          organizationId: 1,
           name: "NEET Mock Test 2",
           slug: 'NEET',
           description: "NEET description",
@@ -594,21 +594,21 @@ class ExamsController extends GetxController {
           published: true,
           featured: true,
           imagePath: null,
-          categoryId: "1",
+          categoryId: 1,
           organization: Organization(
-            id: "1",
+            id: 1,
             name: "Chiko Tuition Centre",
             slug: "slug",
           ),
           category: Category(
-            id: "1",
+            id: 1,
             name: "JEE Mains",
             slug: "jee-mains",
           ),
         ),
         Exam(
-          id: "3",
-          organizationId: "1",
+          id: 3,
+          organizationId: 1,
           name: "Class 12 Chemistry Mock Test",
           slug: 'Class 12 Chemistry',
           description: "Class 12 Chemistry description",
@@ -619,14 +619,14 @@ class ExamsController extends GetxController {
           published: true,
           featured: true,
           imagePath: null,
-          categoryId: "1",
+          categoryId: 1,
           organization: Organization(
-            id: "1",
+            id: 1,
             name: "Chiko Tuition Centre",
             slug: "slug",
           ),
           category: Category(
-            id: "1",
+            id: 1,
             name: "JEE Mains",
             slug: "jee-mains",
           ),
@@ -643,8 +643,8 @@ class ExamsController extends GetxController {
       // if (res.statusCode == 200) {
       //   final List<Exam> Exams = [
       //     Exam(
-      //       id: "1",
-      //       organizationId: "1",
+      //       id: 1,
+      //       organizationId: 1,
       //       name: "Chiko | JEE",
       //       slug: 'JEE',
       //       description: "JEE Mains description",
@@ -655,13 +655,13 @@ class ExamsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //     Exam(
       //       id: "2",
-      //       organizationId: "1",
+      //       organizationId: 1,
       //       name: "Chiko | NEET",
       //       slug: 'NEET',
       //       description: "NEET description",
@@ -672,13 +672,13 @@ class ExamsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //     Exam(
       //       id: "3",
-      //       organizationId: "1",
+      //       organizationId: 1,
       //       name: "Chiko | Class 12 Chemistry",
       //       slug: 'Class 12 Chemistry',
       //       description: "Class 12 Chemistry description",
@@ -689,9 +689,9 @@ class ExamsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //   ];
       //   final data = res.data['data'];
@@ -710,7 +710,7 @@ class ExamsController extends GetxController {
     } catch (e) {
       log("GET Error:$e");
       final msg = e.toString();
-      showErrorDialog(msg);
+      showErrorDialog(msg, "DUmmy exams ctrl 2");
       return null;
     }
   }
@@ -719,8 +719,8 @@ class ExamsController extends GetxController {
     try {
       final data = [
         Exam(
-          id: "1",
-          organizationId: "1",
+          id: 1,
+          organizationId: 1,
           name: "JEE Mock Test 1",
           slug: 'JEE',
           description: "JEE Mains description",
@@ -731,16 +731,16 @@ class ExamsController extends GetxController {
           published: true,
           featured: true,
           imagePath: null,
-          categoryId: "1",
+          categoryId: 1,
           organization: Organization(
-            id: "1",
+            id: 1,
             name: "Chiko Tuition Centre",
             slug: "slug",
           ),
         ),
         Exam(
-          id: "2",
-          organizationId: "1",
+          id: 2,
+          organizationId: 1,
           name: "NEET Mock Test 2",
           slug: 'NEET',
           description: "NEET description",
@@ -751,13 +751,13 @@ class ExamsController extends GetxController {
           published: true,
           featured: true,
           imagePath: null,
-          categoryId: "1",
+          categoryId: 1,
           organization:
-              Organization(id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+              Organization(id: 1, name: "Chiko Tuition Centre", slug: "slug"),
         ),
         Exam(
-          id: "3",
-          organizationId: "1",
+          id: 3,
+          organizationId: 1,
           name: "Class 12 Chemistry Mock Test",
           slug: 'Class 12 Chemistry',
           description: "Class 12 Chemistry description",
@@ -768,9 +768,9 @@ class ExamsController extends GetxController {
           published: true,
           featured: true,
           imagePath: null,
-          categoryId: "1",
+          categoryId: 1,
           organization:
-              Organization(id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+              Organization(id: 1, name: "Chiko Tuition Centre", slug: "slug"),
         ),
       ];
       GetStorageController().to.savePopularExams(data);
@@ -785,8 +785,8 @@ class ExamsController extends GetxController {
       // if (res.statusCode == 200) {
       //   final List<Exam> Exams = [
       //     Exam(
-      //       id: "1",
-      //       organizationId: "1",
+      //       id: 1,
+      //       organizationId: 1,
       //       name: "Chiko | JEE",
       //       slug: 'JEE',
       //       description: "JEE Mains description",
@@ -797,13 +797,13 @@ class ExamsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //     Exam(
       //       id: "2",
-      //       organizationId: "1",
+      //       organizationId: 1,
       //       name: "Chiko | NEET",
       //       slug: 'NEET',
       //       description: "NEET description",
@@ -814,13 +814,13 @@ class ExamsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //     Exam(
       //       id: "3",
-      //       organizationId: "1",
+      //       organizationId: 1,
       //       name: "Chiko | Class 12 Chemistry",
       //       slug: 'Class 12 Chemistry',
       //       description: "Class 12 Chemistry description",
@@ -831,9 +831,9 @@ class ExamsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //   ];
       //   final data = res.data['data'];
@@ -852,71 +852,71 @@ class ExamsController extends GetxController {
     } catch (e) {
       log("GET Error:$e");
       final msg = e.toString();
-      showErrorDialog(msg);
+      showErrorDialog(msg, "getPopularExams dummy");
       return null;
     }
   }
 
   void getFeaturedExams() async {
     try {
-      log("Coming to get Exams");
-      final data = [
-        Exam(
-          id: "5",
-          organizationId: "1",
-          name: "NEET Mock Test | Zirlaite Puitu",
-          slug: 'NEET',
-          description: "NEET description",
-          mode: "mode",
-          contentsCount: 6,
-          duration: 600,
-          price: 1600.0,
-          published: true,
-          featured: true,
-          imagePath: "https://picsum.photos/id/4/400/200",
-          categoryId: "1",
-          organization:
-              Organization(id: "1", name: "Chiko Tuition Centre", slug: "slug"),
-        ),
-        Exam(
-          id: "3",
-          organizationId: "1",
-          name: "Class 12 Chemistry | Zawlbuk Zirna Run",
-          slug: 'Class 12 Chemistry',
-          description: "Class 12 Chemistry description",
-          mode: "mode",
-          contentsCount: 6,
-          duration: 600,
-          price: 1700.0,
-          published: true,
-          featured: true,
-          imagePath: "https://picsum.photos/id/5/400/200",
-          categoryId: "1",
-          organization:
-              Organization(id: "1", name: "Chiko Tuition Centre", slug: "slug"),
-        ),
-        Exam(
-          id: "1",
-          organizationId: "1",
-          name: "JEE Mock Test 3 | Chiko",
-          slug: 'JEE',
-          description: "JEE Mains description",
-          mode: "mode",
-          contentsCount: 6,
-          duration: 600,
-          price: 1500.0,
-          published: true,
-          featured: true,
-          imagePath: "https://picsum.photos/id/6/400/200",
-          categoryId: "1",
-          organization: Organization(
-            id: "1",
-            name: "Chiko Tuition Centre",
-            slug: "slug",
-          ),
-        ),
-      ];
-      GetStorageController().to.saveFeaturedExams(data);
+      // log("Coming to get Featured Exams");
+      // final data = [
+      //   Exam(
+      //     id: 5,
+      //     organizationId: 1,
+      //     name: "NEET Mock Test | Zirlaite Puitu",
+      //     slug: 'NEET',
+      //     description: "NEET description",
+      //     mode: "mode",
+      //     contentsCount: 6,
+      //     duration: 600,
+      //     price: 1600.0,
+      //     published: true,
+      //     featured: true,
+      //     imagePath: "https://picsum.photos/id/4/400/200",
+      //     categoryId: 1,
+      //     organization:
+      //         Organization(id: 1, name: "Chiko Tuition Centre", slug: "slug"),
+      //   ),
+      //   Exam(
+      //     id: 3,
+      //     organizationId: 1,
+      //     name: "Class 12 Chemistry | Zawlbuk Zirna Run",
+      //     slug: 'Class 12 Chemistry',
+      //     description: "Class 12 Chemistry description",
+      //     mode: "mode",
+      //     contentsCount: 6,
+      //     duration: 600,
+      //     price: 1700.0,
+      //     published: true,
+      //     featured: true,
+      //     imagePath: "https://picsum.photos/id/5/400/200",
+      //     categoryId: 1,
+      //     organization:
+      //         Organization(id: 1, name: "Chiko Tuition Centre", slug: "slug"),
+      //   ),
+      //   Exam(
+      //     id: 1,
+      //     organizationId: 1,
+      //     name: "JEE Mock Test 3 | Chiko",
+      //     slug: 'JEE',
+      //     description: "JEE Mains description",
+      //     mode: "mode",
+      //     contentsCount: 6,
+      //     duration: 600,
+      //     price: 1500.0,
+      //     published: true,
+      //     featured: true,
+      //     imagePath: "https://picsum.photos/id/6/400/200",
+      //     categoryId: 1,
+      //     organization: Organization(
+      //       id: 1,
+      //       name: "Chiko Tuition Centre",
+      //       slug: "slug",
+      //     ),
+      //   ),
+      // ];
+      // GetStorageController().to.saveFeaturedExams(data);
 
       // final params = filter.putIfAbsent("page", () => pageNo);
       // final res = await dio.getUri(Uri(
@@ -928,8 +928,8 @@ class ExamsController extends GetxController {
       // if (res.statusCode == 200) {
       //   final List<Exam> Exams = [
       //     Exam(
-      //       id: "1",
-      //       organizationId: "1",
+      //       id: 1,
+      //       organizationId: 1,
       //       name: "Chiko | JEE",
       //       slug: 'JEE',
       //       description: "JEE Mains description",
@@ -940,13 +940,13 @@ class ExamsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //     Exam(
       //       id: "2",
-      //       organizationId: "1",
+      //       organizationId: 1,
       //       name: "Chiko | NEET",
       //       slug: 'NEET',
       //       description: "NEET description",
@@ -957,13 +957,13 @@ class ExamsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //     Exam(
       //       id: "3",
-      //       organizationId: "1",
+      //       organizationId: 1,
       //       name: "Chiko | Class 12 Chemistry",
       //       slug: 'Class 12 Chemistry',
       //       description: "Class 12 Chemistry description",
@@ -974,9 +974,9 @@ class ExamsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //   ];
       //   final data = res.data['data'];
@@ -995,7 +995,7 @@ class ExamsController extends GetxController {
     } catch (e) {
       log("GET Error:$e");
       final msg = e.toString();
-      showErrorDialog(msg);
+      showErrorDialog(msg, "getFeaturedExams dummy2");
       return null;
     }
   }

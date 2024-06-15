@@ -77,19 +77,19 @@ class FilterUIController extends GetxController {
   }
 
   Map<String, dynamic> submitSort() {
-    List<String> selectedCategoryIds = CategoriesController()
+    List<int> selectedCategoryIds = CategoriesController()
         .to
         .categories
         .where((option) => option.isSelected)
         .map((option) => option.id)
         .toList();
-    List<String> selectedSubjectIds = SubjectsController()
+    List<int> selectedSubjectIds = SubjectsController()
         .to
         .subjects
         .where((option) => option.isSelected)
         .map((option) => option.id)
         .toList();
-    List<String> selectedOrganizationsIds = OrganizationsController()
+    List<int> selectedOrganizationsIds = OrganizationsController()
         .to
         .organizations
         .where((option) => option.isSelected)

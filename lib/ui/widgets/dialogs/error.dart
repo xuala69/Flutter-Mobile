@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class NetworkErrorDialog extends StatelessWidget {
   final String errorMsg;
@@ -15,7 +16,9 @@ class NetworkErrorDialog extends StatelessWidget {
           children: [
             Text(errorMsg),
             MaterialButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.back();
+              },
               child: const Text("OKAY"),
             )
           ],

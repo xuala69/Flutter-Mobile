@@ -1,6 +1,6 @@
 class Content {
-  late String id;
-  late String courseId;
+  late int id;
+  late int courseId;
   late String name;
   late String slug;
   late String type;
@@ -34,8 +34,18 @@ class Content {
     slug = json['slug'];
     type = json['type'];
     mode = json['mode'];
-    duration = json['duration'];
-    price = json['price'];
+    final tempDur = json['duration'];
+    if (tempDur is int) {
+      duration = tempDur;
+    } else {
+      duration = int.parse(tempDur);
+    }
+    final tempPrice = json['price'];
+    if (tempPrice is double) {
+      price = tempPrice;
+    } else {
+      price = double.parse(tempPrice.toString());
+    }
     published = json['published'];
     videoLink = json['video_link'];
     filePath = json['file_path'];

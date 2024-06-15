@@ -9,17 +9,16 @@ class CourseDetailUIController extends GetxController {
   final contentCtrl = ContentsController().to;
 
   final loading = true.obs;
+  final showExcerpt = true.obs;
 
   Rxn<Course> course = Rxn<Course>();
 
   final contents = RxList<Content>([]);
-  RxString courseSlug = "".obs;
 
-  void initiateController(String newId) async {
-    courseSlug.value = newId;
+  void initiateController({required int newId, required String slug}) async {
     final results = await Future.wait([
-      getCourse(),
-      getCourseContents(),
+      getCourse(slug),
+      getCourseContents(newId),
     ]);
     final res1 = results[0] as Course?;
     final res2 = results[1] as List<Content>?;
@@ -31,14 +30,14 @@ class CourseDetailUIController extends GetxController {
     loading.value = false;
   }
 
-  Future<Course?> getCourse() async {
-    final data = await courseCtrl.getCourse(slug: courseSlug.value);
+  Future<Course?> getCourse(String slug) async {
+    final data = await courseCtrl.getCourse(slug: slug);
 
     return data;
   }
 
-  Future<List<Content>?> getCourseContents() async {
-    final data = await contentCtrl.getContents(courseId: courseSlug.value);
+  Future<List<Content>?> getCourseContents(int id) async {
+    final data = await contentCtrl.getContents(courseId: id);
     return data;
   }
 

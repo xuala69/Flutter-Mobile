@@ -6,7 +6,7 @@ import 'package:prep_pro/models/courses.dart';
 import 'package:prep_pro/ui/home/Courses/SingleCoursePage/course_details_page.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/nums.dart';
-import 'package:prep_pro/utils/strings.dart';
+import 'package:prep_pro/utils/string_functions.dart';
 
 class CourseListTile extends StatelessWidget {
   final Course course;
@@ -18,7 +18,8 @@ class CourseListTile extends StatelessWidget {
       onPressed: () {
         Get.to(
           () => CourseDetailPage(
-            courseId: course.slug,
+            courseId: course.id,
+            courseSlug: course.slug,
           ),
         );
       },
@@ -63,7 +64,7 @@ class CourseListTile extends StatelessWidget {
                 color: Colors.grey[200],
                 image: DecorationImage(
                   image: CachedNetworkImageProvider(
-                    course.imagePath ?? Strings.avatarDefault,
+                    getImageUrl(course.imagePath),
                   ),
                   fit: BoxFit.cover,
                 ),

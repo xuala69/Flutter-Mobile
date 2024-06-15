@@ -27,63 +27,63 @@ class GetStorageController extends GetxController {
   }
 
   void saveSubjects(List<Subject> newData) {
-    box.write(LocalKeys.subjects, newData.map((e) => e.toJson()).toList());
+    // box.write(LocalKeys.subjects, newData.map((e) => e.toJson()).toList());
   }
 
   void savePopularCourses(List<Course> newData) {
-    box.write(
-        LocalKeys.popularCourses, newData.map((e) => e.toJson()).toList());
+    // box.write(
+    //     LocalKeys.popularCourses, newData.map((e) => e.toJson()).toList());
   }
 
   void saveFeaturedCourses(List<Course> newData) {
-    box.write(
-        LocalKeys.featuredCourses, newData.map((e) => e.toJson()).toList());
+    // box.write(
+    //     LocalKeys.featuredCourses, newData.map((e) => e.toJson()).toList());
   }
 
   void saveCourseHistory(CourseHistory newData) {
-    final data = box.read(LocalKeys.courseHistory);
-    final List<CourseHistory> tempList = [];
-    if (data != null && data is List) {
-      for (var element in data) {
-        CourseHistory model = CourseHistory.fromJson(element);
-        tempList.insert(0, model);
-      }
-      tempList.insert(0, newData);
-    } else {
-      tempList.add(newData);
-    }
-    box.write(
-        LocalKeys.courseHistory, tempList.map((e) => e.toJson()).toList());
+    // final data = box.read(LocalKeys.courseHistory);
+    // final List<CourseHistory> tempList = [];
+    // if (data != null && data is List) {
+    //   for (var element in data) {
+    //     CourseHistory model = CourseHistory.fromJson(element);
+    //     tempList.insert(0, model);
+    //   }
+    //   tempList.insert(0, newData);
+    // } else {
+    //   tempList.add(newData);
+    // }
+    // box.write(
+    //     LocalKeys.courseHistory, tempList.map((e) => e.toJson()).toList());
   }
 
   void savePopularExams(List<Exam> newData) {
-    box.write(LocalKeys.popularExams, newData.map((e) => e.toJson()).toList());
+    // box.write(LocalKeys.popularExams, newData.map((e) => e.toJson()).toList());
   }
 
   void saveFeaturedExams(List<Exam> newData) {
-    box.write(LocalKeys.featuredExams, newData.map((e) => e.toJson()).toList());
+    // box.write(LocalKeys.featuredExams, newData.map((e) => e.toJson()).toList());
   }
 
   void saveExamHistory(ExamHistory newData) {
-    final data = box.read(LocalKeys.examHistory);
-    final List<ExamHistory> tempList = [];
-    if (data != null && data is List) {
-      for (var element in data) {
-        ExamHistory model = ExamHistory.fromJson(element);
-        tempList.insert(0, model);
-      }
-      tempList.insert(0, newData);
-    } else {
-      tempList.add(newData);
-    }
-    box.write(LocalKeys.examHistory, tempList.map((e) => e.toJson()).toList());
+    // final data = box.read(LocalKeys.examHistory);
+    // final List<ExamHistory> tempList = [];
+    // if (data != null && data is List) {
+    //   for (var element in data) {
+    //     ExamHistory model = ExamHistory.fromJson(element);
+    //     tempList.insert(0, model);
+    //   }
+    //   tempList.insert(0, newData);
+    // } else {
+    //   tempList.add(newData);
+    // }
+    // box.write(LocalKeys.examHistory, tempList.map((e) => e.toJson()).toList());
   }
 
   void saveAllCategories(List<Category> newData) {
-    box.write(LocalKeys.categories, newData.map((e) => e.toJson()).toList());
+    // box.write(LocalKeys.categories, newData.map((e) => e.toJson()).toList());
   }
 
   void saveAllOrganizations(List<Organization> newData) {
-    box.write(LocalKeys.organizations, newData.map((e) => e.toJson()).toList());
+    // box.write(LocalKeys.organizations, newData.map((e) => e.toJson()).toList());
   }
 }

@@ -2,8 +2,8 @@ import 'package:prep_pro/models/category.dart';
 import 'package:prep_pro/models/organization.dart';
 
 class Exam {
-  late String id;
-  late String organizationId;
+  late int id;
+  late int organizationId;
   late String name;
   late String slug;
   late String description;
@@ -14,7 +14,7 @@ class Exam {
   late bool published;
   late bool featured;
   String? imagePath;
-  late String categoryId;
+  late int categoryId;
   Organization? organization;
   Category? category;
 

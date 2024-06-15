@@ -11,33 +11,32 @@ class ContentsController extends GetxController {
   ContentsController get to => Get.find();
   final dio = DioController().to.dio;
 
-  Future<List<Content>?> getContents({required String courseId}) async {
+  Future<List<Content>?> getContents({required int courseId}) async {
     try {
       //TODO
       // final params = filter.putIfAbsent("page", () => pageNo);
-      // final res = await dio.get(Endpoints.content);
-      // if (res.statusCode == 200) {
-      //   final List<Course> courses = [];
-      //   final data = res.data['data'];
-      //   if (data is List) {
-      //     for (var element in data) {
-      //       final model = Course.fromJson(element);
-      //       courses.add(model);
-      //     }
-      //   }
-      //   return courses;
-      // } else {
-      //   final msg = res.data['message'] ?? "Unknown error occured";
-      //   showErrorDialog(msg);
-      //   return null;
-      // }
+      final res = await dio.get("${Endpoints.course}$courseId/contents");
+      if (res.statusCode == 200) {
+        final List<Content> courses = [];
+        final data = res.data['data'];
+        if (data is List) {
+          for (var element in data) {
+            final model = Content.fromJson(element);
+            courses.add(model);
+          }
+        }
+        return courses;
+      } else {
+        final msg = res.data['message'] ?? "Unknown error occured";
+        showErrorDialog(msg, "getContents1");
+        return null;
+      }
     } catch (e) {
       log("GET Error:$e");
       final msg = e.toString();
-      showErrorDialog(msg);
+      showErrorDialog(msg, "getContents");
       return null;
     }
-    return null;
   }
 
   void getPopularCourses() async {
@@ -55,13 +54,13 @@ class ContentsController extends GetxController {
         courses;
       } else {
         final msg = res.data['message'] ?? "Unknown error occured";
-        showErrorDialog(msg);
+        showErrorDialog(msg, "getPopularCourses");
         return null;
       }
     } catch (e) {
       log("GET Error:$e");
       final msg = e.toString();
-      showErrorDialog(msg);
+      showErrorDialog(msg, "getPopularCourses");
       return null;
     }
   }
@@ -82,13 +81,13 @@ class ContentsController extends GetxController {
         courses;
       } else {
         final msg = res.data['message'] ?? "Unknown error occured";
-        showErrorDialog(msg);
+        showErrorDialog(msg, "getFeaturedCourses");
         return null;
       }
     } catch (e) {
       log("GET Error:$e");
       final msg = e.toString();
-      showErrorDialog(msg);
+      showErrorDialog(msg, "getFeaturedCourses");
       return null;
     }
   }
@@ -103,13 +102,13 @@ class ContentsController extends GetxController {
         return model;
       } else {
         final msg = res.data['message'] ?? "Unknown error occured";
-        showErrorDialog(msg);
+        showErrorDialog(msg, "getCourse");
         return null;
       }
     } catch (e) {
       log("GET Error:$e");
       final msg = e.toString();
-      showErrorDialog(msg);
+      showErrorDialog(msg, "getCourse");
       return null;
     }
   }

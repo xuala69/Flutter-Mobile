@@ -1,5 +1,5 @@
 class Organization {
-  late String id;
+  late int id;
   late String name;
   late String slug;
   String? imagePath;

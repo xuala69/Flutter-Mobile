@@ -26,9 +26,13 @@ class DTFunctions {
   }
 
   String formatDuration(int seconds) {
-    int minutes = seconds ~/ 60;
-    int remainingSeconds = seconds % 60;
+    final int days = seconds ~/ (24 * 3600);
+    seconds %= (24 * 3600);
+    final int hours = seconds ~/ 3600;
+    seconds %= 3600;
+    final int minutes = seconds ~/ 60;
+    seconds %= 60;
 
-    return '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}';
+    return '$days days : $hours hr : $minutes mins : $seconds secs';
   }
 }

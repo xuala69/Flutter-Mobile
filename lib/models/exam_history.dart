@@ -1,7 +1,7 @@
 import 'package:prep_pro/models/exams.dart';
 
 class ExamHistory {
-  late String id;
+  late int id;
   late int currentStep;
   late DateTime savedAt;
   Exam? exam;

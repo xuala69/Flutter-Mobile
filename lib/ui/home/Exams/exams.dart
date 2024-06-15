@@ -69,13 +69,13 @@ class _HomeExamsPageState extends State<HomeExamsPage> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        SizedBox(
-                            height: Get.height * 0.20,
-                            child: Image.asset(
-                              "assets/empty_songs.png",
-                              opacity:
-                                  const AlwaysStoppedAnimation<double>(0.6),
-                            )),
+                        // SizedBox(
+                        //     height: Get.height * 0.20,
+                        //     child: Image.asset(
+                        //       "assets/empty_songs.png",
+                        //       opacity:
+                        //           const AlwaysStoppedAnimation<double>(0.6),
+                        //     )),
                         vs(35),
                         Text(
                           "No items found",

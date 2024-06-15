@@ -5,7 +5,7 @@ class Course {
   late int subjectId;
   late int categoryId;
   late int organizationId;
-  String? couponId;
+  int? couponId;
   late String name;
   late String slug;
   late String description;

@@ -18,7 +18,7 @@ import 'widgets/options_card.dart';
 import 'widgets/progress_indicator.dart';
 
 class ExamDetailPage extends StatefulWidget {
-  final String examId;
+  final int examId;
   const ExamDetailPage({required this.examId, super.key});
 
   @override

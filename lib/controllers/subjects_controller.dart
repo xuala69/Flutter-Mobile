@@ -51,7 +51,7 @@ class SubjectsController extends GetxController {
     try {
       final data = [
         Subject(
-          id: "1",
+          id: 1,
           name: "Mathematics",
           slug: "mathematics",
           description: "description",
@@ -60,7 +60,7 @@ class SubjectsController extends GetxController {
           featured: true,
         ),
         Subject(
-          id: "2",
+          id: 2,
           name: "Physics",
           slug: "physics",
           description: "description",
@@ -69,7 +69,7 @@ class SubjectsController extends GetxController {
           featured: true,
         ),
         Subject(
-          id: "3",
+          id: 3,
           name: "Chemistry",
           slug: "chemistry",
           description: "description",
@@ -78,7 +78,7 @@ class SubjectsController extends GetxController {
           featured: true,
         ),
         Subject(
-          id: "4",
+          id: 4,
           name: "Biology",
           slug: "biology",
           description: "description",
@@ -87,7 +87,7 @@ class SubjectsController extends GetxController {
           featured: true,
         ),
         Subject(
-          id: "5",
+          id: 5,
           name: "History",
           slug: "history",
           description: "description",
@@ -107,8 +107,8 @@ class SubjectsController extends GetxController {
       // if (res.statusCode == 200) {
       //   final List<Course> courses = [
       //     Course(
-      //       id: "1",
-      //       organizationId: "1",
+      //       id: 1,
+      //       organizationId: 1,
       //       name: "Chiko | JEE",
       //       slug: 'JEE',
       //       description: "JEE Mains description",
@@ -119,13 +119,13 @@ class SubjectsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //     Course(
-      //       id: "2",
-      //       organizationId: "1",
+      //       id: 2,
+      //       organizationId: 1,
       //       name: "Chiko | NEET",
       //       slug: 'NEET',
       //       description: "NEET description",
@@ -136,13 +136,13 @@ class SubjectsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //     Course(
-      //       id: "3",
-      //       organizationId: "1",
+      //       id: 3,
+      //       organizationId: 1,
       //       name: "Chiko | Class 12 Chemistry",
       //       slug: 'Class 12 Chemistry',
       //       description: "Class 12 Chemistry description",
@@ -153,9 +153,9 @@ class SubjectsController extends GetxController {
       //       published: true,
       //       featured: true,
       //       imagePath: null,
-      //       categoryId: "1",
+      //       categoryId: 1,
       //       organization: Organization(
-      //           id: "1", name: "Chiko Tuition Centre", slug: "slug"),
+      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
       //     ),
       //   ];
       //   final data = res.data['data'];
@@ -174,7 +174,7 @@ class SubjectsController extends GetxController {
     } catch (e) {
       log("GET Error:$e");
       final msg = e.toString();
-      showErrorDialog(msg);
+      showErrorDialog(msg, "dummmgg");
       return null;
     }
   }

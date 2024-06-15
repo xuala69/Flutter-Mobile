@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/controllers/contents_controller.dart';
@@ -13,12 +12,17 @@ import 'package:prep_pro/utils/colors.dart';
 import 'package:prep_pro/utils/datetime_functions.dart';
 import 'package:prep_pro/utils/numbers_function.dart';
 import 'package:prep_pro/utils/nums.dart';
-import 'package:prep_pro/utils/strings.dart';
+import 'package:prep_pro/utils/string_functions.dart';
 import 'course_detail_ui_controller.dart';
 
 class CourseDetailPage extends StatefulWidget {
-  final String courseId;
-  const CourseDetailPage({required this.courseId, super.key});
+  final int courseId;
+  final String courseSlug;
+  const CourseDetailPage({
+    required this.courseId,
+    required this.courseSlug,
+    super.key,
+  });
 
   @override
   State<CourseDetailPage> createState() => _CourseDetailPageState();
@@ -30,7 +34,10 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
 
   @override
   void initState() {
-    uiCtrl.initiateController(widget.courseId);
+    uiCtrl.initiateController(
+      newId: widget.courseId,
+      slug: widget.courseSlug,
+    );
     super.initState();
   }
 
@@ -58,7 +65,7 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
           color: Colors.grey[200],
           height: MediaQuery.of(context).size.width * 0.5,
           child: CachedNetworkImage(
-            imageUrl: uiCtrl.course.value?.imagePath ?? Strings.avatarDefault,
+            imageUrl: getImageUrl(uiCtrl.course.value?.imagePath),
           ),
         ),
         vs(15),
@@ -110,13 +117,52 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
           ],
         ),
         vs(25),
-        HtmlWidget(
-          uiCtrl.course.value?.description ?? "",
-          textStyle: const TextStyle(
-            fontSize: 16,
-          ),
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Obx(() {
+              if (uiCtrl.showExcerpt.isTrue) {
+                return Text(
+                  getExcerpt(uiCtrl.course.value?.description),
+                  style: GoogleFonts.spectral(
+                    fontSize: 16,
+                  ),
+                  textAlign: TextAlign.justify,
+                  maxLines: 5,
+                  overflow: TextOverflow.ellipsis,
+                );
+              } else {
+                return HtmlWidget(
+                  uiCtrl.course.value?.description ?? "",
+                  textStyle: const TextStyle(
+                    fontSize: 16,
+                  ),
+                );
+              }
+            }),
+            Row(
+              children: [
+                const Spacer(),
+                MaterialButton(
+                  onPressed: () {
+                    uiCtrl.showExcerpt.value = !uiCtrl.showExcerpt.value;
+                  },
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  padding: EdgeInsets.zero,
+                  child: Obx(
+                    () => Text(
+                      uiCtrl.showExcerpt.isTrue ? "See more" : "See less",
+                      style: GoogleFonts.spectral(
+                        color: Colors.blue,
+                      ),
+                      textAlign: TextAlign.justify,
+                    ),
+                  ),
+                )
+              ],
+            )
+          ],
         ),
-        vs(10),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -165,7 +211,7 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
         const Divider(),
         vs(10),
         Text(
-          "Curriculum",
+          "Contents",
           style: GoogleFonts.spectral(
             fontSize: 22,
             fontWeight: FontWeight.bold,

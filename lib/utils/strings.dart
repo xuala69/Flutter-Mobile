@@ -10,25 +10,26 @@ class Strings {
 
 class Endpoints {
   // static String baseUrl = "https://onepercent.com";
-  static String baseUrl = "http://13.232.142.18/v1/";
-  static String login = "auth/login";
-  static String user = "auth/user";
-  static String categories = "categories"; // random/paginate
-  static String category = "category/"; // slug
-  static String subjects = "subjects"; // random/paginate
-  static String subject = "subject/"; // slug
-  static String organizations = "organizations"; // random/paginate
-  static String organization = "organization/"; // slug
-  static String page = "page/"; // slug
-  static String courses = "courses"; // random/paginate
-  static String course = "course/"; // slug
-  static String content = "content/"; // slug
-  static String mockTests = "mock-tests"; // popular/paginate
-  static String mockTest = "mock-test/"; // slug
+  static String baseUrl = "http://13.232.142.18/";
+  static String login = "v1/auth/login";
+  static String storage = "storage/";
+  static String user = "v1/auth/user";
+  static String categories = "v1/categories"; // random/paginate
+  static String category = "v1/category/"; // slug
+  static String subjects = "v1/subjects"; // random/paginate
+  static String subject = "v1/subject/"; // slug
+  static String organizations = "v1/organizations"; // random/paginate
+  static String organization = "v1/organization/"; // slug
+  static String page = "v1/page/"; // slug
+  static String courses = "v1/courses"; // random/paginate
+  static String course = "v1/course/"; // slug
+  static String content = "v1/content/"; // slug
+  static String mockTests = "v1/mock-tests"; // popular/paginate
+  static String mockTest = "v1/mock-test/"; // slug
 
-  static String googleUrl = 'auth/google-auth-redirect';
-  static String appleUrl = 'auth/apple-auth-redirect';
-  static String emailpw = 'auth/login';
+  static String googleUrl = 'v1/auth/google-auth-redirect';
+  static String appleUrl = 'v1/auth/apple-auth-redirect';
+  static String emailpw = 'v1/auth/login';
 }
 
 class LocalKeys {

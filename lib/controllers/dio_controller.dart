@@ -124,6 +124,7 @@ class DioController extends GetxController {
         return res.data;
       } else {
         final msg = res.data['message'] ?? "Unknown error occured";
+        log("Error1: $msg");
         Future.delayed(const Duration(seconds: 1)).then((value) {
           Get.dialog(NetworkErrorDialog(
             errorMsg: msg,
@@ -132,8 +133,9 @@ class DioController extends GetxController {
         return null;
       }
     } catch (e) {
-      log("GET Error:$e");
+      log("GET Error2:$e");
       final msg = e.toString();
+      log("Error2: $msg");
       Future.delayed(const Duration(seconds: 1)).then((value) {
         Get.dialog(NetworkErrorDialog(
           errorMsg: msg,

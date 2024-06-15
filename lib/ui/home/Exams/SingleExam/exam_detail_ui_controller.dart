@@ -17,7 +17,7 @@ class ExamDetailUIController extends GetxController {
   RxnInt secRemaining = RxnInt();
   Timer? _timer;
 
-  void getExam(String examId) async {
+  void getExam(int examId) async {
     final res = await Future.wait(
       [
         ctrl.getExam(examId),
