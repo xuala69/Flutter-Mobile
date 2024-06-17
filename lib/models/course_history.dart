@@ -1,4 +1,4 @@
-import 'package:prep_pro/models/courses.dart';
+import 'package:prep_pro/models/course.dart';
 
 class CourseHistory {
   late String id;

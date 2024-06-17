@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:prep_pro/controllers/dio_controller.dart';
 import 'package:prep_pro/controllers/user_controller.dart';
-import 'package:prep_pro/models/users.dart';
+import 'package:prep_pro/models/user.dart';
 import 'package:prep_pro/ui/widgets/function_widgets.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 

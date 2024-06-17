@@ -2,12 +2,12 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:prep_pro/models/category.dart';
 import 'package:prep_pro/models/course_history.dart';
-import 'package:prep_pro/models/courses.dart';
+import 'package:prep_pro/models/course.dart';
 import 'package:prep_pro/models/test_history.dart';
-import 'package:prep_pro/models/tests.dart';
+import 'package:prep_pro/models/test.dart';
 import 'package:prep_pro/models/organization.dart';
-import 'package:prep_pro/models/subjects.dart';
-import 'package:prep_pro/models/users.dart';
+import 'package:prep_pro/models/subject.dart';
+import 'package:prep_pro/models/user.dart';
 import 'package:prep_pro/utils/strings.dart';
 
 class GetStorageController extends GetxController {

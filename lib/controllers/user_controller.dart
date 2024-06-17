@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:prep_pro/controllers/get_storage_controller.dart';
-import 'package:prep_pro/models/users.dart';
+import 'package:prep_pro/models/user.dart';
 import 'package:prep_pro/utils/strings.dart';
 
 class UserController extends GetxController {

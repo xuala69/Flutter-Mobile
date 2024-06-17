@@ -7,12 +7,14 @@ class Test {
   late String name;
   late String slug;
   late String description;
+  String? unlockedAt;
   late String mode;
   late int questionsCount;
   late int duration;
   late double price;
   late bool published;
   late bool featured;
+  late bool canBlock;
   String? imagePath;
   late int categoryId;
   Organization? organization;
@@ -31,7 +33,9 @@ class Test {
     required this.published,
     required this.featured,
     this.imagePath,
+    this.unlockedAt,
     required this.categoryId,
+    required this.canBlock,
     this.organization,
     this.category,
   });
@@ -42,7 +46,9 @@ class Test {
     organizationId = json['organization_id'];
     slug = json['slug'];
     description = json['description'];
+    unlockedAt = json['unlocked_at'];
     mode = json['mode'];
+    canBlock = json['can_block'];
     questionsCount = json['questions_count'];
     duration = json['duration'];
     final priceT = json['price'];

@@ -63,9 +63,7 @@ class _TestDetailPageState extends State<TestDetailPage> {
           color: Colors.grey[200],
           height: MediaQuery.of(context).size.width * 0.5,
           child: CachedNetworkImage(
-            imageUrl: getImageUrl(
-              uiCtrl.test.value?.imagePath,
-            ),
+            imageUrl: getImageUrl(uiCtrl.test.value?.imagePath),
             fit: BoxFit.cover,
           ),
         ),
@@ -162,12 +160,12 @@ class _TestDetailPageState extends State<TestDetailPage> {
             )
           ],
         ),
-        HtmlWidget(
-          uiCtrl.test.value?.description ?? "",
-          textStyle: const TextStyle(
-            fontSize: 16,
-          ),
-        ),
+        // HtmlWidget(
+        //   uiCtrl.test.value?.description ?? "",
+        //   textStyle: const TextStyle(
+        //     fontSize: 16,
+        //   ),
+        // ),
         vs(10),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,

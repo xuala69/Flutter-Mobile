@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:get/get.dart';
-import 'package:prep_pro/models/subjects.dart';
+import 'package:prep_pro/models/subject.dart';
 
 import '../ui/widgets/function_widgets.dart';
 import '../utils/strings.dart';

@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:get/get.dart';
 import 'package:prep_pro/controllers/tests_controller.dart';
-import 'package:prep_pro/models/tests.dart';
-import 'package:prep_pro/models/questions.dart';
+import 'package:prep_pro/models/test.dart';
+import 'package:prep_pro/models/question.dart';
 
 class TestDetailUIController extends GetxController {
   TestDetailUIController get to => Get.find();

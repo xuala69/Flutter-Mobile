@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:prep_pro/models/questions.dart';
+import 'package:prep_pro/models/question.dart';
 import 'package:prep_pro/utils/colors.dart';
 import 'package:prep_pro/utils/nums.dart';
 

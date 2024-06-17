@@ -20,6 +20,12 @@ class TestIntroSummary extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Material(
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+            Radius.circular(
+              Nums.searchbarRadius,
+            ),
+          )),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 25),
             child: Column(
@@ -81,10 +87,15 @@ class TestIntroSummary extends StatelessWidget {
                   ],
                 ),
                 vs(25),
-                HtmlWidget(
-                  ctrl.test.value?.description ?? "",
-                  textStyle: const TextStyle(
-                    fontSize: 16,
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  child: SingleChildScrollView(
+                    child: HtmlWidget(
+                      ctrl.test.value?.description ?? "",
+                      textStyle: const TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
                   ),
                 ),
                 vs(15),

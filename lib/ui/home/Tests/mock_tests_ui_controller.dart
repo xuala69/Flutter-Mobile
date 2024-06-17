@@ -5,7 +5,7 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:prep_pro/controllers/categories_controller.dart';
 import 'package:prep_pro/controllers/tests_controller.dart';
 import 'package:prep_pro/models/category.dart';
-import 'package:prep_pro/models/tests.dart';
+import 'package:prep_pro/models/test.dart';
 import 'package:prep_pro/utils/nums.dart';
 
 class TestsUIController extends GetxController {

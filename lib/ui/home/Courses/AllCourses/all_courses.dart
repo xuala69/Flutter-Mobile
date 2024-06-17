@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:prep_pro/models/courses.dart';
+import 'package:prep_pro/models/course.dart';
 import 'package:prep_pro/utils/nums.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 

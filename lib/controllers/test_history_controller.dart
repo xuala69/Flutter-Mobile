@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:prep_pro/models/test_history.dart';
-import 'package:prep_pro/models/tests.dart';
+import 'package:prep_pro/models/test.dart';
 import 'package:prep_pro/models/organization.dart';
 import '../utils/strings.dart';
 import 'get_storage_controller.dart';
@@ -55,6 +55,7 @@ class TestHistoryController extends GetxController {
                 mode: "mode",
                 questionsCount: 15,
                 duration: 600,
+                canBlock: true,
                 price: 0,
                 published: true,
                 featured: true,

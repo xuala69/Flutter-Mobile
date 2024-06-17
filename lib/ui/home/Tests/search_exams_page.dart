@@ -5,7 +5,7 @@ import 'package:flutter/material.dart' hide SearchController;
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:prep_pro/controllers/tests_controller.dart';
-import 'package:prep_pro/models/tests.dart';
+import 'package:prep_pro/models/test.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/nums.dart';
 import 'package:prep_pro/utils/strings.dart';

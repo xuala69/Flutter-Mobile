@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:prep_pro/controllers/courses_controller.dart';
-import 'package:prep_pro/models/courses.dart';
+import 'package:prep_pro/models/course.dart';
 import 'package:prep_pro/utils/nums.dart';
 
 class CoursesUIController extends GetxController {

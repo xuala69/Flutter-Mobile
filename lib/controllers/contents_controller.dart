@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:prep_pro/controllers/dio_controller.dart';
 import 'package:prep_pro/models/content.dart';
-import 'package:prep_pro/models/courses.dart';
+import 'package:prep_pro/models/course.dart';
 import 'package:prep_pro/utils/strings.dart';
 import '../ui/widgets/function_widgets.dart';
 

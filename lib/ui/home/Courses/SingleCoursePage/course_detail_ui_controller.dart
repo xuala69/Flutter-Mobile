@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:prep_pro/controllers/contents_controller.dart';
 import 'package:prep_pro/controllers/courses_controller.dart';
 import 'package:prep_pro/models/content.dart';
-import 'package:prep_pro/models/courses.dart';
+import 'package:prep_pro/models/course.dart';
 
 class CourseDetailUIController extends GetxController {
   final courseCtrl = CoursesController().to;
