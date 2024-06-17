@@ -53,7 +53,7 @@ class TestHistoryController extends GetxController {
                 slug: "slug",
                 description: "description",
                 mode: "mode",
-                contentsCount: 15,
+                questionsCount: 15,
                 duration: 600,
                 price: 0,
                 published: true,

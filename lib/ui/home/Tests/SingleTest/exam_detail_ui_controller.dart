@@ -18,10 +18,10 @@ class TestDetailUIController extends GetxController {
   RxnInt secRemaining = RxnInt();
   Timer? _timer;
 
-  void getTest(int examId) async {
+  void getTest(int examId, String slug) async {
     final res = await Future.wait(
       [
-        ctrl.getTest(examId),
+        ctrl.getTest(slug),
         ctrl.getTestQuestions(examId),
       ],
     );

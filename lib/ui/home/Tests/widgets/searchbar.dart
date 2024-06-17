@@ -11,8 +11,9 @@ class SearchBarWithFilter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    return Container(
+      height: 50,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
       child: Row(
         children: [
           Expanded(
@@ -38,7 +39,7 @@ class SearchBarWithFilter extends StatelessWidget {
               padding: const EdgeInsets.all(16.0), // Button color
             ),
             child: const Icon(
-              Icons.filter_list,
+              Icons.sort,
               color: Colors.white,
             ),
           ),

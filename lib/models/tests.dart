@@ -8,7 +8,7 @@ class Test {
   late String slug;
   late String description;
   late String mode;
-  late int contentsCount;
+  late int questionsCount;
   late int duration;
   late double price;
   late bool published;
@@ -25,7 +25,7 @@ class Test {
     required this.slug,
     required this.description,
     required this.mode,
-    required this.contentsCount,
+    required this.questionsCount,
     required this.duration,
     required this.price,
     required this.published,
@@ -43,11 +43,18 @@ class Test {
     slug = json['slug'];
     description = json['description'];
     mode = json['mode'];
-    contentsCount = json['contents_count'];
+    questionsCount = json['questions_count'];
     duration = json['duration'];
-    price = json['price'];
-    published = json['published'];
-    featured = json['featured'];
+    final priceT = json['price'];
+    if (priceT is int) {
+      price = double.parse(priceT.toString());
+    } else {
+      price = priceT;
+    }
+    published = true;
+    // json['published'];
+    featured = true;
+    // json['featured'];
     imagePath = json['image_path'];
     categoryId = json['category_id'];
     //organization
@@ -71,7 +78,7 @@ class Test {
       "slug": slug,
       "description": description,
       "mode": mode,
-      "contents_count": contentsCount,
+      "questions_count": questionsCount,
       "duration": duration,
       "price": price,
       "published": published,

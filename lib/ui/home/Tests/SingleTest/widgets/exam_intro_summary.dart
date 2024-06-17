@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -78,7 +77,7 @@ class TestIntroSummary extends StatelessWidget {
                       MdiIcons.folderQuestion,
                     ),
                     hs(10),
-                    Text("${ctrl.exam.value!.contentsCount} Questions"),
+                    Text("${ctrl.exam.value!.questionsCount} Questions"),
                   ],
                 ),
                 vs(25),

@@ -12,8 +12,6 @@ import 'package:prep_pro/utils/datetime_functions.dart';
 import 'package:prep_pro/utils/numbers_function.dart';
 import 'package:prep_pro/utils/nums.dart';
 import 'package:prep_pro/utils/string_functions.dart';
-import 'package:prep_pro/utils/strings.dart';
-
 import 'exam_detail_ui_controller.dart';
 import 'widgets/exam_intro_summary.dart';
 import 'widgets/options_card.dart';
@@ -21,7 +19,9 @@ import 'widgets/progress_indicator.dart';
 
 class TestDetailPage extends StatefulWidget {
   final int examId;
-  const TestDetailPage({required this.examId, super.key});
+  final String examSlug;
+  const TestDetailPage(
+      {required this.examId, required this.examSlug, super.key});
 
   @override
   State<TestDetailPage> createState() => _TestDetailPageState();
@@ -32,7 +32,10 @@ class _TestDetailPageState extends State<TestDetailPage> {
 
   @override
   void initState() {
-    TestDetailUIController().to.getTest(widget.examId);
+    TestDetailUIController().to.getTest(
+          widget.examId,
+          widget.examSlug,
+        );
     super.initState();
   }
 
@@ -60,7 +63,10 @@ class _TestDetailPageState extends State<TestDetailPage> {
           color: Colors.grey[200],
           height: MediaQuery.of(context).size.width * 0.5,
           child: CachedNetworkImage(
-            imageUrl: uiCtrl.exam.value?.imagePath ?? Strings.avatarDefault,
+            imageUrl: getImageUrl(
+              uiCtrl.exam.value?.imagePath,
+            ),
+            fit: BoxFit.cover,
           ),
         ),
         vs(15),
@@ -88,6 +94,7 @@ class _TestDetailPageState extends State<TestDetailPage> {
           children: [
             Icon(
               MdiIcons.certificateOutline,
+              size: 25,
             ),
             hs(10),
             Text(

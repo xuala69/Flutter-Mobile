@@ -2,9 +2,7 @@ import 'dart:developer';
 
 import 'package:get/get.dart';
 import 'package:prep_pro/controllers/dio_controller.dart';
-import 'package:prep_pro/models/category.dart';
 import 'package:prep_pro/models/tests.dart';
-import 'package:prep_pro/models/organization.dart';
 import 'package:prep_pro/models/questions.dart';
 import 'package:prep_pro/utils/strings.dart';
 import '../ui/widgets/function_widgets.dart';
@@ -83,110 +81,23 @@ class TestsController extends GetxController {
     }
   }
 
-  Future<Test?> getTest(int examId) async {
+  Future<Test?> getTest(String slug) async {
     try {
-      log("Coming to get Test with id $examId");
-      final data = Test(
-        id: 3,
-        organizationId: 1,
-        name: "Class 12 Chemistry Mock Test",
-        slug: 'Class 12 Chemistry',
-        description: "Class 12 Chemistry description",
-        mode: "free",
-        contentsCount: 6,
-        duration: 600,
-        price: 1700.0,
-        published: true,
-        featured: true,
-        imagePath: null,
-        categoryId: 1,
-        organization: Organization(
-          id: 1,
-          name: "Chiko Tuition Centre",
-          slug: "slug",
-        ),
-        category: Category(
-          id: 1,
-          name: "JEE Mains",
-          slug: "jee-mains",
-        ),
+      final res = await dio.get(
+        Endpoints.mockTest + slug,
       );
-      return data;
-      // final params = filter.putIfAbsent("page", () => pageNo);
-      // filter.putIfAbsent("type", () => "paginate");
-      // final res = await dio.getUri(Uri(
-      //   scheme: 'https',
-      //   host: 'api.onepercent.com',
-      //   path: Strings.TestsUrl,
-      //   queryParameters: params,
-      // ));
-      // if (res.statusCode == 200) {
-      //   final List<Test> Tests = [
-      //     Test(
-      //       id: 1,
-      //       organizationId: 1,
-      //       name: "Chiko | JEE",
-      //       slug: 'JEE',
-      //       description: "JEE Mains description",
-      //       mode: "free",
-      //       contentsCount: 6,
-      //       duration: 600,
-      //       price: 1500.0,
-      //       published: true,
-      //       featured: true,
-      //       imagePath: null,
-      //       categoryId: 1,
-      //       organization: Organization(
-      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
-      //     ),
-      //     Test(
-      //       id: "2",
-      //       organizationId: 1,
-      //       name: "Chiko | NEET",
-      //       slug: 'NEET',
-      //       description: "NEET description",
-      //       mode: "free",
-      //       contentsCount: 6,
-      //       duration: 600,
-      //       price: 1600.0,
-      //       published: true,
-      //       featured: true,
-      //       imagePath: null,
-      //       categoryId: 1,
-      //       organization: Organization(
-      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
-      //     ),
-      //     Test(
-      //       id: "3",
-      //       organizationId: 1,
-      //       name: "Chiko | Class 12 Chemistry",
-      //       slug: 'Class 12 Chemistry',
-      //       description: "Class 12 Chemistry description",
-      //       mode: "free",
-      //       contentsCount: 6,
-      //       duration: 600,
-      //       price: 1700.0,
-      //       published: true,
-      //       featured: true,
-      //       imagePath: null,
-      //       categoryId: 1,
-      //       organization: Organization(
-      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
-      //     ),
-      //   ];
-      //   final data = res.data['data'];
-      //   if (data is List) {
-      //     for (var element in data) {
-      //       final model = Test.fromJson(element);
-      //       Tests.add(model);
-      //     }
-      //   }
-      //   return Tests;
-      // } else {
-      //   final msg = res.data['message'] ?? "Unknown error occured";
-      //   showErrorDialog(msg);
-      //   return null;
-      // }
+      if (res.statusCode == 200) {
+        final data = res.data;
+        if (data != null) {
+          final model = Test.fromJson(data);
+          return model;
+        }
+        return null;
+      } else {
+        final msg = res.data['message'] ?? "Unknown error occured";
+        showErrorDialog(msg, "getTest Single");
+        return null;
+      }
     } catch (e) {
       log("GET Error exam ctrl:$e");
       final msg = e.toString();
@@ -554,159 +465,24 @@ class TestsController extends GetxController {
     required Map<String, dynamic> filter,
   }) async {
     try {
-      log("Coming to get Tests");
-      return [
-        Test(
-          id: 1,
-          organizationId: 1,
-          name: "JEE Mock Test 1",
-          slug: 'JEE',
-          description: "JEE Mains description",
-          mode: "mode",
-          contentsCount: 6,
-          duration: 600,
-          price: 1500.0,
-          published: true,
-          featured: true,
-          imagePath: null,
-          categoryId: 1,
-          organization: Organization(
-            id: 1,
-            name: "Chiko Tuition Centre",
-            slug: "slug",
-          ),
-          category: Category(
-            id: 1,
-            name: "JEE Mains",
-            slug: "jee-mains",
-          ),
-        ),
-        Test(
-          id: 2,
-          organizationId: 1,
-          name: "NEET Mock Test 2",
-          slug: 'NEET',
-          description: "NEET description",
-          mode: "mode",
-          contentsCount: 6,
-          duration: 600,
-          price: 1600.0,
-          published: true,
-          featured: true,
-          imagePath: null,
-          categoryId: 1,
-          organization: Organization(
-            id: 1,
-            name: "Chiko Tuition Centre",
-            slug: "slug",
-          ),
-          category: Category(
-            id: 1,
-            name: "JEE Mains",
-            slug: "jee-mains",
-          ),
-        ),
-        Test(
-          id: 3,
-          organizationId: 1,
-          name: "Class 12 Chemistry Mock Test",
-          slug: 'Class 12 Chemistry',
-          description: "Class 12 Chemistry description",
-          mode: "mode",
-          contentsCount: 6,
-          duration: 600,
-          price: 1700.0,
-          published: true,
-          featured: true,
-          imagePath: null,
-          categoryId: 1,
-          organization: Organization(
-            id: 1,
-            name: "Chiko Tuition Centre",
-            slug: "slug",
-          ),
-          category: Category(
-            id: 1,
-            name: "JEE Mains",
-            slug: "jee-mains",
-          ),
-        ),
-      ];
-      // final params = filter.putIfAbsent("page", () => pageNo);
-      // filter.putIfAbsent("type", () => "paginate");
-      // final res = await dio.getUri(Uri(
-      //   scheme: 'https',
-      //   host: 'api.onepercent.com',
-      //   path: Strings.TestsUrl,
-      //   queryParameters: params,
-      // ));
-      // if (res.statusCode == 200) {
-      //   final List<Test> Tests = [
-      //     Test(
-      //       id: 1,
-      //       organizationId: 1,
-      //       name: "Chiko | JEE",
-      //       slug: 'JEE',
-      //       description: "JEE Mains description",
-      //       mode: "mode",
-      //       contentsCount: 6,
-      //       duration: 600,
-      //       price: 1500.0,
-      //       published: true,
-      //       featured: true,
-      //       imagePath: null,
-      //       categoryId: 1,
-      //       organization: Organization(
-      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
-      //     ),
-      //     Test(
-      //       id: "2",
-      //       organizationId: 1,
-      //       name: "Chiko | NEET",
-      //       slug: 'NEET',
-      //       description: "NEET description",
-      //       mode: "mode",
-      //       contentsCount: 6,
-      //       duration: 600,
-      //       price: 1600.0,
-      //       published: true,
-      //       featured: true,
-      //       imagePath: null,
-      //       categoryId: 1,
-      //       organization: Organization(
-      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
-      //     ),
-      //     Test(
-      //       id: "3",
-      //       organizationId: 1,
-      //       name: "Chiko | Class 12 Chemistry",
-      //       slug: 'Class 12 Chemistry',
-      //       description: "Class 12 Chemistry description",
-      //       mode: "mode",
-      //       contentsCount: 6,
-      //       duration: 600,
-      //       price: 1700.0,
-      //       published: true,
-      //       featured: true,
-      //       imagePath: null,
-      //       categoryId: 1,
-      //       organization: Organization(
-      //           id: 1, name: "Chiko Tuition Centre", slug: "slug"),
-      //     ),
-      //   ];
-      //   final data = res.data['data'];
-      //   if (data is List) {
-      //     for (var element in data) {
-      //       final model = Test.fromJson(element);
-      //       Tests.add(model);
-      //     }
-      //   }
-      //   return Tests;
-      // } else {
-      //   final msg = res.data['message'] ?? "Unknown error occured";
-      //   showErrorDialog(msg);
-      //   return null;
-      // }
+      filter.putIfAbsent("page", () => pageNo);
+      filter.putIfAbsent("type", () => "paginate");
+      final res = await dio.get(Endpoints.mockTests, data: filter);
+      if (res.statusCode == 200) {
+        final List<Test> tests = [];
+        final data = res.data['data'];
+        if (data is List) {
+          for (var element in data) {
+            final model = Test.fromJson(element);
+            tests.add(model);
+          }
+        }
+        return tests;
+      } else {
+        final msg = res.data['message'] ?? "Unknown error occured";
+        showErrorDialog(msg, "Get Tests");
+        return null;
+      }
     } catch (e) {
       log("GET Error:$e");
       final msg = e.toString();
@@ -717,64 +493,6 @@ class TestsController extends GetxController {
 
   void getPopularTests() async {
     try {
-      final data = [
-        Test(
-          id: 1,
-          organizationId: 1,
-          name: "JEE Mock Test 1",
-          slug: 'JEE',
-          description: "JEE Mains description",
-          mode: "mode",
-          contentsCount: 6,
-          duration: 600,
-          price: 1500.0,
-          published: true,
-          featured: true,
-          imagePath: null,
-          categoryId: 1,
-          organization: Organization(
-            id: 1,
-            name: "Chiko Tuition Centre",
-            slug: "slug",
-          ),
-        ),
-        Test(
-          id: 2,
-          organizationId: 1,
-          name: "NEET Mock Test 2",
-          slug: 'NEET',
-          description: "NEET description",
-          mode: "mode",
-          contentsCount: 6,
-          duration: 600,
-          price: 1600.0,
-          published: true,
-          featured: true,
-          imagePath: null,
-          categoryId: 1,
-          organization:
-              Organization(id: 1, name: "Chiko Tuition Centre", slug: "slug"),
-        ),
-        Test(
-          id: 3,
-          organizationId: 1,
-          name: "Class 12 Chemistry Mock Test",
-          slug: 'Class 12 Chemistry',
-          description: "Class 12 Chemistry description",
-          mode: "mode",
-          contentsCount: 6,
-          duration: 600,
-          price: 1700.0,
-          published: true,
-          featured: true,
-          imagePath: null,
-          categoryId: 1,
-          organization:
-              Organization(id: 1, name: "Chiko Tuition Centre", slug: "slug"),
-        ),
-      ];
-      GetStorageController().to.savePopularTests(data);
-
       // final params = filter.putIfAbsent("page", () => pageNo);
       // final res = await dio.getUri(Uri(
       //   scheme: 'https',

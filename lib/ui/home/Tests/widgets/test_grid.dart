@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/models/tests.dart';
 import 'package:prep_pro/ui/home/Tests/SingleTest/exam_detail_page.dart';
 import 'package:prep_pro/utils/nums.dart';
-import 'package:prep_pro/utils/strings.dart';
+import 'package:prep_pro/utils/string_functions.dart';
 
 class TestGrid extends StatelessWidget {
   final Test exam;
@@ -17,12 +17,15 @@ class TestGrid extends StatelessWidget {
       padding: EdgeInsets.zero,
       onPressed: () {
         Get.to(
-          () => TestDetailPage(examId: exam.id),
+          () => TestDetailPage(
+            examId: exam.id,
+            examSlug: exam.slug,
+          ),
         );
       },
       child: GridTile(
         footer: Container(
-          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+          padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 5),
           decoration: BoxDecoration(
               color: Colors.black54,
               borderRadius: BorderRadius.only(
@@ -40,7 +43,7 @@ class TestGrid extends StatelessWidget {
               fontWeight: FontWeight.w500,
               color: Colors.white,
             ),
-            maxLines: 1,
+            maxLines: 2,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
           ),
@@ -68,8 +71,9 @@ class TestGrid extends StatelessWidget {
             ),
             image: DecorationImage(
               image: CachedNetworkImageProvider(
-                exam.imagePath ?? Strings.avatarDefault,
+                getImageUrl(exam.imagePath),
               ),
+              fit: BoxFit.cover,
             ),
             color: Colors.grey[50],
           ),
