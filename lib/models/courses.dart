@@ -10,11 +10,8 @@ class Course {
   late String slug;
   late String description;
   late String mode;
-  late String contentsCount;
   late int duration;
-  late int price;
-  late bool published;
-  late bool featured;
+  late double price;
   String? imagePath;
   Organization? organization;
   late String createdAt;
@@ -29,11 +26,8 @@ class Course {
     required this.slug,
     required this.description,
     required this.mode,
-    required this.contentsCount,
     required this.duration,
     required this.price,
-    required this.published,
-    required this.featured,
     this.imagePath,
     this.organization,
     required this.createdAt,
@@ -49,11 +43,8 @@ class Course {
     slug = json['slug'];
     description = json['description'];
     mode = json['mode'];
-    contentsCount = json['contents_count'];
     duration = json['duration'];
     price = json['price'];
-    published = json['published'];
-    featured = json['featured'];
     imagePath = json['image_path'];
     createdAt = json['created_at'] ?? DateTime.now().toIso8601String();
     //organization
@@ -75,11 +66,8 @@ class Course {
       "slug": slug,
       "description": description,
       "mode": mode,
-      "contents_count": contentsCount,
       "duration": duration,
       "price": price,
-      "published": published,
-      "featured": featured,
       "image_path": imagePath,
       "created_at": createdAt,
       "organization": organization?.toJson(),

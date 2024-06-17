@@ -12,16 +12,16 @@ import 'package:prep_pro/utils/datetime_functions.dart';
 import 'package:prep_pro/utils/numbers_function.dart';
 import 'package:prep_pro/utils/nums.dart';
 import 'package:prep_pro/utils/string_functions.dart';
-import 'exam_detail_ui_controller.dart';
-import 'widgets/exam_intro_summary.dart';
+import 'test_detail_ui_controller.dart';
+import 'widgets/test_intro_summary.dart';
 import 'widgets/options_card.dart';
 import 'widgets/progress_indicator.dart';
 
 class TestDetailPage extends StatefulWidget {
-  final int examId;
-  final String examSlug;
+  final int testId;
+  final String testSlug;
   const TestDetailPage(
-      {required this.examId, required this.examSlug, super.key});
+      {required this.testId, required this.testSlug, super.key});
 
   @override
   State<TestDetailPage> createState() => _TestDetailPageState();
@@ -33,8 +33,8 @@ class _TestDetailPageState extends State<TestDetailPage> {
   @override
   void initState() {
     TestDetailUIController().to.getTest(
-          widget.examId,
-          widget.examSlug,
+          widget.testId,
+          widget.testSlug,
         );
     super.initState();
   }
@@ -49,13 +49,13 @@ class _TestDetailPageState extends State<TestDetailPage> {
                 child: CupertinoActivityIndicator(),
               )
             : Obx(() => uiCtrl.currentStep.value == null
-                ? examDetails()
+                ? testDetails()
                 : questionsUI(context)),
       ),
     );
   }
 
-  Widget examDetails() {
+  Widget testDetails() {
     return ListView(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       children: [
@@ -64,14 +64,14 @@ class _TestDetailPageState extends State<TestDetailPage> {
           height: MediaQuery.of(context).size.width * 0.5,
           child: CachedNetworkImage(
             imageUrl: getImageUrl(
-              uiCtrl.exam.value?.imagePath,
+              uiCtrl.test.value?.imagePath,
             ),
             fit: BoxFit.cover,
           ),
         ),
         vs(15),
         Text(
-          uiCtrl.exam.value?.name ?? "",
+          uiCtrl.test.value?.name ?? "",
           style: GoogleFonts.spectral(
             fontSize: 25,
           ),
@@ -85,7 +85,7 @@ class _TestDetailPageState extends State<TestDetailPage> {
             ),
             hs(10),
             Text(
-              uiCtrl.exam.value?.organization?.name ?? "N/A",
+              uiCtrl.test.value?.organization?.name ?? "N/A",
             ),
           ],
         ),
@@ -98,7 +98,7 @@ class _TestDetailPageState extends State<TestDetailPage> {
             ),
             hs(10),
             Text(
-              uiCtrl.exam.value?.category?.name ?? "N/A",
+              uiCtrl.test.value?.category?.name ?? "N/A",
             ),
           ],
         ),
@@ -110,7 +110,7 @@ class _TestDetailPageState extends State<TestDetailPage> {
             ),
             hs(10),
             Text(
-              DTFunctions().formatDuration(uiCtrl.exam.value!.duration),
+              DTFunctions().formatDuration(uiCtrl.test.value!.duration),
             ),
           ],
         ),
@@ -122,7 +122,7 @@ class _TestDetailPageState extends State<TestDetailPage> {
             Obx(() {
               if (uiCtrl.showExcerpt.isTrue) {
                 return Text(
-                  getExcerpt(uiCtrl.exam.value?.description),
+                  getExcerpt(uiCtrl.test.value?.description),
                   style: GoogleFonts.spectral(
                     fontSize: 16,
                   ),
@@ -132,7 +132,7 @@ class _TestDetailPageState extends State<TestDetailPage> {
                 );
               } else {
                 return HtmlWidget(
-                  uiCtrl.exam.value?.description ?? "",
+                  uiCtrl.test.value?.description ?? "",
                   textStyle: const TextStyle(
                     fontSize: 16,
                   ),
@@ -163,7 +163,7 @@ class _TestDetailPageState extends State<TestDetailPage> {
           ],
         ),
         HtmlWidget(
-          uiCtrl.exam.value?.description ?? "",
+          uiCtrl.test.value?.description ?? "",
           textStyle: const TextStyle(
             fontSize: 16,
           ),
@@ -172,7 +172,7 @@ class _TestDetailPageState extends State<TestDetailPage> {
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            if (uiCtrl.exam.value!.mode.toLowerCase() == "free")
+            if (uiCtrl.test.value!.mode.toLowerCase() == "free")
               Text(
                 "FREE",
                 style: GoogleFonts.spectral(
@@ -181,7 +181,7 @@ class _TestDetailPageState extends State<TestDetailPage> {
                   color: Colors.black,
                 ),
               ),
-            if (uiCtrl.exam.value!.mode.toLowerCase() != "free")
+            if (uiCtrl.test.value!.mode.toLowerCase() != "free")
               Text(
                 formatToIndianRupees(1200),
                 style: GoogleFonts.spectral(
@@ -231,7 +231,7 @@ class _TestDetailPageState extends State<TestDetailPage> {
               final res = await Get.dialog(TestIntroSummary());
               if (res != null) {
                 uiCtrl.currentStep.value = 0;
-                uiCtrl.setTimer(uiCtrl.exam.value!.duration);
+                uiCtrl.setTimer(uiCtrl.test.value!.duration);
                 uiCtrl.startTimer();
               }
             },

@@ -45,7 +45,9 @@ class TestsController extends GetxController {
   }
 
   _getPopularTests() {
-    final data = GetStorageController().to.box.read(LocalKeys.popularTests);
+    final data = GetStorageController().to.box.read(
+          LocalKeys.popularExams,
+        );
     if (data != null) {
       final List ls = data;
       for (var element in ls) {
@@ -56,7 +58,7 @@ class TestsController extends GetxController {
   }
 
   _listenFeaturedTests() {
-    GetStorageController().to.box.listenKey(LocalKeys.featuredTests, (value) {
+    GetStorageController().to.box.listenKey(LocalKeys.featuredExams, (value) {
       if (value == null) {
         featuredTests.value = [];
       } else {
@@ -71,7 +73,7 @@ class TestsController extends GetxController {
   }
 
   _getFeaturedTests() {
-    final data = GetStorageController().to.box.read(LocalKeys.popularTests);
+    final data = GetStorageController().to.box.read(LocalKeys.popularExams);
     if (data != null) {
       final List ls = data;
       for (var element in ls) {

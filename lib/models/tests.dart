@@ -65,7 +65,7 @@ class Test {
     }
     final catJs = json['category'];
     if (catJs != null) {
-      final model = Category.fromJson(orgJs);
+      final model = Category.fromJson(catJs);
       category = model;
     }
   }

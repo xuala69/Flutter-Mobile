@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/models/tests.dart';
-import 'package:prep_pro/ui/home/Tests/SingleTest/exam_detail_page.dart';
+import 'package:prep_pro/ui/home/Tests/SingleTest/test_detail_page.dart';
 import 'package:prep_pro/utils/nums.dart';
 import 'package:prep_pro/utils/string_functions.dart';
 
 class TestGrid extends StatelessWidget {
-  final Test exam;
-  const TestGrid({required this.exam, super.key});
+  final Test test;
+  const TestGrid({required this.test, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +18,8 @@ class TestGrid extends StatelessWidget {
       onPressed: () {
         Get.to(
           () => TestDetailPage(
-            examId: exam.id,
-            examSlug: exam.slug,
+            testId: test.id,
+            testSlug: test.slug,
           ),
         );
       },
@@ -37,7 +37,7 @@ class TestGrid extends StatelessWidget {
                 ),
               )),
           child: Text(
-            exam.name,
+            test.name,
             style: GoogleFonts.spectral(
               fontSize: 14,
               fontWeight: FontWeight.w500,
@@ -71,7 +71,7 @@ class TestGrid extends StatelessWidget {
             ),
             image: DecorationImage(
               image: CachedNetworkImageProvider(
-                getImageUrl(exam.imagePath),
+                getImageUrl(test.imagePath),
               ),
               fit: BoxFit.cover,
             ),

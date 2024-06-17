@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:intl/intl.dart';
 
-String formatToIndianRupees(int amount) {
+String formatToIndianRupees(double amount) {
   // Format the amount with Indian currency format
   final formatter =
       NumberFormat.currency(locale: 'en_IN', symbol: '₹', decimalDigits: 2);

@@ -59,7 +59,7 @@ class _HomeTestsPageState extends State<HomeTestsPage> {
               builderDelegate: PagedChildBuilderDelegate<Test>(
                 itemBuilder: (context, item, index) {
                   return TestGrid(
-                    exam: item,
+                    test: item,
                   );
                 },
                 firstPageErrorIndicatorBuilder: (context) => hs(0),

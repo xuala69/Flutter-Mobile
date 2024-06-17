@@ -8,7 +8,7 @@ import 'package:prep_pro/utils/colors.dart';
 import 'package:prep_pro/utils/datetime_functions.dart';
 import 'package:prep_pro/utils/nums.dart';
 
-import '../exam_detail_ui_controller.dart';
+import '../test_detail_ui_controller.dart';
 
 class TestIntroSummary extends StatelessWidget {
   TestIntroSummary({super.key});
@@ -28,7 +28,7 @@ class TestIntroSummary extends StatelessWidget {
               children: [
                 vs(5),
                 Text(
-                  ctrl.exam.value?.name ?? "",
+                  ctrl.test.value?.name ?? "",
                   style: GoogleFonts.spectral(
                     fontSize: 25,
                   ),
@@ -42,7 +42,7 @@ class TestIntroSummary extends StatelessWidget {
                     ),
                     hs(10),
                     Text(
-                      ctrl.exam.value?.organization?.name ?? "N/A",
+                      ctrl.test.value?.organization?.name ?? "N/A",
                     ),
                   ],
                 ),
@@ -54,7 +54,7 @@ class TestIntroSummary extends StatelessWidget {
                     ),
                     hs(10),
                     Text(
-                      ctrl.exam.value?.category?.name ?? "N/A",
+                      ctrl.test.value?.category?.name ?? "N/A",
                     ),
                   ],
                 ),
@@ -66,7 +66,7 @@ class TestIntroSummary extends StatelessWidget {
                     ),
                     hs(10),
                     Text(
-                      DTFunctions().formatDuration(ctrl.exam.value!.duration),
+                      DTFunctions().formatDuration(ctrl.test.value!.duration),
                     ),
                   ],
                 ),
@@ -77,12 +77,12 @@ class TestIntroSummary extends StatelessWidget {
                       MdiIcons.folderQuestion,
                     ),
                     hs(10),
-                    Text("${ctrl.exam.value!.questionsCount} Questions"),
+                    Text("${ctrl.test.value!.questionsCount} Questions"),
                   ],
                 ),
                 vs(25),
                 HtmlWidget(
-                  ctrl.exam.value?.description ?? "",
+                  ctrl.test.value?.description ?? "",
                   textStyle: const TextStyle(
                     fontSize: 16,
                   ),

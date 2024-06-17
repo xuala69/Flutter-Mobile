@@ -12,21 +12,21 @@ class TestDetailUIController extends GetxController {
   final loading = true.obs;
   final showExcerpt = true.obs;
 
-  Rxn<Test> exam = Rxn<Test>();
+  Rxn<Test> test = Rxn<Test>();
   RxList<Question> questions = RxList();
   RxnInt currentStep = RxnInt();
   RxnInt secRemaining = RxnInt();
   Timer? _timer;
 
-  void getTest(int examId, String slug) async {
+  void getTest(int testId, String slug) async {
     final res = await Future.wait(
       [
         ctrl.getTest(slug),
-        ctrl.getTestQuestions(examId),
+        ctrl.getTestQuestions(testId),
       ],
     );
-    exam.value = res[0] as Test?;
-    if (exam.value!.mode.toLowerCase() == "free") {
+    test.value = res[0] as Test?;
+    if (test.value!.mode.toLowerCase() == "free") {
       //TODO lei tawh check la tih belh ngai
     }
     questions.value = res[1] as List<Question>;

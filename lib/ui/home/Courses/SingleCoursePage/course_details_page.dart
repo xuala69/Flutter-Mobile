@@ -223,7 +223,7 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "${uiCtrl.course.value!.contentsCount} sections in this course",
+                "${uiCtrl.contents.length} sections in this course",
                 style: GoogleFonts.spectral(
                   fontSize: 14,
                   color: Colors.grey[700],

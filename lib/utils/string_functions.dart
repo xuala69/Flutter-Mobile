@@ -4,6 +4,8 @@ import 'package:html/parser.dart';
 String getImageUrl(String? path) {
   if (path == null) {
     return Strings.avatarDefault;
+  } else if (path.contains("http")) {
+    return path;
   } else {
     return Endpoints.baseUrl + Endpoints.storage + path;
   }

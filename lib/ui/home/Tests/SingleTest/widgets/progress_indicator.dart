@@ -6,7 +6,7 @@ import 'package:prep_pro/utils/datetime_functions.dart';
 import 'package:prep_pro/utils/numbers_function.dart';
 import 'package:prep_pro/utils/nums.dart';
 
-import '../exam_detail_ui_controller.dart';
+import '../test_detail_ui_controller.dart';
 
 class TestProgressIndicator extends StatelessWidget {
   TestProgressIndicator({super.key});

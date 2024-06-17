@@ -6,7 +6,7 @@ import 'package:prep_pro/models/questions.dart';
 import 'package:prep_pro/utils/colors.dart';
 import 'package:prep_pro/utils/nums.dart';
 
-import '../exam_detail_ui_controller.dart';
+import '../test_detail_ui_controller.dart';
 
 class OptionsCard extends StatelessWidget {
   final Question question;
