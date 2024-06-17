@@ -8,10 +8,10 @@ import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/nums.dart';
 
 class TestsCarouselWidget extends StatefulWidget {
-  final List<Test> exams;
+  final List<Test> tests;
   final Function(Test) onTap;
   const TestsCarouselWidget(
-      {required this.onTap, required this.exams, super.key});
+      {required this.onTap, required this.tests, super.key});
 
   @override
   State<TestsCarouselWidget> createState() => TestsCarouselWidgetState();
@@ -19,11 +19,11 @@ class TestsCarouselWidget extends StatefulWidget {
 
 class TestsCarouselWidgetState extends State<TestsCarouselWidget> {
   int _current = 0;
-  List<Test> exams = [];
+  List<Test> tests = [];
 
   @override
   initState() {
-    exams.addAll(widget.exams);
+    tests.addAll(widget.tests);
     super.initState();
   }
 
@@ -37,7 +37,7 @@ class TestsCarouselWidgetState extends State<TestsCarouselWidget> {
         children: <Widget>[
           SizedBox.expand(
             child: CarouselSlider(
-              items: exams
+              items: tests
                   .map((item) => InkWell(
                         onTap: widget.onTap(item),
                         child: Container(
@@ -91,7 +91,7 @@ class TestsCarouselWidgetState extends State<TestsCarouselWidget> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        exams[_current].name,
+                        tests[_current].name,
                         style: GoogleFonts.spectralSc(
                           fontSize: 16,
                           color: Colors.white,
@@ -100,7 +100,7 @@ class TestsCarouselWidgetState extends State<TestsCarouselWidget> {
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(
-                        exams[_current].organization!.name,
+                        tests[_current].organization!.name,
                         style: GoogleFonts.spectralSc(
                           fontSize: 12,
                           color: Colors.white,
@@ -112,11 +112,11 @@ class TestsCarouselWidgetState extends State<TestsCarouselWidget> {
                   ),
                 ),
                 hs(Nums.paddingNormal),
-                if (exams.length > 1)
+                if (tests.length > 1)
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: exams.map((url) {
-                      int index = exams.indexOf(url);
+                    children: tests.map((url) {
+                      int index = tests.indexOf(url);
                       return Container(
                         width: _current == index ? 12 : 7.0,
                         height: _current == index ? 12 : 7.0,

@@ -544,7 +544,7 @@ class TestsController extends GetxController {
     } catch (e) {
       log("GET Error exam ctrl:$e");
       final msg = e.toString();
-      showErrorDialog(msg, "DUmmy exams ctrl");
+      showErrorDialog(msg, "DUmmy tests ctrl");
       return null;
     }
   }
@@ -710,7 +710,7 @@ class TestsController extends GetxController {
     } catch (e) {
       log("GET Error:$e");
       final msg = e.toString();
-      showErrorDialog(msg, "DUmmy exams ctrl 2");
+      showErrorDialog(msg, "DUmmy tests ctrl 2");
       return null;
     }
   }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/models/tests.dart';
-import 'package:prep_pro/ui/home/Tests/SingleExam/exam_detail_page.dart';
+import 'package:prep_pro/ui/home/Tests/SingleTest/exam_detail_page.dart';
 import 'package:prep_pro/utils/nums.dart';
 import 'package:prep_pro/utils/strings.dart';
 

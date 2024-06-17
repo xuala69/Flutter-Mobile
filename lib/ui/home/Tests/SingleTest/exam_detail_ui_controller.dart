@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'package:prep_pro/controllers/exams_controller.dart';
+import 'package:prep_pro/controllers/tests_controller.dart';
 import 'package:prep_pro/models/tests.dart';
 import 'package:prep_pro/models/questions.dart';
 

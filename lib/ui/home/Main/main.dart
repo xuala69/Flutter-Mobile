@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:prep_pro/ui/home/Main/widgets/exam_history_card.dart';
-import 'package:prep_pro/ui/home/Main/widgets/featured_exams.dart';
+import 'package:prep_pro/ui/home/Main/widgets/test_history_card.dart';
+import 'package:prep_pro/ui/home/Main/widgets/featured_tests.dart';
 import 'package:prep_pro/ui/home/Subjects/widgets/subjects_grid.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/nums.dart';
@@ -8,7 +8,7 @@ import 'package:prep_pro/utils/nums.dart';
 import '../Courses/widgets/course_history.dart';
 import '../Courses/widgets/featured_courses_grid.dart';
 import '../Courses/widgets/popular_courses_grid.dart';
-import '../Tests/widgets/popular_exams_card.dart';
+import 'widgets/popular_tests_card.dart';
 
 class HomeMain extends StatefulWidget {
   const HomeMain({super.key});

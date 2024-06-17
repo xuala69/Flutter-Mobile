@@ -7,7 +7,7 @@ import 'package:prep_pro/controllers/user_controller.dart';
 import 'controllers/categories_controller.dart';
 import 'controllers/courses_controller.dart';
 import 'controllers/dio_controller.dart';
-import 'controllers/exams_controller.dart';
+import 'controllers/tests_controller.dart';
 import 'controllers/info_controller.dart';
 import 'controllers/organizations_controller.dart';
 import 'controllers/subjects_controller.dart';
