@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:prep_pro/models/content.dart';
-import 'package:prep_pro/ui/home/Courses/ActualContent/actual_text.dart';
-import 'package:prep_pro/ui/home/Courses/ActualContent/actual_video.dart';
+import 'package:prep_pro/ui/home/Course/ActualContent/actual_text.dart';
+import 'package:prep_pro/ui/home/Course/ActualContent/actual_video.dart';
 import 'package:prep_pro/ui/widgets/m_appbar.dart';
 
 import 'actual_pdf.dart';

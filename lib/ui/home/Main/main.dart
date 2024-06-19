@@ -5,9 +5,9 @@ import 'package:prep_pro/ui/home/Subjects/widgets/subjects_grid.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/nums.dart';
 
-import '../Courses/widgets/course_history.dart';
-import '../Courses/widgets/featured_courses_grid.dart';
-import '../Courses/widgets/popular_courses_grid.dart';
+import '../Course/widgets/course_history.dart';
+import '../Course/widgets/featured_courses_grid.dart';
+import '../Course/widgets/popular_courses_grid.dart';
 import 'widgets/popular_tests_card.dart';
 
 class HomeMain extends StatefulWidget {

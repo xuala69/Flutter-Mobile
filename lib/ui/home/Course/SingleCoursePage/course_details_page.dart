@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/controllers/contents_controller.dart';
-import 'package:prep_pro/ui/home/Courses/ActualContent/actual_content_root.dart';
+import 'package:prep_pro/ui/home/Course/ActualContent/actual_content_root.dart';
+import 'package:prep_pro/ui/widgets/dialogs/confirm_course_order.dart';
 import 'package:prep_pro/ui/widgets/m_appbar.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
@@ -119,13 +120,15 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
         vs(25),
         Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Obx(() {
               if (uiCtrl.showExcerpt.isTrue) {
                 return Text(
                   getExcerpt(uiCtrl.course.value?.description),
                   style: GoogleFonts.spectral(
-                    fontSize: 16,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w500,
                   ),
                   textAlign: TextAlign.justify,
                   maxLines: 5,
@@ -189,7 +192,11 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
         ),
         vs(5),
         MaterialButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.dialog(CourseOrderConfirmDialog(
+              course: uiCtrl.course.value!,
+            ));
+          },
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(
               Radius.circular(
@@ -200,7 +207,7 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
           color: AppColors.primary,
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: Text(
-            "Buy now",
+            "Buy Now",
             style: GoogleFonts.spectral(
               fontSize: 22,
               fontWeight: FontWeight.bold,

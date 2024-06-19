@@ -44,7 +44,12 @@ class Course {
     description = json['description'];
     mode = json['mode'];
     duration = json['duration'];
-    price = json['price'];
+    final priceTemp = json['price'];
+    if (priceTemp is int) {
+      price = double.parse(priceTemp.toString());
+    } else {
+      price = priceTemp;
+    }
     imagePath = json['image_path'];
     createdAt = json['created_at'] ?? DateTime.now().toIso8601String();
     //organization

@@ -14,6 +14,33 @@ class UserController extends GetxController {
     super.onReady();
   }
 
+  bool canAccessCourse({required int id}) {
+    for (var course in user.value!.activeCourses) {
+      if (course.payableId == id) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  bool canAccessContent({required int id}) {
+    for (var content in user.value!.activeContents) {
+      if (content.payableId == id) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  bool canAccessMockTest({required int id}) {
+    for (var test in user.value!.activeMockTests) {
+      if (test.payableId == id) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   _listenUser() {
     GetStorageController().to.box.listenKey(LocalKeys.user, (value) {
       if (value == null) {

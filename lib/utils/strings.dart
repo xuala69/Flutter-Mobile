@@ -49,6 +49,9 @@ class LocalKeys {
   static String categories = "categories";
   static String organizations = "organizations";
   static String sortOptions = "sort_options";
+  static String purchasedCourses = "purchased_courses";
+  static String purchasedContents = "purchased_contents";
+  static String purchasedTests = "purchased_tests";
 }
 
 String sampleCourseJs = """
