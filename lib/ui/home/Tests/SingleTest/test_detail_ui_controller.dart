@@ -1,9 +1,9 @@
 import 'dart:async';
-
+import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:prep_pro/controllers/tests_controller.dart';
+import 'package:prep_pro/models/question_bank.dart';
 import 'package:prep_pro/models/test.dart';
-import 'package:prep_pro/models/question.dart';
 
 class TestDetailUIController extends GetxController {
   TestDetailUIController get to => Get.find();
@@ -13,28 +13,41 @@ class TestDetailUIController extends GetxController {
   final showExcerpt = true.obs;
 
   Rxn<Test> test = Rxn<Test>();
-  RxList<Question> questions = RxList();
+  Rxn<QuestionBank> questionBank = Rxn<QuestionBank>();
   RxnInt currentStep = RxnInt();
   RxnInt secRemaining = RxnInt();
+  RxInt msUsed = RxInt(0);
   Timer? _timer;
+  Timer? _msTimer;
 
-  void getTest(int testId, String slug) async {
-    final res = await Future.wait(
-      [
-        ctrl.getTest(slug),
-        ctrl.getTestQuestions(testId),
-      ],
-    );
-    test.value = res[0] as Test?;
+  void startTest() async {
+    loading.value = true;
+    final bank = await ctrl.initializeTest(test.value!.slug);
+    if (bank != null) {
+      questionBank.value = bank;
+      currentStep.value = 0;
+      // maxTimeMs anih avangin 1000 a divide
+      setTimer((questionBank.value!.maximumTimeMs) ~/ 1000);
+      startTimer();
+      loading.value = false;
+    } else {
+      log("InitializeTest failed and returned null");
+    }
+  }
+
+  void getTest(String slug) async {
+    final res = await ctrl.getTest(slug);
+    test.value = res;
     if (test.value!.mode.toLowerCase() == "free") {
       //TODO lei tawh check la tih belh ngai
     }
-    questions.value = res[1] as List<Question>;
     loading.value = false;
   }
 
   void setTimer(int newValue) {
     secRemaining.value = newValue;
+    //TODO la check that leh ngai, continue vel atan?
+    msUsed.value = 0;
   }
 
   void startTimer() {
@@ -43,15 +56,34 @@ class TestDetailUIController extends GetxController {
         secRemaining.value = secRemaining.value! - 1;
       }
     });
+    _msTimer = Timer.periodic(const Duration(milliseconds: 1), (timer) {
+      msUsed.value++;
+    });
   }
 
   void stopTimer() {
     _timer?.cancel();
+    _msTimer?.cancel();
   }
 
-  void saveAnswerNext(Option answerOption) {
-    questions[currentStep.value!].answer = answerOption;
-    currentStep.value = currentStep.value! + 1;
+  void saveAnswerNext(Option answerOption, {required bool isLast}) async {
+    final success = await ctrl.saveTest(
+      answerResponseId: questionBank.value!.responses[currentStep.value!].id,
+      responseAns: answerOption.key,
+      msSpent: msUsed.value,
+    );
+    if (isLast) {
+      if (success) {
+        ctrl.submitTest(mockTestId: test.value!.id);
+        Get.back();
+      }
+    } else {
+      if (success) {
+        questionBank.value!.responses[currentStep.value!].answerResponse =
+            answerOption.key;
+        currentStep.value = currentStep.value! + 1;
+      }
+    }
   }
 
   // Future<List<Test>> fetchItemsFromApi(int page) async {

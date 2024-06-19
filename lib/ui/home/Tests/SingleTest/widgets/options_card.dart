@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:prep_pro/models/question.dart';
+import 'package:prep_pro/models/question_bank.dart';
 import 'package:prep_pro/utils/colors.dart';
 import 'package:prep_pro/utils/nums.dart';
 
 import '../test_detail_ui_controller.dart';
 
 class OptionsCard extends StatelessWidget {
-  final Question question;
-  OptionsCard({required this.question, super.key});
+  final QuestionResponses questionResponse;
+  OptionsCard({required this.questionResponse, super.key});
   final ctrl = TestDetailUIController().to;
   final Rxn<Option> selectedOption = Rxn<Option>();
 
@@ -40,7 +40,7 @@ class OptionsCard extends StatelessWidget {
 
   List<Widget> _options() {
     List<Widget> opts = [];
-    for (var element in question.options) {
+    for (var element in questionResponse.question.options) {
       opts.add(
         Obx(
           () => ListTile(
@@ -52,7 +52,7 @@ class OptionsCard extends StatelessWidget {
                   ? Icons.radio_button_checked
                   : Icons.radio_button_off,
             ),
-            title: Text(element.value),
+            title: Text(element.key),
           ),
         ),
       );
@@ -88,14 +88,15 @@ class OptionsCard extends StatelessWidget {
                 );
                 return;
               }
-              if (ctrl.currentStep.value == (ctrl.questions.length - 1)) {
-                Get.back();
-                return;
-              }
-              ctrl.saveAnswerNext(selectedOption.value!);
+              ctrl.saveAnswerNext(
+                selectedOption.value!,
+                isLast: ctrl.currentStep.value ==
+                    (ctrl.questionBank.value!.responses.length - 1),
+              );
             },
             child: Text(
-              ctrl.currentStep.value == (ctrl.questions.length - 1)
+              ctrl.currentStep.value ==
+                      (ctrl.questionBank.value!.responses.length - 1)
                   ? "SAVE AND SUBMIT"
                   : "SAVE AND NEXT",
               style: GoogleFonts.spectral(

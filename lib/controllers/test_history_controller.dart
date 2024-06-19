@@ -1,7 +1,5 @@
 import 'package:get/get.dart';
 import 'package:prep_pro/models/test_history.dart';
-import 'package:prep_pro/models/test.dart';
-import 'package:prep_pro/models/organization.dart';
 import '../utils/strings.dart';
 import 'get_storage_controller.dart';
 
@@ -41,33 +39,33 @@ class TestHistoryController extends GetxController {
         examHistories.add(model);
       }
     } else {
-      GetStorageController().to.saveTestHistory(
-            TestHistory(
-              id: 1,
-              currentStep: 3,
-              savedAt: DateTime.now(),
-              exam: Test(
-                id: 1,
-                organizationId: 1,
-                name: "JEE Mock Test",
-                slug: "slug",
-                description: "description",
-                mode: "mode",
-                questionsCount: 15,
-                duration: 600,
-                canBlock: true,
-                price: 0,
-                published: true,
-                featured: true,
-                categoryId: 1,
-                organization: Organization(
-                  id: 1,
-                  name: "Chiko Tuition Centre",
-                  slug: "slug",
-                ),
-              ),
-            ),
-          );
+      // GetStorageController().to.saveTestHistory(
+      //       TestHistory(
+      //         id: 1,
+      //         currentStep: 3,
+      //         savedAt: DateTime.now(),
+      //         exam: Test(
+      //           id: 1,
+      //           organizationId: 1,
+      //           name: "JEE Mock Test",
+      //           slug: "slug",
+      //           description: "description",
+      //           mode: "mode",
+      //           questionsCount: 15,
+      //           duration: 600,
+      //           canBlock: true,
+      //           price: 0,
+      //           published: true,
+      //           featured: true,
+      //           categoryId: 1,
+      //           organization: Organization(
+      //             id: 1,
+      //             name: "Chiko Tuition Centre",
+      //             slug: "slug",
+      //           ),
+      //         ),
+      //       ),
+      //     );
     }
   }
 }

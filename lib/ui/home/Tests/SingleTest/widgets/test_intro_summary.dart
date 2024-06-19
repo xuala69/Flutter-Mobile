@@ -72,7 +72,9 @@ class TestIntroSummary extends StatelessWidget {
                     ),
                     hs(10),
                     Text(
-                      DTFunctions().formatDuration(ctrl.test.value!.duration),
+                      // Test model test time hi minutes ania, function in seconds a expect sia 60 a multiply a ni
+                      DTFunctions()
+                          .formatDuration(ctrl.test.value!.testTime * 60),
                     ),
                   ],
                 ),

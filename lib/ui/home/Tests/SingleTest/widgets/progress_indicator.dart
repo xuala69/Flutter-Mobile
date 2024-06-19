@@ -26,7 +26,7 @@ class TestProgressIndicator extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  "Question: ${ctrl.currentStep.value! + 1} of ${(ctrl.questions.length).toString()}",
+                  "Question: ${ctrl.currentStep.value! + 1} of ${(ctrl.questionBank.value!.responses.length).toString()}",
                   style: GoogleFonts.spectral(
                     fontSize: 18,
                   ),
@@ -50,7 +50,7 @@ class TestProgressIndicator extends StatelessWidget {
             LinearProgressIndicator(
               value: progressValue(
                 currentValue: ctrl.currentStep.value!,
-                length: ctrl.questions.length,
+                length: ctrl.questionBank.value!.responses.length,
               ),
               minHeight: 10,
             ),

@@ -26,6 +26,8 @@ class Endpoints {
   static String content = "v1/content/"; // slug
   static String mockTests = "v1/mock-tests"; // popular/paginate
   static String mockTest = "v1/mock-test/"; // slug
+  static String initializeTest = "v1/mock-test/initialize"; // slug
+  static String saveResponse = "v1/response/"; // slug
 
   static String googleUrl = 'v1/auth/google-auth-redirect';
   static String appleUrl = 'v1/auth/apple-auth-redirect';

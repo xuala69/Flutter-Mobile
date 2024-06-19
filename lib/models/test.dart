@@ -10,7 +10,8 @@ class Test {
   String? unlockedAt;
   late String mode;
   late int questionsCount;
-  late int duration;
+  late int durationInDays;
+  late int testTime;
   late double price;
   late bool published;
   late bool featured;
@@ -28,8 +29,9 @@ class Test {
     required this.description,
     required this.mode,
     required this.questionsCount,
-    required this.duration,
+    required this.durationInDays,
     required this.price,
+    required this.testTime,
     required this.published,
     required this.featured,
     this.imagePath,
@@ -47,10 +49,11 @@ class Test {
     slug = json['slug'];
     description = json['description'];
     unlockedAt = json['unlocked_at'];
+    testTime = json['time'];
     mode = json['mode'];
     canBlock = json['can_block'];
     questionsCount = json['questions_count'];
-    duration = json['duration'];
+    durationInDays = json['duration'];
     final priceT = json['price'];
     if (priceT is int) {
       price = double.parse(priceT.toString());
@@ -85,8 +88,9 @@ class Test {
       "description": description,
       "mode": mode,
       "questions_count": questionsCount,
-      "duration": duration,
+      "duration": durationInDays,
       "price": price,
+      "time": testTime,
       "published": published,
       "featured": featured,
       "image_path": imagePath,

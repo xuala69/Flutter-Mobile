@@ -5,17 +5,15 @@ import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:prep_pro/ui/home/Tests/SingleTest/widgets/questions_ui.dart';
 import 'package:prep_pro/ui/widgets/m_appbar.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/colors.dart';
-import 'package:prep_pro/utils/datetime_functions.dart';
 import 'package:prep_pro/utils/numbers_function.dart';
 import 'package:prep_pro/utils/nums.dart';
 import 'package:prep_pro/utils/string_functions.dart';
 import 'test_detail_ui_controller.dart';
 import 'widgets/test_intro_summary.dart';
-import 'widgets/options_card.dart';
-import 'widgets/progress_indicator.dart';
 
 class TestDetailPage extends StatefulWidget {
   final int testId;
@@ -32,10 +30,7 @@ class _TestDetailPageState extends State<TestDetailPage> {
 
   @override
   void initState() {
-    TestDetailUIController().to.getTest(
-          widget.testId,
-          widget.testSlug,
-        );
+    TestDetailUIController().to.getTest(widget.testSlug);
     super.initState();
   }
 
@@ -50,7 +45,7 @@ class _TestDetailPageState extends State<TestDetailPage> {
               )
             : Obx(() => uiCtrl.currentStep.value == null
                 ? testDetails()
-                : questionsUI(context)),
+                : QuestionsUI()),
       ),
     );
   }
@@ -107,9 +102,7 @@ class _TestDetailPageState extends State<TestDetailPage> {
               MdiIcons.timerOutline,
             ),
             hs(10),
-            Text(
-              DTFunctions().formatDuration(uiCtrl.test.value!.duration),
-            ),
+            Text("${uiCtrl.test.value!.durationInDays} days"),
           ],
         ),
         vs(25),
@@ -228,9 +221,7 @@ class _TestDetailPageState extends State<TestDetailPage> {
             onPressed: () async {
               final res = await Get.dialog(TestIntroSummary());
               if (res != null) {
-                uiCtrl.currentStep.value = 0;
-                uiCtrl.setTimer(uiCtrl.test.value!.duration);
-                uiCtrl.startTimer();
+                uiCtrl.startTest();
               }
             },
             shape: RoundedRectangleBorder(
@@ -252,36 +243,6 @@ class _TestDetailPageState extends State<TestDetailPage> {
             ),
           ),
         vs(10),
-      ],
-    );
-  }
-
-  Widget questionsUI(BuildContext context) {
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TestProgressIndicator(),
-              Obx(
-                () => HtmlWidget(
-                  uiCtrl.questions[uiCtrl.currentStep.value!].name,
-                ),
-              ),
-              vs(MediaQuery.of(context).size.height * 0.3)
-            ],
-          ),
-        ),
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: OptionsCard(
-            question: uiCtrl.questions[uiCtrl.currentStep.value!],
-          ),
-        ),
       ],
     );
   }
