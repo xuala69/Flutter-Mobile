@@ -13,6 +13,7 @@ import 'controllers/info_controller.dart';
 import 'controllers/organizations_controller.dart';
 import 'controllers/subjects_controller.dart';
 import 'ui/auth/root.dart';
+import 'ui/home/Main/home_main_ui_controller.dart';
 
 void main() async {
   await GetStorage.init();
@@ -30,6 +31,7 @@ initControllers() {
   Get.put(SubjectsController());
   Get.put(CoursesController());
   Get.put(TestsController());
+  Get.put(HomeUIController(), permanent: true);
 }
 
 class MyApp extends StatefulWidget {

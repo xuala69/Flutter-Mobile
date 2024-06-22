@@ -4,6 +4,9 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:prep_pro/controllers/dio_controller.dart';
+import 'package:prep_pro/models/content.dart';
+import 'package:prep_pro/models/course.dart';
+import 'package:prep_pro/models/test.dart';
 import 'package:prep_pro/ui/widgets/dialogs/confirmed_payment.dart';
 import 'package:prep_pro/ui/widgets/dialogs/confirming_payment.dart';
 import 'package:prep_pro/utils/strings.dart';
@@ -120,6 +123,78 @@ class RzpController extends GetxController {
         "$e",
       );
       log("Checking error-> $e");
+    }
+  }
+
+  Future<void> buyCourse(Course course, Map<String, dynamic> rzpData) async {
+    try {
+      buying.value = true;
+      buyingMedia.value = course;
+
+      // analytics.logEvent(
+      //   eventName: "button_click",
+      //   eventType: "buy_media_audio",
+      //   eventLocation: "audio_screen",
+      //   eventItemId: audio.id.toString(),
+      // );
+      _razorpay.open(rzpData);
+    } catch (e) {
+      // dLog(
+      //   // "URL: 'audio/purchase'"
+      //   // "\nName:buyAudio \nPARAMS:"
+      //   // "audio_id=${audio.id},custom_price=$customPrice"
+      //   // "\nDETAILS:"
+      //   // "$e",
+      // );
+      log("buyCourse$e");
+    }
+  }
+
+  Future<void> buyContent(Content content, Map<String, dynamic> rzpData) async {
+    try {
+      buying.value = true;
+      buyingMedia.value = content;
+
+      // analytics.logEvent(
+      //   eventName: "button_click",
+      //   eventType: "buy_media_audio",
+      //   eventLocation: "audio_screen",
+      //   eventItemId: audio.id.toString(),
+      // );
+      _razorpay.open(rzpData);
+    } catch (e) {
+      // dLog(
+      //   // "URL: 'audio/purchase'"
+      //   // "\nName:buyAudio \nPARAMS:"
+      //   // "audio_id=${audio.id},custom_price=$customPrice"
+      //   // "\nDETAILS:"
+      //   // "$e",
+      // );
+      log("buyContent$e");
+    }
+  }
+
+  Future<void> buyTest(Test test, Map<String, dynamic> rzpData) async {
+    try {
+      buying.value = true;
+      buyingMedia.value = test;
+
+      // analytics.logEvent(
+      //   eventName: "button_click",
+      //   eventType: "buy_media_audio",
+      //   eventLocation: "audio_screen",
+      //   eventItemId: audio.id.toString(),
+      // );
+      _razorpay.open(rzpData);
+    } catch (e) {
+      // dLog(
+      //   // "URL: 'audio/purchase'"
+      //   // "\nName:buyAudio \nPARAMS:"
+      //   // "audio_id=${audio.id},custom_price=$customPrice"
+      //   // "\nDETAILS:"
+      //   // "$e",
+      // );
+      log("buyCourse$e");
     }
   }
 }

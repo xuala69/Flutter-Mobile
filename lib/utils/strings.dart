@@ -13,6 +13,7 @@ class Endpoints {
   static String baseUrl = "http://13.232.142.18/";
   static String login = "v1/auth/login";
   static String storage = "storage/";
+  static String homeItems = "v1/mobile-homes";
   static String user = "v1/auth/user";
   static String categories = "v1/categories"; // random/paginate
   static String category = "v1/category/"; // slug
@@ -34,8 +35,9 @@ class Endpoints {
   static String emailpw = 'v1/auth/login';
   //TODO update discord url
   static String discord = 'https://discord/channel/id/webhook';
-  static String payment = '/payment';
-  static String paymentVerify = "/payment/verify";
+  static String payment = 'payment';
+  static String initializePayment = "v1/payments/initialize";
+  static String paymentVerify = "payment/verify";
 }
 
 class LocalKeys {
@@ -43,10 +45,11 @@ class LocalKeys {
   static String userToken = "user_token";
   static String subjects = "subjects";
   static String popularCourses = "popular_courses";
+  static String recentCourses = "popular_courses";
   static String featuredCourses = "featured_courses";
   static String courseHistory = "course_history";
-  static String popularExams = "popular_exams";
-  static String featuredExams = "featured_exams";
+  static String recentTests = "recent_tests";
+  static String featuredTests = "featured_tests";
   static String examHistory = "exam_history";
   static String categories = "categories";
   static String organizations = "organizations";
@@ -54,6 +57,8 @@ class LocalKeys {
   static String purchasedCourses = "purchased_courses";
   static String purchasedContents = "purchased_contents";
   static String purchasedTests = "purchased_tests";
+
+  static String homeItems = "home_items";
 }
 
 String sampleCourseJs = """

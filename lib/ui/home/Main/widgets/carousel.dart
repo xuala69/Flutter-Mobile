@@ -3,27 +3,27 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:prep_pro/models/course.dart';
+import 'package:prep_pro/models/home_item.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
+import 'package:prep_pro/utils/home_functions.dart';
 import 'package:prep_pro/utils/nums.dart';
+import 'package:prep_pro/utils/string_functions.dart';
 
-class CourseCarouselWidget extends StatefulWidget {
-  final List<Course> courses;
-  final Function(Course) onTap;
-  const CourseCarouselWidget(
-      {required this.onTap, required this.courses, super.key});
+class HomeCarouselWidget extends StatefulWidget {
+  final List<Items> items;
+  const HomeCarouselWidget({required this.items, super.key});
 
   @override
-  State<CourseCarouselWidget> createState() => _CourseCarouselWidgetState();
+  State<HomeCarouselWidget> createState() => HomeCarouselWidgetState();
 }
 
-class _CourseCarouselWidgetState extends State<CourseCarouselWidget> {
+class HomeCarouselWidgetState extends State<HomeCarouselWidget> {
   int _current = 0;
-  List<Course> courses = [];
+  List<Items> items = [];
 
   @override
   initState() {
-    courses.addAll(widget.courses);
+    items.addAll(widget.items);
     super.initState();
   }
 
@@ -37,15 +37,16 @@ class _CourseCarouselWidgetState extends State<CourseCarouselWidget> {
         children: <Widget>[
           SizedBox.expand(
             child: CarouselSlider(
-              items: courses
+              items: items
                   .map((item) => InkWell(
-                        onTap: widget.onTap(item),
+                        onTap: () {
+                          homeItemClicked(item);
+                        },
                         child: Container(
                           decoration: BoxDecoration(
                             image: DecorationImage(
                               image: CachedNetworkImageProvider(
-                                item.imagePath ??
-                                    "https://picsum.photos/id/1/200/300",
+                                getImageUrl(item.imagePath),
                               ),
                               fit: BoxFit.cover,
                             ),
@@ -91,18 +92,9 @@ class _CourseCarouselWidgetState extends State<CourseCarouselWidget> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        courses[_current].name,
+                        items[_current].caption ?? "",
                         style: GoogleFonts.spectralSc(
                           fontSize: 16,
-                          color: Colors.white,
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      Text(
-                        courses[_current].organization!.name,
-                        style: GoogleFonts.spectralSc(
-                          fontSize: 12,
                           color: Colors.white,
                         ),
                         maxLines: 1,
@@ -112,11 +104,11 @@ class _CourseCarouselWidgetState extends State<CourseCarouselWidget> {
                   ),
                 ),
                 hs(Nums.paddingNormal),
-                if (courses.length > 1)
+                if (items.length > 1)
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: courses.map((url) {
-                      int index = courses.indexOf(url);
+                    children: items.map((url) {
+                      int index = items.indexOf(url);
                       return Container(
                         width: _current == index ? 12 : 7.0,
                         height: _current == index ? 12 : 7.0,

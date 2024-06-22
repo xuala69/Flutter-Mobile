@@ -3,7 +3,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:prep_pro/ui/home/Course/courses_tab.dart';
 import 'package:prep_pro/ui/home/Tests/mock_tests.dart';
-import 'package:prep_pro/ui/home/Main/main.dart';
+import 'package:prep_pro/ui/home/Main/home_main.dart';
 import '../widgets/m_appbar.dart';
 
 class HomeRootPage extends StatefulWidget {

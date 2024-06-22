@@ -114,12 +114,7 @@ class DioController extends GetxController {
 
   Future<dynamic> get(String path, Map<String, dynamic> data) async {
     try {
-      final res = await dio.getUri(Uri(
-        scheme: 'https',
-        host: 'api.themoviedb.org',
-        path: path,
-        queryParameters: data,
-      ));
+      final res = await dio.get(path, data: data);
       if (res.statusCode == 200) {
         return res.data;
       } else {

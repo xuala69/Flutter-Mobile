@@ -95,4 +95,12 @@ class GetStorageController extends GetxController {
   void saveAllOrganizations(List<Organization> newData) {
     // box.write(LocalKeys.organizations, newData.map((e) => e.toJson()).toList());
   }
+
+  void saveHomeItems(String data) {
+    box.write(LocalKeys.homeItems, data);
+  }
+
+  String getHomeItems() {
+    return box.read(LocalKeys.homeItems) ?? "";
+  }
 }

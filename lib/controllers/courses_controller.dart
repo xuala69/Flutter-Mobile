@@ -11,52 +11,51 @@ class CoursesController extends GetxController {
   CoursesController get to => Get.find();
   final dio = DioController().to.dio;
 
-  final popularCourses = RxList<Course>([]);
+  final recentCourses = RxList<Course>([]);
   final featuredCourses = RxList<Course>([]);
 
   final courses = RxList<Course>([]);
 
-  // @override
-  // void onReady() {
-  //   _getPopularCourses();
-  //   _listenPopularCourses();
-  //   //server atangin app open ah fetch that a save zel, local ami zel hman tur
-  //   getPopularCourses();
-  //   //courses
-  //   _getFeaturedCourses();
-  //   _listenFeaturedCourses();
-  //   //server atangin app open ah fetch that a save zel, local ami zel hman tur
-  //   getFeaturedCourses();
-  //   super.onReady();
-  // }
+  @override
+  void onReady() {
+    _getServerRecentCourses();
+    _getRecentCourses();
+    _listenRecentCourses();
+    //server atangin app open ah fetch that a save zel, local ami zel hman tur
+    // featured hichu server ah kan la nei chiahloa dah tawp rih
+    // getServerFeaturedCourses();
+    // getFeaturedCourses();
+    // listenFeaturedCourses();
+    super.onReady();
+  }
 
-  _listenPopularCourses() {
-    GetStorageController().to.box.listenKey(LocalKeys.subjects, (value) {
+  _listenRecentCourses() {
+    GetStorageController().to.box.listenKey(LocalKeys.recentCourses, (value) {
       if (value == null) {
-        popularCourses.value = [];
+        recentCourses.value = [];
       } else {
-        popularCourses.clear();
+        recentCourses.clear();
         final List ls = value;
         for (var element in ls) {
           final model = Course.fromJson(element);
-          popularCourses.add(model);
+          recentCourses.add(model);
         }
       }
     });
   }
 
-  _getPopularCourses() {
-    final data = GetStorageController().to.box.read(LocalKeys.popularCourses);
+  _getRecentCourses() {
+    final data = GetStorageController().to.box.read(LocalKeys.recentCourses);
     if (data != null) {
       final List ls = data;
       for (var element in ls) {
         final model = Course.fromJson(element);
-        popularCourses.add(model);
+        recentCourses.add(model);
       }
     }
   }
 
-  _listenFeaturedCourses() {
+  listenFeaturedCourses() {
     GetStorageController().to.box.listenKey(LocalKeys.featuredCourses, (value) {
       if (value == null) {
         featuredCourses.value = [];
@@ -71,8 +70,8 @@ class CoursesController extends GetxController {
     });
   }
 
-  _getFeaturedCourses() {
-    final data = GetStorageController().to.box.read(LocalKeys.popularCourses);
+  getFeaturedCourses() {
+    final data = GetStorageController().to.box.read(LocalKeys.featuredCourses);
     if (data != null) {
       final List ls = data;
       for (var element in ls) {
@@ -120,34 +119,33 @@ class CoursesController extends GetxController {
     }
   }
 
-  void getPopularCourses() async {
+  void _getServerRecentCourses() async {
     try {
-      final res = await dio.get(Endpoints.courses, data: {"type": "popular"});
+      final res = await dio.get(Endpoints.courses, data: {"type": "recent"});
       if (res.statusCode == 200) {
-        final List<Course> courses = [];
-        final data = res.data['data'];
+        final data = res.data;
         if (data is List) {
           for (var element in data) {
             final model = Course.fromJson(element);
-            courses.add(model);
+            recentCourses.add(model);
           }
         }
+        log("Server recent courses :$recentCourses");
       } else {
         final msg = res.data['message'] ?? "Unknown error occured";
-        showErrorDialog(msg, "getPopularCourses");
+        showErrorDialog(msg, "recentCourses");
         return null;
       }
     } catch (e) {
       log("GET Error:$e");
       final msg = e.toString();
-      showErrorDialog(msg, "getPopularCourses");
+      showErrorDialog(msg, "recentCourses");
       return null;
     }
   }
 
-  void getFeaturedCourses() async {
+  void getServerFeaturedCourses() async {
     try {
-      //TODO check that ngai
       final res = await dio.get(Endpoints.courses, data: {"type": "featured"});
       if (res.statusCode == 200) {
         final List<Course> courses = [];
