@@ -13,8 +13,6 @@ class ContentsController extends GetxController {
 
   Future<List<Content>?> getContents({required int courseId}) async {
     try {
-      //TODO
-      // final params = filter.putIfAbsent("page", () => pageNo);
       final res = await dio.get("${Endpoints.course}$courseId/contents");
       if (res.statusCode == 200) {
         final List<Content> courses = [];

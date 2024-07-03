@@ -37,7 +37,7 @@ class Endpoints {
   static String discord = 'https://discord/channel/id/webhook';
   static String payment = 'payment';
   static String initializePayment = "v1/payments/initialize";
-  static String paymentVerify = "payment/verify";
+  static String paymentVerify = "v1/payments/";
 }
 
 class LocalKeys {

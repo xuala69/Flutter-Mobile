@@ -44,15 +44,7 @@ class CourseOrderConfirmDialog extends StatelessWidget {
                   ),
                 ),
               ),
-              vs(15),
               vs(5),
-              Text(
-                course.name,
-                style: GoogleFonts.spectral(
-                  fontSize: 16,
-                  color: Colors.black,
-                ),
-              ),
               const Divider(),
               Row(
                 children: [
@@ -62,7 +54,7 @@ class CourseOrderConfirmDialog extends StatelessWidget {
                       onPressed: () {
                         Get.back();
                         final pay = Get.put(PaymentController());
-                        pay.buyCourse(course: course, payableId: course.id);
+                        pay.buyCourse(course: course);
                       },
                       child: const Text("OKAY"),
                     ),

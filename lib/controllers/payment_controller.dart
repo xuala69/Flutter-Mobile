@@ -13,16 +13,13 @@ class PaymentController extends GetxController {
   final dio = DioController().to;
   final rzp = Get.put(RzpController());
 
-  buyCourse({
-    required Course course,
-    required int payableId,
-  }) async {
+  buyCourse({required Course course}) async {
     try {
       final res = await dio.post(
         Endpoints.initializePayment,
         {
           "type": "course", //course, content, test
-          "payable": payableId,
+          "payable": course.id,
         },
       );
       if (res != null) {

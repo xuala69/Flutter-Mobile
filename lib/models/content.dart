@@ -11,6 +11,7 @@ class Content {
   String? videoLink;
   String? filePath;
   String? content;
+  String? description;
 
   Content({
     required this.id,
@@ -25,6 +26,7 @@ class Content {
     this.videoLink,
     this.filePath,
     this.content,
+    this.description,
   });
 
   Content.fromJson(Map<String, dynamic> json) {
@@ -50,6 +52,7 @@ class Content {
     videoLink = json['video_link'];
     filePath = json['file_path'];
     content = json['content'];
+    description = json['description'];
   }
 
   Map<String, dynamic> toJson() {
@@ -66,6 +69,7 @@ class Content {
       "video_link": videoLink,
       "file_path": filePath,
       "content": content,
+      "description": description,
     };
   }
 }

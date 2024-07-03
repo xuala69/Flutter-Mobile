@@ -29,7 +29,7 @@ class ConfirmedPaymentDialog extends StatelessWidget {
             ),
             vs(16),
             Text(
-              'Payment confirmed.Thank you',
+              'Payment confirmed. Thank you',
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     fontSize: 18,
                   ),

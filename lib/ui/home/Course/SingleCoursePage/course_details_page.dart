@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/controllers/contents_controller.dart';
+import 'package:prep_pro/ui/home/Course/SingleCoursePage/widgets/course_buy_button.dart';
 import 'package:prep_pro/ui/widgets/m_appbar.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
@@ -133,6 +134,9 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
                 ),
               ),
             ],
+          ),
+          CourseBuyButton(
+            course: uiCtrl.course.value!,
           ),
           Row(
             children: [

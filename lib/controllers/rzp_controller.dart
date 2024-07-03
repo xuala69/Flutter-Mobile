@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:prep_pro/controllers/dio_controller.dart';
+import 'package:prep_pro/controllers/user_controller.dart';
 import 'package:prep_pro/models/content.dart';
 import 'package:prep_pro/models/course.dart';
 import 'package:prep_pro/models/test.dart';
@@ -35,6 +36,7 @@ class RzpController extends GetxController {
   }
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
+    log("Payment success _handlePaymentSuccess");
     Get.back();
     confirmingPayment.value = true;
     paymentDone.value = true;
@@ -76,16 +78,16 @@ class RzpController extends GetxController {
   Future<void> _checkPaymentStatus(
       PaymentSuccessResponse paymentResponse) async {
     try {
-      log("Payment Status: Checking...");
+      log("Payment success _checkPaymentStatus");
 
-      var url = Endpoints.paymentVerify;
+      var url = "${Endpoints.paymentVerify}${paymentId.value}/confirm";
       var response = await _dio.post(url, {
         "rzp_payment_id": paymentResponse.paymentId,
         // "payable_id": buyingMedia.value.id,
         "payment_id": paymentId.value,
       });
-      if (response.statusCode == 200) {
-        var data = (response.data);
+      if (response.data != null) {
+        var data = (response);
         var paid = data['paid'];
         if (paid == true) {
           log("Payment Status: Confirmed");
@@ -96,6 +98,7 @@ class RzpController extends GetxController {
             const ConfirmedPaymentDialog(),
             barrierDismissible: true,
           );
+          UserController().to.refreshUserData();
           Timer(const Duration(milliseconds: 1500), () {
             Get.back();
           });
@@ -137,6 +140,8 @@ class RzpController extends GetxController {
       //   eventLocation: "audio_screen",
       //   eventItemId: audio.id.toString(),
       // );
+      paymentId.value = rzpData['notes']['payment_id'];
+
       _razorpay.open(rzpData);
     } catch (e) {
       // dLog(
@@ -161,6 +166,7 @@ class RzpController extends GetxController {
       //   eventLocation: "audio_screen",
       //   eventItemId: audio.id.toString(),
       // );
+      paymentId.value = rzpData['notes']['payment_id'];
       _razorpay.open(rzpData);
     } catch (e) {
       // dLog(
@@ -185,6 +191,7 @@ class RzpController extends GetxController {
       //   eventLocation: "audio_screen",
       //   eventItemId: audio.id.toString(),
       // );
+      paymentId.value = rzpData['notes']['payment_id'];
       _razorpay.open(rzpData);
     } catch (e) {
       // dLog(

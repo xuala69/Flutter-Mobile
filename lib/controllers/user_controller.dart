@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:prep_pro/controllers/dio_controller.dart';
 import 'package:prep_pro/controllers/get_storage_controller.dart';
 import 'package:prep_pro/models/user.dart';
 import 'package:prep_pro/utils/strings.dart';
@@ -12,6 +13,19 @@ class UserController extends GetxController {
     _getUser();
     _listenUser();
     super.onReady();
+  }
+
+  void refreshUserData() async {
+    final url = Endpoints.user;
+    final res = await DioController().to.get(
+      url,
+      {},
+    );
+    if (res != null) {
+      final data = User.fromJson(res);
+      user.value = data;
+      GetStorageController().to.saveUser(data);
+    }
   }
 
   bool canAccessCourse({required int id}) {
