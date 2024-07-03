@@ -9,7 +9,7 @@ class CourseDetailUIController extends GetxController {
   final contentCtrl = ContentsController().to;
 
   final loading = true.obs;
-  final showExcerpt = true.obs;
+  final tabIndex = RxInt(0);
 
   Rxn<Course> course = Rxn<Course>();
 

@@ -5,7 +5,7 @@ import 'package:prep_pro/controllers/user_controller.dart';
 import 'package:prep_pro/models/course.dart';
 import 'package:prep_pro/ui/widgets/dialogs/confirm_course_order.dart';
 import 'package:prep_pro/utils/colors.dart';
-import 'package:prep_pro/utils/course_functions.dart';
+import 'package:prep_pro/utils/course_content_functions.dart';
 import 'package:prep_pro/utils/nums.dart';
 
 class CourseBuyButton extends StatelessWidget {

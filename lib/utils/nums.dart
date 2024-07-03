@@ -10,4 +10,5 @@ class Nums {
   static double iconSizeProfile = 30.0;
   static const int debounceMs = 500;
   static double horizontalItemHeight = 100.0;
+  static double contentImageSize = 120.0;
 }

@@ -26,6 +26,7 @@ class DTFunctions {
   }
 
   String formatDuration(int seconds) {
+    /// x hr, y min, z secs a value neih dan azir a lang
     final int days = seconds ~/ (24 * 3600);
     seconds %= (24 * 3600);
     final int hours = seconds ~/ 3600;
