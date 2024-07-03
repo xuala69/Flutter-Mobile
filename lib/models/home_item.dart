@@ -46,6 +46,7 @@ class Items {
     this.homeableType,
     this.homeableId,
     this.externalLink,
+    this.homeable,
   });
   late final int id;
   late final int mobileHomeId;
@@ -56,6 +57,7 @@ class Items {
   String? homeableType;
   int? homeableId;
   String? externalLink;
+  Homeable? homeable;
 
   Items.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -67,6 +69,10 @@ class Items {
     homeableType = json["homeable_type"];
     homeableId = json['homeable_id'];
     externalLink = json['external_link'];
+    final js = json['homeable'];
+    if (js != null) {
+      homeable = Homeable.fromJson(js);
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -80,6 +86,7 @@ class Items {
     data['homeable_type'] = homeableType;
     data['homeable_id'] = homeableId;
     data['external_link'] = externalLink;
+    data['homeable'] = homeable?.toJson();
     return data;
   }
 }
@@ -89,14 +96,14 @@ class Homeable {
     required this.id,
     required this.name,
     required this.slug,
-    required this.share,
+    this.share,
     this.imagePath,
     this.description,
   });
   late final int id;
   late final String name;
   late final String slug;
-  late final int share;
+  int? share;
   String? imagePath;
   String? description;
 

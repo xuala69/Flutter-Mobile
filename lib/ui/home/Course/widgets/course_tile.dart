@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/models/course.dart';
 import 'package:prep_pro/ui/home/Course/SingleCoursePage/course_details_page.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
+import 'package:prep_pro/utils/numbers_function.dart';
 import 'package:prep_pro/utils/nums.dart';
 import 'package:prep_pro/utils/string_functions.dart';
 
@@ -74,6 +75,7 @@ class CourseListTile extends StatelessWidget {
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
                     course.name,
@@ -89,6 +91,16 @@ class CourseListTile extends StatelessWidget {
                     style: GoogleFonts.spectral(
                       fontSize: 14,
                       fontWeight: FontWeight.w200,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  vs(3),
+                  Text(
+                    formatToIndianRupees(course.price),
+                    style: GoogleFonts.spectral(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
                     ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,

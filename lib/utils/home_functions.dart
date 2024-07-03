@@ -14,7 +14,7 @@ void homeItemClicked(Items item) {
         Get.to(
           () => CourseDetailPage(
             courseId: item.homeableId!,
-            courseSlug: "courseSlug",
+            courseSlug: item.homeable!.slug,
           ),
         );
         break;
@@ -46,7 +46,7 @@ void homeItemClicked(Items item) {
         Get.to(
           () => TestDetailPage(
             testId: item.homeableId!,
-            testSlug: "testSlug",
+            testSlug: item.homeable!.slug,
           ),
         );
         break;

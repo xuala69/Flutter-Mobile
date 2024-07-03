@@ -112,4 +112,24 @@ class ContentsController extends GetxController {
       return null;
     }
   }
+
+  Future<Content?> getContent({required String slug}) async {
+    try {
+      final res = await dio.get("${Endpoints.course}$slug");
+      if (res.statusCode == 200) {
+        final data = res.data['data'];
+        final model = Content.fromJson(data);
+        return model;
+      } else {
+        final msg = res.data['message'] ?? "Unknown error occured";
+        showErrorDialog(msg, "getCourse");
+        return null;
+      }
+    } catch (e) {
+      log("GET Error:$e");
+      final msg = e.toString();
+      showErrorDialog(msg, "getCourse");
+      return null;
+    }
+  }
 }

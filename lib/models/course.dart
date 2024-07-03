@@ -10,6 +10,8 @@ class Course {
   late String slug;
   late String description;
   late String mode;
+
+  /// Free/Premium
   late int duration;
   late double price;
   String? imagePath;

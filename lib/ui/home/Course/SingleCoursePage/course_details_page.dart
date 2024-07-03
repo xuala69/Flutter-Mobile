@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/controllers/contents_controller.dart';
 import 'package:prep_pro/ui/home/Course/ActualContent/actual_content_root.dart';
-import 'package:prep_pro/ui/widgets/dialogs/confirm_course_order.dart';
+import 'package:prep_pro/ui/home/Course/SingleCoursePage/course_buy_button.dart';
 import 'package:prep_pro/ui/widgets/m_appbar.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
@@ -191,29 +191,8 @@ class _CourseDetailPageState extends State<CourseDetailPage> {
           ],
         ),
         vs(5),
-        MaterialButton(
-          onPressed: () {
-            Get.dialog(CourseOrderConfirmDialog(
-              course: uiCtrl.course.value!,
-            ));
-          },
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(
-                Nums.searchbarRadius,
-              ),
-            ),
-          ),
-          color: AppColors.primary,
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          child: Text(
-            "Buy Now",
-            style: GoogleFonts.spectral(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
+        CourseBuyButton(
+          course: uiCtrl.course.value!,
         ),
         const Divider(),
         vs(10),

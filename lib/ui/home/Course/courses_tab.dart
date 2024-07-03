@@ -104,7 +104,7 @@ class _HomeCoursesTabState extends State<HomeCoursesTab> {
               //   right = Nums.paddingNormal,
               //   bottom = 110,
               // ),
-              separatorBuilder: (context, index) => vs(15),
+              separatorBuilder: (context, index) => vs(5),
             ),
           ),
         )
