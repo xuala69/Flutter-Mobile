@@ -69,7 +69,7 @@ class QuestionResponses {
   late final int mockTestId;
   late final int questionId;
   String? answerResponse;
-  late final int correct;
+  late final bool correct;
   late final String createdAt;
   late final String updatedAt;
   String? deletedAt;

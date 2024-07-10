@@ -1,21 +1,47 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prep_pro/controllers/contents_controller.dart';
 import 'package:prep_pro/models/content.dart';
+import 'package:prep_pro/models/test.dart';
 import 'package:prep_pro/ui/home/Course/ActualContent/content_buy_btn.dart';
+import 'package:prep_pro/ui/home/Tests/widgets/test_grid.dart';
 import 'package:prep_pro/ui/widgets/m_appbar.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
-import 'package:prep_pro/utils/datetime_functions.dart';
 import 'package:prep_pro/utils/nums.dart';
 import 'package:prep_pro/utils/string_functions.dart';
 
-class ActualContentRoot extends StatelessWidget {
+class ActualContentRoot extends StatefulWidget {
   final Content content;
   const ActualContentRoot({
     required this.content,
     super.key,
   });
+
+  @override
+  State<ActualContentRoot> createState() => _ActualContentRootState();
+}
+
+class _ActualContentRootState extends State<ActualContentRoot> {
+  final contentCtrl = ContentsController().to;
+
+  final RxList<Test> tests = RxList<Test>();
+  RxBool loading = true.obs;
+  @override
+  void initState() {
+    contentCtrl
+        .getContentTests(contentId: widget.content.id.toString())
+        .then((result) {
+      tests.addAll(result ?? []);
+      loading.value = false;
+    });
+    super.initState();
+  }
+
+  void getTests() {}
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +64,11 @@ class ActualContentRoot extends StatelessWidget {
             color: Colors.grey[200],
             height: MediaQuery.of(context).size.width * 0.5,
             child: CachedNetworkImage(
-              imageUrl: getImageUrl(content.filePath),
+              imageUrl: getImageUrl(widget.content.filePath),
             ),
           ),
           Text(
-            content.name,
+            widget.content.name,
             style: GoogleFonts.spectral(
               fontSize: 22,
               fontWeight: FontWeight.bold,
@@ -53,7 +79,7 @@ class ActualContentRoot extends StatelessWidget {
           Row(
             children: [
               Text(
-                "Duration :",
+                "Expiry :",
                 style: GoogleFonts.spectral(
                   fontSize: 16,
                   color: Colors.black,
@@ -61,7 +87,7 @@ class ActualContentRoot extends StatelessWidget {
               ),
               hs(5),
               Text(
-                DTFunctions().formatDuration(content.duration),
+                "${widget.content.duration} days after purchase",
                 style: GoogleFonts.spectral(
                   fontSize: 16,
                   color: Colors.black,
@@ -80,7 +106,7 @@ class ActualContentRoot extends StatelessWidget {
               ),
               hs(5),
               Text(
-                typeString(content.type.toLowerCase()),
+                typeString(widget.content.type.toLowerCase()),
                 style: GoogleFonts.spectral(
                   fontSize: 16,
                   color: Colors.black,
@@ -89,10 +115,68 @@ class ActualContentRoot extends StatelessWidget {
             ],
           ),
           HtmlWidget(
-            content.description ?? "",
+            widget.content.description ?? "",
           ),
           vs(10),
-          ContentBuyButton(content: content),
+          ContentBuyButton(content: widget.content),
+          vs(15),
+          Text(
+            "Mock Tests:",
+            style: GoogleFonts.spectral(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          Obx(() {
+            if (loading.isTrue) {
+              return SizedBox(
+                height: Get.height * 0.4,
+                child: const Center(
+                  child: CupertinoActivityIndicator(),
+                ),
+              );
+            } else {
+              if (tests.isEmpty) {
+                return SizedBox(
+                  height: Get.height * 0.4,
+                  child: Center(
+                    child: Text(
+                      "No Mock Tests available for this Content",
+                      style: GoogleFonts.spectral(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  ),
+                );
+              }
+              return GridView.builder(
+                itemCount: tests.length,
+                shrinkWrap: true,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisExtent: 220,
+                  mainAxisSpacing: Nums.paddingSmall,
+                  crossAxisSpacing: Nums.paddingSmall,
+                ),
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  final item = tests[index];
+                  return TestGrid(
+                    test: item,
+                  );
+                },
+              );
+            }
+          }),
+
+          // Obx(() {
+          //   if (isContentPlayable(widget.content)) {
+          //     return const Text("Play tests");
+          //   } else {
+          //     return vs(0);
+          //   }
+          // })
         ],
       ),
     );

@@ -66,7 +66,7 @@ class TestsController extends GetxController {
         return null;
       }
     } catch (e) {
-      log("GET Error exam ctrl:$e");
+      log("GET Error getTest ctrl:$e");
       final msg = e.toString();
       showErrorDialog(msg, "dummz");
       return null;
@@ -90,7 +90,7 @@ class TestsController extends GetxController {
         return null;
       }
     } catch (e) {
-      log("GET Error exam ctrl:$e");
+      log("GET Error initializeTest ctrl:$e");
       final msg = e.toString();
       showErrorDialog(msg, "Initialize Test catch");
       return null;

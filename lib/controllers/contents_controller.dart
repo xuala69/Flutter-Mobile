@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:prep_pro/controllers/dio_controller.dart';
 import 'package:prep_pro/models/content.dart';
 import 'package:prep_pro/models/course.dart';
+import 'package:prep_pro/models/test.dart';
 import 'package:prep_pro/utils/strings.dart';
 import '../ui/widgets/function_widgets.dart';
 
@@ -129,5 +130,32 @@ class ContentsController extends GetxController {
       showErrorDialog(msg, "getCourse");
       return null;
     }
+  }
+
+  Future<List<Test>?> getContentTests({required String contentId}) async {
+    try {
+      final res = await dio.get("${Endpoints.content}$contentId/mock-tests");
+      if (res.statusCode == 200) {
+        final List<Test> testList = [];
+        final data = res.data;
+        if (data is List) {
+          for (var element in data) {
+            final model = Test.fromJson(element);
+            testList.add(model);
+          }
+          return testList;
+        }
+      } else {
+        final msg = res.data['message'] ?? "Unknown error occured";
+        showErrorDialog(msg, "getCourse");
+        return null;
+      }
+    } catch (e) {
+      log("GET Error:$e");
+      final msg = e.toString();
+      showErrorDialog(msg, "getCourse");
+      return null;
+    }
+    return null;
   }
 }

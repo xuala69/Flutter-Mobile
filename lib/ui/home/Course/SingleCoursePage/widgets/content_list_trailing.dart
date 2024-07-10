@@ -1,11 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/models/content.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
-import 'package:prep_pro/utils/datetime_functions.dart';
 import 'package:prep_pro/utils/numbers_function.dart';
 import 'package:prep_pro/utils/nums.dart';
 import 'package:prep_pro/utils/string_functions.dart';
@@ -84,7 +82,7 @@ class ContentListTile extends StatelessWidget {
                         ),
                         hs(5),
                         Text(
-                          DTFunctions().formatDuration(content.duration),
+                          "${content.duration} days",
                           style: GoogleFonts.spectral(
                             fontSize: 14,
                             color: Colors.grey[600],
