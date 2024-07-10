@@ -43,6 +43,7 @@ class CoursesUIController extends GetxController {
   void refresh() {
     pagingController.itemList?.clear();
     // _pagingController.refresh();
+    log("Refresh called");
     _fetchPage(1);
   }
 

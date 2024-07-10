@@ -91,21 +91,16 @@ class CoursesController extends GetxController {
         Endpoints.courses,
         data: filter,
       );
-      // final res = await dio.getUri(Uri(
-      //   scheme: 'https',
-      //   host: 'api.onepercent.com',
-      //   path: Endpoints.courses,
-      //   queryParameters: params,
-      // ));
       if (res.statusCode == 200) {
+        final List<Course> localCourses = [];
         final data = res.data['data'];
         if (data is List) {
           for (var element in data) {
             final model = Course.fromJson(element);
-            courses.add(model);
+            localCourses.add(model);
           }
         }
-        return courses;
+        return localCourses;
       } else {
         final msg = res.data['message'] ?? "Unknown error occured";
         showErrorDialog(msg, "getCourses1");
