@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/models/content.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
+import 'package:prep_pro/utils/course_content_functions.dart';
 import 'package:prep_pro/utils/numbers_function.dart';
 import 'package:prep_pro/utils/nums.dart';
 import 'package:prep_pro/utils/string_functions.dart';
@@ -90,14 +91,24 @@ class ContentListTile extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Text(
-                      formatToIndianRupees(content.price),
-                      style: GoogleFonts.spectral(
-                        fontSize: 18,
-                        color: Colors.grey[800],
-                        fontWeight: FontWeight.bold,
+                    if (contentFree(content.mode))
+                      Text(
+                        "Free",
+                        style: GoogleFonts.spectral(
+                          fontSize: 18,
+                          color: Colors.grey[800],
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )
+                    else
+                      Text(
+                        formatToIndianRupees(content.price),
+                        style: GoogleFonts.spectral(
+                          fontSize: 18,
+                          color: Colors.grey[800],
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),
