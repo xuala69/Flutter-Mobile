@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:prep_pro/controllers/tests_controller.dart';
 import 'package:prep_pro/models/question_bank.dart';
 import 'package:prep_pro/models/test.dart';
+import 'package:prep_pro/ui/home/Tests/SingleTest/testing_page.dart';
+import 'package:prep_pro/ui/widgets/dialogs/focus_lost_warning.dart';
 
 class TestDetailUIController extends GetxController {
   TestDetailUIController get to => Get.find();
@@ -15,6 +17,7 @@ class TestDetailUIController extends GetxController {
   Rxn<Test> test = Rxn<Test>();
   Rxn<QuestionBank> questionBank = Rxn<QuestionBank>();
   RxnInt currentStep = RxnInt();
+  RxInt warningCount = RxInt(0);
   RxnInt secRemaining = RxnInt();
   RxInt msUsed = RxInt(0);
   Timer? _timer;
@@ -30,6 +33,7 @@ class TestDetailUIController extends GetxController {
       setTimer((questionBank.value!.maximumTimeMs) ~/ 1000);
       startTimer();
       loading.value = false;
+      Get.to(() => const MockTestingPage());
     } else {
       log("InitializeTest failed and returned null");
     }
@@ -84,6 +88,30 @@ class TestDetailUIController extends GetxController {
         currentStep.value = currentStep.value! + 1;
       }
     }
+  }
+
+  void cheatDetected() {
+    Future.delayed(const Duration(seconds: 1)).then(
+      (data) {
+        stopTimer();
+        warningCount.value++;
+        Get.dialog(
+          FocusLostWarningDialog(
+            message:
+                "You have left the app ${warningCount.value} time. Your test will be blocked if you leave the app more than 3 times",
+            testDuration: test.value!.testTime *
+                60, // testTime hi hour in a awma minutes ah convert
+            remainingSeconds: secRemaining.value!,
+          ),
+          barrierDismissible: false,
+        );
+        ctrl.saveCheatDetected(
+          cheatCount: warningCount.value,
+          testId: test.value!.id,
+          msSpent: msUsed.value,
+        );
+      },
+    );
   }
 
   // Future<List<Test>> fetchItemsFromApi(int page) async {

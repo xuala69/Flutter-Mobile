@@ -125,6 +125,35 @@ class TestsController extends GetxController {
     }
   }
 
+  Future<bool> saveCheatDetected({
+    required int cheatCount,
+    required int testId,
+    required int msSpent,
+  }) async {
+    try {
+      //{{api_url}}/mock-test/{{mock-test-id}}/update-time
+      final res = await dio.put(
+        "${Endpoints.mockTest}$testId/update-time",
+        data: {
+          "block": cheatCount > 2,
+          "total_time_spent": msSpent,
+        },
+      );
+      if (res.statusCode == 200) {
+        log("Saved  cheat detected to server: ");
+        return true;
+      } else {
+        final msg = res.data['message'] ?? "Unknown error occured";
+        showErrorDialog(msg, "saveCheatDetected");
+        return false;
+      }
+    } catch (e) {
+      final msg = e.toString();
+      showErrorDialog(msg, "saveCheatDetected");
+      return false;
+    }
+  }
+
   ///{{api_url}}/mock-test/{{mock-test-id}}/submit
 
   Future<bool> submitTest({required int mockTestId}) async {
