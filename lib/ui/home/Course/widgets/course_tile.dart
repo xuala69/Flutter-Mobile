@@ -5,6 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/models/course.dart';
 import 'package:prep_pro/ui/home/Course/SingleCoursePage/course_details_page.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
+import 'package:prep_pro/utils/colors.dart';
+import 'package:prep_pro/utils/course_content_functions.dart';
 import 'package:prep_pro/utils/numbers_function.dart';
 import 'package:prep_pro/utils/nums.dart';
 import 'package:prep_pro/utils/string_functions.dart';
@@ -96,15 +98,27 @@ class CourseListTile extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   vs(3),
-                  Text(
-                    formatToIndianRupees(course.price),
-                    style: GoogleFonts.spectral(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
+                  if (courseFree(course.mode))
+                    Text(
+                      "Free",
+                      style: GoogleFonts.spectral(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: AppColors.primary,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    )
+                  else
+                    Text(
+                      formatToIndianRupees(course.price),
+                      style: GoogleFonts.spectral(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
                 ],
               ),
             ),

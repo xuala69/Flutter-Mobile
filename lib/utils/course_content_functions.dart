@@ -25,7 +25,7 @@ bool isContentPlayable(Content content) {
   final activeContents = UserController().to.user.value?.activeContents ?? [];
 
   //check if content is free
-  if (content.mode.toLowerCase() == "free") {
+  if (contentFree(content.mode)) {
     return true;
   }
   //check if content is available at activecontents
@@ -43,5 +43,19 @@ bool isContentPlayable(Content content) {
     }
   }
 
+  return false;
+}
+
+bool courseFree(String? type) {
+  if (type != null && type.toLowerCase().contains("free")) {
+    return true;
+  }
+  return false;
+}
+
+bool contentFree(String? type) {
+  if (type != null && type.toLowerCase().contains("free")) {
+    return true;
+  }
   return false;
 }
