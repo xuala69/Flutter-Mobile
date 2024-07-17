@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prep_pro/controllers/protection_controller.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class ActualVideo extends StatefulWidget {
@@ -15,6 +16,7 @@ class _ActualVideoState extends State<ActualVideo> {
   @override
   void initState() {
     super.initState();
+    ProtectionController().to.secureApp();
     _controller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId(widget.link)!,
       flags: const YoutubePlayerFlags(
@@ -53,8 +55,7 @@ class _ActualVideoState extends State<ActualVideo> {
   @override
   void dispose() {
     _controller.dispose();
-    // _idController.dispose();
-    // _seekToController.dispose();
+    ProtectionController().to.unSecureApp();
     super.dispose();
   }
 

@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:prep_pro/controllers/protection_controller.dart';
 import 'package:prep_pro/ui/widgets/m_appbar.dart';
 import 'test_detail_ui_controller.dart';
 import 'widgets/options_card.dart';
@@ -27,11 +28,13 @@ class _MockTestingPageState extends State<MockTestingPage>
   @override
   void initState() {
     super.initState();
+    ProtectionController().to.secureApp();
     WidgetsBinding.instance.addObserver(this);
   }
 
   @override
   void dispose() {
+    ProtectionController().to.unSecureApp();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
