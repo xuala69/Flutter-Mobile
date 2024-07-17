@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
-import '../../controllers/sing_in_controller.dart';
+import '../../controllers/auth_controller.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,7 +13,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final ctrl = Get.put(SignInController());
+  final ctrl = Get.put(AuthController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(

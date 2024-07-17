@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prep_pro/controllers/auth_controller.dart';
 import 'package:prep_pro/controllers/user_controller.dart';
 import 'package:prep_pro/ui/home/Profile/widgets/sub_divider.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
@@ -93,7 +94,10 @@ class ProfileMainPage extends StatelessWidget {
             icon: Icons.logout_outlined,
             title: "Log out",
             subtitle: "Log out from current device",
-            onTap: () {},
+            onTap: () {
+              Get.back();
+              AuthController().to.signOut();
+            },
           ),
           const Divider(
             height: 1,

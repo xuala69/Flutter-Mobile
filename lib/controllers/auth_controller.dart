@@ -10,7 +10,9 @@ import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 import 'get_storage_controller.dart';
 
-class SignInController extends GetxController {
+class AuthController extends GetxController {
+  AuthController get to => Get.find();
+
   final GoogleSignIn _googleSignIn = GoogleSignIn(
     // Optional clientId
     // clientId: 'your-client_id.apps.googleusercontent.com',
@@ -96,5 +98,10 @@ class SignInController extends GetxController {
     UserController().to.user.value = user;
     GetStorageController().to.saveUser(user);
     UserController().to.user.value = user;
+  }
+
+  void signOut() {
+    UserController().to.user.value = null;
+    GetStorageController().to.deleteUserToken();
   }
 }

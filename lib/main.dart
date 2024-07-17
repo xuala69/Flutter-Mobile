@@ -8,6 +8,7 @@ import 'package:secure_application/secure_application.dart';
 import 'controllers/categories_controller.dart';
 import 'controllers/courses_controller.dart';
 import 'controllers/dio_controller.dart';
+import 'controllers/protection_controller.dart';
 import 'controllers/tests_controller.dart';
 import 'controllers/info_controller.dart';
 import 'controllers/organizations_controller.dart';
@@ -32,6 +33,7 @@ initControllers() {
   Get.put(CoursesController());
   Get.put(TestsController());
   Get.put(HomeUIController(), permanent: true);
+  Get.put(ProtectionController(), permanent: true);
 }
 
 class MyApp extends StatefulWidget {
@@ -42,24 +44,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  SecureApplicationController ctrl = SecureApplicationController(
-    SecureApplicationState(
-      authenticated: true,
-      locked: false,
-      secured: true,
-    ),
-  );
-
-  @override
-  void initState() {
-    ctrl.secure();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return SecureApplication(
-      secureApplicationController: ctrl,
+      secureApplicationController: ProtectionController().to.ctrl,
       nativeRemoveDelay: 800,
       onNeedUnlock: (secureApplicationController) async {
         secureApplicationController?.authSuccess(unlock: true);

@@ -31,6 +31,11 @@ class GetStorageController extends GetxController {
     box.write(LocalKeys.userToken, token);
   }
 
+  void deleteUserToken() {
+    box.remove(LocalKeys.user);
+    box.remove(LocalKeys.userToken);
+  }
+
   String getToken() {
     return box.read(LocalKeys.userToken) ?? "";
   }
