@@ -4,10 +4,10 @@ class UpDownAnimation extends StatefulWidget {
   const UpDownAnimation({super.key});
 
   @override
-  _UpDownAnimationState createState() => _UpDownAnimationState();
+  UpDownAnimationState createState() => UpDownAnimationState();
 }
 
-class _UpDownAnimationState extends State<UpDownAnimation>
+class UpDownAnimationState extends State<UpDownAnimation>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Offset> _animation;

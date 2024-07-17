@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prep_pro/ui/home/Pages/page_details.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
-import 'package:prep_pro/utils/colors.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import '../../controllers/auth_controller.dart';
 import '../widgets/floating_hero.dart';
@@ -22,11 +22,17 @@ class _LoginPageState extends State<LoginPage> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  AppColors.primary,
-                  AppColors.primary.withOpacity(0.8),
+                  Color(0xFF8A9091),
+                  // AppColors.primary,
+                  Color(0xFF8A9091),
+                  // AppColors.primary.withOpacity(0.99),
+                  // AppColors.primary.withOpacity(0.95),
+                  // AppColors.primary.withOpacity(0.94),
+                  // AppColors.primary.withOpacity(0.95),
+                  // AppColors.primary.withOpacity(0.99),
                 ],
               ),
             ),
@@ -84,13 +90,24 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
               ),
+              vs(15),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 35),
+                child: TextButton(
+                  child: const Text("Test Sign In"),
+                  onPressed: () async {
+                    ctrl.testSignIn();
+                  },
+                ),
+              ),
               const Spacer(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextButton(
                     onPressed: () {
-                      ctrl.testSignIn();
+                      Get.to(() =>
+                          const PageDetails(slug: "terms-and-conditions"));
                     },
                     child: Text(
                       "Terms and Conditions",
@@ -107,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   TextButton(
                     onPressed: () {
-                      ctrl.testSignIn();
+                      Get.to(() => const PageDetails(slug: "privacy-policy"));
                     },
                     child: Text(
                       "Privacy Policy",
