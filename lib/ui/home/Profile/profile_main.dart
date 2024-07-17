@@ -11,6 +11,8 @@ import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/nums.dart';
 import 'package:prep_pro/utils/strings.dart';
 
+import '../Pages/page_details.dart';
+
 class ProfileMainPage extends StatelessWidget {
   ProfileMainPage({super.key});
 
@@ -73,21 +75,39 @@ class ProfileMainPage extends StatelessWidget {
             icon: Icons.list_alt,
             title: "Terms and Conditions",
             subtitle: "App usage Terms and Conditions",
-            onTap: () {},
+            onTap: () {
+              Get.to(
+                () => const PageDetails(
+                  slug: "terms-and-conditions",
+                ),
+              );
+            },
           ),
           const SubDivider(),
           iconTextCard(
             icon: Icons.privacy_tip_outlined,
             title: "Privacy Policy",
             subtitle: "How your data is used",
-            onTap: () {},
+            onTap: () {
+              Get.to(
+                () => const PageDetails(
+                  slug: "privacy-policy",
+                ),
+              );
+            },
           ),
           const SubDivider(),
           iconTextCard(
             icon: Icons.group,
             title: "About Us",
             subtitle: "FAQ, Contact 1% Club",
-            onTap: () {},
+            onTap: () {
+              Get.to(
+                () => const PageDetails(
+                  slug: "about-us",
+                ),
+              );
+            },
           ),
           const SubDivider(),
           iconTextCard(

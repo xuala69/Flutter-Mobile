@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
+import 'package:prep_pro/utils/colors.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import '../../controllers/auth_controller.dart';
+import '../widgets/floating_hero.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -23,8 +25,8 @@ class _LoginPageState extends State<LoginPage> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Colors.deepPurpleAccent[700]!,
-                  Colors.deepPurpleAccent[400]!,
+                  AppColors.primary,
+                  AppColors.primary.withOpacity(0.8),
                 ],
               ),
             ),
@@ -33,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               const Spacer(),
               const Spacer(),
-              const Spacer(),
+              const UpDownAnimation(),
               const Spacer(),
               const Spacer(),
               Row(

@@ -4,6 +4,7 @@ import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:prep_pro/ui/home/Course/courses_tab.dart';
 import 'package:prep_pro/ui/home/Tests/mock_tests.dart';
 import 'package:prep_pro/ui/home/Main/home_main.dart';
+import 'package:prep_pro/utils/colors.dart';
 import '../widgets/m_appbar.dart';
 
 class HomeRootPage extends StatefulWidget {
@@ -24,31 +25,33 @@ class _HomeRootPageState extends State<HomeRootPage> {
           PersistentTabConfig(
             screen: const HomeMain(),
             item: ItemConfig(
-                icon: Icon(MdiIcons.homeVariant),
-                iconSize: 34,
-                title: "Home",
-                // activeColorSecondary: Colors.purple,
-                activeForegroundColor: Colors.purple[800]!,
-                inactiveForegroundColor: Colors.grey[900]!,
-                inactiveIcon: Icon(MdiIcons.homeVariantOutline)),
+              icon: Icon(MdiIcons.homeVariant),
+              iconSize: 30,
+              title: "Home",
+              // activeColorSecondary: Colors.purple,
+              activeForegroundColor: AppColors.primary,
+              inactiveForegroundColor: Colors.grey[900]!,
+              inactiveIcon: Icon(MdiIcons.homeVariantOutline),
+            ),
           ),
           PersistentTabConfig(
             screen: const HomeCoursesTab(),
             item: ItemConfig(
-                icon: Icon(MdiIcons.school),
-                iconSize: 35,
-                title: "Courses",
-                activeForegroundColor: Colors.purple[800]!,
-                inactiveForegroundColor: Colors.grey[900]!,
-                inactiveIcon: Icon(MdiIcons.schoolOutline)),
+              icon: Icon(MdiIcons.school),
+              iconSize: 30,
+              title: "Courses",
+              activeForegroundColor: AppColors.primary,
+              inactiveForegroundColor: Colors.grey[900]!,
+              inactiveIcon: Icon(MdiIcons.schoolOutline),
+            ),
           ),
           PersistentTabConfig(
             screen: const HomeTestsPage(),
             item: ItemConfig(
               icon: const Icon(Icons.note_alt),
-              iconSize: 35,
+              iconSize: 30,
               title: "Mock Tests",
-              activeForegroundColor: Colors.purple[800]!,
+              activeForegroundColor: AppColors.primary,
               inactiveForegroundColor: Colors.grey[900]!,
               inactiveIcon: const Icon(Icons.note_alt_outlined),
             ),

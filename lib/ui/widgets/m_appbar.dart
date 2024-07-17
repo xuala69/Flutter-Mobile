@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/ui/home/Profile/profile_main.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
+import 'package:prep_pro/utils/colors.dart';
 import 'package:prep_pro/utils/strings.dart';
 
 AppBar mAppbar() {
@@ -26,7 +27,7 @@ AppBar mAppbar() {
       ],
     ),
     centerTitle: false,
-    backgroundColor: Colors.purple[900],
+    backgroundColor: AppColors.primary,
     actions: [
       FloatingActionButton(
         onPressed: () {
