@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/controllers/auth_controller.dart';
 import 'package:prep_pro/controllers/user_controller.dart';
 import 'package:prep_pro/ui/home/Profile/widgets/sub_divider.dart';
+import 'package:prep_pro/ui/widgets/dialogs/confirm_action.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/nums.dart';
 import 'package:prep_pro/utils/strings.dart';
@@ -27,7 +26,15 @@ class ProfileMainPage extends StatelessWidget {
             quarterTurns: 1,
             child: PopupMenuButton<int>(
               onSelected: (item) {
-                log("Delete account ");
+                Get.dialog(ConfirmAction(
+                  message:
+                      "Are you sure you want to delete your account? All information like purchase history, courses taken, test results etc., will be deleted and can't be recovered?",
+                  onConfirmed: () {
+                    Get.back();
+                    AuthController().to.signOut();
+                    //TODO delete account
+                  },
+                ));
               },
               itemBuilder: (context) => [
                 const PopupMenuItem<int>(
@@ -115,8 +122,13 @@ class ProfileMainPage extends StatelessWidget {
             title: "Log out",
             subtitle: "Log out from current device",
             onTap: () {
-              Get.back();
-              AuthController().to.signOut();
+              Get.dialog(ConfirmAction(
+                message: "Are you sure you want to sign out from this device?",
+                onConfirmed: () {
+                  Get.back();
+                  AuthController().to.signOut();
+                },
+              ));
             },
           ),
           const Divider(
