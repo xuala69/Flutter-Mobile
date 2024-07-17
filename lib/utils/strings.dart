@@ -3,6 +3,8 @@ class Strings {
   static final Runes dollar = Runes(' \u{0024}');
   static String avatarDefault =
       "https://firebasestorage.googleapis.com/v0/b/exam-prep-pro.appspot.com/o/adventurer-1716143676740.png?alt=media&token=263ae486-ce31-429f-bb4a-253a4058f95d";
+  static String emptyImage =
+      "https://firebasestorage.googleapis.com/v0/b/wegen-education.appspot.com/o/empty%20(1).jpg?alt=media&token=4c98897e-170f-43c5-875d-5a7a9cd3a0d2";
   static String pdfLink =
       "https://www.clickdimensions.com/links/TestPDFfile.pdf";
   static String videoLink = "https://youtu.be/7g1WEB6aY34?si=MtdOKtepVuXQ4Rd6";

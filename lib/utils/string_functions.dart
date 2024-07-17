@@ -3,7 +3,7 @@ import 'package:html/parser.dart';
 
 String getImageUrl(String? path) {
   if (path == null) {
-    return Strings.avatarDefault;
+    return Strings.emptyImage;
   } else if (path.contains("http")) {
     return path;
   } else {
