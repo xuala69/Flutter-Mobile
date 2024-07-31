@@ -4,7 +4,7 @@ class TestHistory {
   late int id;
   late int currentStep;
   late DateTime savedAt;
-  Test? exam;
+  MockTest? exam;
 
   TestHistory({
     required this.id,
@@ -19,7 +19,7 @@ class TestHistory {
     savedAt = DateTime.parse(json['saved_at']);
     final examJs = json['exam'];
     if (examJs != null) {
-      final model = Test.fromJson(examJs);
+      final model = MockTest.fromJson(examJs);
       exam = model;
     }
   }

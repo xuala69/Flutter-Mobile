@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:prep_pro/ui/home/Course/Content/single_content_page.dart';
 import 'package:prep_pro/ui/home/Course/SingleCoursePage/course_details_page.dart';
-import 'package:prep_pro/ui/home/Tests/SingleTest/test_detail_page.dart';
+import 'package:prep_pro/ui/home/MockTests/SingleTest/test_detail_page.dart';
 
 import '../models/home_item.dart';
 

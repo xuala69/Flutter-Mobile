@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:prep_pro/ui/home/Tests/SingleTest/test_detail_ui_controller.dart';
+import 'package:prep_pro/ui/home/MockTests/SingleTest/test_detail_ui_controller.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/datetime_functions.dart';
 import 'package:prep_pro/utils/nums.dart';

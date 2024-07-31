@@ -8,8 +8,8 @@ import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/nums.dart';
 
 class TestsCarouselWidget extends StatefulWidget {
-  final List<Test> tests;
-  final Function(Test) onTap;
+  final List<MockTest> tests;
+  final Function(MockTest) onTap;
   const TestsCarouselWidget(
       {required this.onTap, required this.tests, super.key});
 
@@ -19,7 +19,7 @@ class TestsCarouselWidget extends StatefulWidget {
 
 class TestsCarouselWidgetState extends State<TestsCarouselWidget> {
   int _current = 0;
-  List<Test> tests = [];
+  List<MockTest> tests = [];
 
   @override
   initState() {

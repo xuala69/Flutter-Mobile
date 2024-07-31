@@ -61,7 +61,7 @@ class PaymentController extends GetxController {
     }
   }
 
-  buyTest({required Test test}) async {
+  buyTest({required MockTest test}) async {
     try {
       final res = await dio.post(
         Endpoints.initializePayment,

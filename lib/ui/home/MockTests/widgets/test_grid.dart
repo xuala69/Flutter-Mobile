@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/models/test.dart';
-import 'package:prep_pro/ui/home/Tests/SingleTest/test_detail_page.dart';
+import 'package:prep_pro/ui/home/MockTests/SingleTest/test_detail_page.dart';
 import 'package:prep_pro/utils/colors.dart';
 import 'package:prep_pro/utils/numbers_function.dart';
 import 'package:prep_pro/utils/nums.dart';
 import 'package:prep_pro/utils/string_functions.dart';
 
 class TestGrid extends StatelessWidget {
-  final Test test;
+  final MockTest test;
   const TestGrid({required this.test, super.key});
 
   @override

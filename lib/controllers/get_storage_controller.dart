@@ -70,11 +70,11 @@ class GetStorageController extends GetxController {
     //     LocalKeys.courseHistory, tempList.map((e) => e.toJson()).toList());
   }
 
-  void savePopularTests(List<Test> newData) {
+  void savePopularTests(List<MockTest> newData) {
     // box.write(LocalKeys.popularTests, newData.map((e) => e.toJson()).toList());
   }
 
-  void saveFeaturedTests(List<Test> newData) {
+  void saveFeaturedTests(List<MockTest> newData) {
     // box.write(LocalKeys.featuredTests, newData.map((e) => e.toJson()).toList());
   }
 

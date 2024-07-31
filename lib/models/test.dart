@@ -1,7 +1,7 @@
 import 'package:prep_pro/models/category.dart';
 import 'package:prep_pro/models/organization.dart';
 
-class Test {
+class MockTest {
   late int id;
   late int organizationId;
   late String name;
@@ -21,7 +21,7 @@ class Test {
   Organization? organization;
   Category? category;
 
-  Test({
+  MockTest({
     required this.id,
     required this.organizationId,
     required this.name,
@@ -42,7 +42,7 @@ class Test {
     this.category,
   });
 
-  Test.fromJson(Map<String, dynamic> json) {
+  MockTest.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     organizationId = json['organization_id'];

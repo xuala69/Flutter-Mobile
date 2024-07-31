@@ -12,7 +12,7 @@ class TestsController extends GetxController {
   TestsController get to => Get.find();
   final dio = DioController().to.dio;
 
-  final recentTests = RxList<Test>([]);
+  final recentTests = RxList<MockTest>([]);
 
   @override
   void onReady() {
@@ -30,7 +30,7 @@ class TestsController extends GetxController {
         recentTests.clear();
         final List ls = value;
         for (var element in ls) {
-          final model = Test.fromJson(element);
+          final model = MockTest.fromJson(element);
           recentTests.add(model);
         }
       }
@@ -42,13 +42,13 @@ class TestsController extends GetxController {
     if (data != null) {
       final List ls = data;
       for (var element in ls) {
-        final model = Test.fromJson(element);
+        final model = MockTest.fromJson(element);
         recentTests.add(model);
       }
     }
   }
 
-  Future<Test?> getTest(String slug) async {
+  Future<MockTest?> getTest(String slug) async {
     try {
       final res = await dio.get(
         Endpoints.mockTest + slug,
@@ -56,7 +56,7 @@ class TestsController extends GetxController {
       if (res.statusCode == 200) {
         final data = res.data;
         if (data != null) {
-          final model = Test.fromJson(data);
+          final model = MockTest.fromJson(data);
           return model;
         }
         return null;
@@ -175,7 +175,7 @@ class TestsController extends GetxController {
     }
   }
 
-  Future<List<Test>?> getTests({
+  Future<List<MockTest>?> getTests({
     required int pageNo,
     required Map<String, dynamic> filter,
   }) async {
@@ -184,11 +184,11 @@ class TestsController extends GetxController {
       filter.putIfAbsent("type", () => "paginate");
       final res = await dio.get(Endpoints.mockTests, data: filter);
       if (res.statusCode == 200) {
-        final List<Test> tests = [];
+        final List<MockTest> tests = [];
         final data = res.data['data'];
         if (data is List) {
           for (var element in data) {
-            final model = Test.fromJson(element);
+            final model = MockTest.fromJson(element);
             tests.add(model);
           }
         }
@@ -213,7 +213,7 @@ class TestsController extends GetxController {
         final data = res.data;
         if (data is List) {
           for (var element in data) {
-            final model = Test.fromJson(element);
+            final model = MockTest.fromJson(element);
             recentTests.add(model);
           }
         }

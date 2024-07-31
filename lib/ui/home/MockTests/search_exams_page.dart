@@ -28,7 +28,7 @@ class _SearchItemsPageState extends State<SearchItemsPage> {
   // late String _selectedFilter;
   final ctrl = Get.put(TestsController());
 
-  final PagingController<int, Test> _pagingController =
+  final PagingController<int, MockTest> _pagingController =
       PagingController(firstPageKey: 1);
   final searchText = "".obs;
 
@@ -81,7 +81,7 @@ class _SearchItemsPageState extends State<SearchItemsPage> {
     }
   }
 
-  Future<List<Test>> fetch({required int pageNo}) async {
+  Future<List<MockTest>> fetch({required int pageNo}) async {
     log("fetch called with text ${searchText.value}");
     var res = await ctrl.getTests(
       filter: {
@@ -109,7 +109,7 @@ class _SearchItemsPageState extends State<SearchItemsPage> {
     );
   }
 
-  Widget _buildResultCard(Test model) {
+  Widget _buildResultCard(MockTest model) {
     return InkWell(
       onTap: () {
         // Get.bottomSheet(
@@ -188,7 +188,7 @@ class _SearchItemsPageState extends State<SearchItemsPage> {
         () => _pagingController.refresh(),
       ),
       child: PagedListView.separated(
-          builderDelegate: PagedChildBuilderDelegate<Test>(
+          builderDelegate: PagedChildBuilderDelegate<MockTest>(
             itemBuilder: (context, item, index) {
               return _buildResultCard(item);
             },

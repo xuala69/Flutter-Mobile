@@ -56,7 +56,7 @@ class _HomeTestsPageState extends State<HomeTestsPage> {
                 mainAxisSpacing: Nums.paddingSmall,
                 crossAxisSpacing: Nums.paddingSmall,
               ),
-              builderDelegate: PagedChildBuilderDelegate<Test>(
+              builderDelegate: PagedChildBuilderDelegate<MockTest>(
                 itemBuilder: (context, item, index) {
                   return TestGrid(
                     test: item,

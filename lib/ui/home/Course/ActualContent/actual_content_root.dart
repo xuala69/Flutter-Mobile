@@ -8,7 +8,7 @@ import 'package:prep_pro/controllers/contents_controller.dart';
 import 'package:prep_pro/models/content.dart';
 import 'package:prep_pro/models/test.dart';
 import 'package:prep_pro/ui/home/Course/ActualContent/content_buy_btn.dart';
-import 'package:prep_pro/ui/home/Tests/widgets/test_grid.dart';
+import 'package:prep_pro/ui/home/MockTests/widgets/test_grid.dart';
 import 'package:prep_pro/ui/widgets/m_appbar.dart';
 import 'package:prep_pro/ui/widgets/spacing.dart';
 import 'package:prep_pro/utils/nums.dart';
@@ -28,7 +28,7 @@ class ActualContentRoot extends StatefulWidget {
 class _ActualContentRootState extends State<ActualContentRoot> {
   final contentCtrl = ContentsController().to;
 
-  final RxList<Test> tests = RxList<Test>();
+  final RxList<MockTest> tests = RxList<MockTest>();
   RxBool loading = true.obs;
   @override
   void initState() {

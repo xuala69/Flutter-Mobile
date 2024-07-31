@@ -13,7 +13,7 @@ class TestsUIController extends GetxController {
 
   RxList<Category> categories = CategoriesController().to.categories;
   var isLoadingCategories = true.obs;
-  final PagingController<int, Test> pagingController =
+  final PagingController<int, MockTest> pagingController =
       PagingController(firstPageKey: 1);
 
   final searchText = "".obs;
@@ -64,7 +64,7 @@ class TestsUIController extends GetxController {
     }
   }
 
-  Future<List<Test>> fetchItemsFromApi(int page) async {
+  Future<List<MockTest>> fetchItemsFromApi(int page) async {
     final ctrl = TestsController().to;
     // ignore: invalid_use_of_protected_member
     final sortMap = sortOptions.value;

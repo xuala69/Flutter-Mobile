@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:prep_pro/models/home_item.dart';
 import 'package:prep_pro/ui/home/Course/SingleCoursePage/course_details_page.dart';
-import 'package:prep_pro/ui/home/Tests/SingleTest/test_detail_page.dart';
+import 'package:prep_pro/ui/home/MockTests/SingleTest/test_detail_page.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 void homeItemClicked(Items item) {

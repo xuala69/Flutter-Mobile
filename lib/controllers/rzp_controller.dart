@@ -180,7 +180,7 @@ class RzpController extends GetxController {
     }
   }
 
-  Future<void> buyTest(Test test, Map<String, dynamic> rzpData) async {
+  Future<void> buyTest(MockTest test, Map<String, dynamic> rzpData) async {
     try {
       buying.value = true;
       buyingMedia.value = test;

@@ -38,7 +38,7 @@ class ContentsController extends GetxController {
     }
   }
 
-  void getPopularCourses() async {
+  Future<List<Course>?> getPopularCourses() async {
     try {
       final res = await dio.get(Endpoints.courses, data: {"type": "popular"});
       if (res.statusCode == 200) {
@@ -50,7 +50,7 @@ class ContentsController extends GetxController {
             courses.add(model);
           }
         }
-        courses;
+        return courses;
       } else {
         final msg = res.data['message'] ?? "Unknown error occured";
         showErrorDialog(msg, "getPopularCourses");
@@ -132,15 +132,15 @@ class ContentsController extends GetxController {
     }
   }
 
-  Future<List<Test>?> getContentTests({required String contentId}) async {
+  Future<List<MockTest>?> getContentTests({required String contentId}) async {
     try {
       final res = await dio.get("${Endpoints.content}$contentId/mock-tests");
       if (res.statusCode == 200) {
-        final List<Test> testList = [];
+        final List<MockTest> testList = [];
         final data = res.data;
         if (data is List) {
           for (var element in data) {
-            final model = Test.fromJson(element);
+            final model = MockTest.fromJson(element);
             testList.add(model);
           }
           return testList;

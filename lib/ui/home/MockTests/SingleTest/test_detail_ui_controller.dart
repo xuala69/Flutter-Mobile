@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:prep_pro/controllers/tests_controller.dart';
 import 'package:prep_pro/models/question_bank.dart';
 import 'package:prep_pro/models/test.dart';
-import 'package:prep_pro/ui/home/Tests/SingleTest/testing_page.dart';
+import 'package:prep_pro/ui/home/MockTests/SingleTest/testing_page.dart';
 import 'package:prep_pro/ui/widgets/dialogs/focus_lost_warning.dart';
 
 class TestDetailUIController extends GetxController {
@@ -14,7 +14,7 @@ class TestDetailUIController extends GetxController {
   final loading = true.obs;
   final showExcerpt = true.obs;
 
-  Rxn<Test> test = Rxn<Test>();
+  Rxn<MockTest> test = Rxn<MockTest>();
   Rxn<QuestionBank> questionBank = Rxn<QuestionBank>();
   RxnInt currentStep = RxnInt();
   RxInt warningCount = RxInt(0);
