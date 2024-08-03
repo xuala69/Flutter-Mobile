@@ -4,7 +4,7 @@ import 'package:prep_pro/models/category.dart';
 import 'package:prep_pro/models/course_history.dart';
 import 'package:prep_pro/models/course.dart';
 import 'package:prep_pro/models/test_history.dart';
-import 'package:prep_pro/models/test.dart';
+import 'package:prep_pro/models/mock_test.dart';
 import 'package:prep_pro/models/organization.dart';
 import 'package:prep_pro/models/subject.dart';
 import 'package:prep_pro/models/user.dart';

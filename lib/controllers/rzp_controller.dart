@@ -7,7 +7,7 @@ import 'package:prep_pro/controllers/dio_controller.dart';
 import 'package:prep_pro/controllers/user_controller.dart';
 import 'package:prep_pro/models/content.dart';
 import 'package:prep_pro/models/course.dart';
-import 'package:prep_pro/models/test.dart';
+import 'package:prep_pro/models/mock_test.dart';
 import 'package:prep_pro/ui/widgets/dialogs/confirmed_payment.dart';
 import 'package:prep_pro/ui/widgets/dialogs/confirming_payment.dart';
 import 'package:prep_pro/utils/strings.dart';

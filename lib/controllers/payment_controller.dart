@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:prep_pro/controllers/dio_controller.dart';
 import 'package:prep_pro/models/content.dart';
 import 'package:prep_pro/models/course.dart';
-import 'package:prep_pro/models/test.dart';
+import 'package:prep_pro/models/mock_test.dart';
 import 'package:prep_pro/ui/widgets/function_widgets.dart';
 import 'package:prep_pro/utils/strings.dart';
 

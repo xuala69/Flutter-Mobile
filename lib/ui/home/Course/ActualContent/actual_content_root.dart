@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prep_pro/controllers/contents_controller.dart';
 import 'package:prep_pro/models/content.dart';
-import 'package:prep_pro/models/test.dart';
+import 'package:prep_pro/models/mock_test.dart';
 import 'package:prep_pro/ui/home/Course/ActualContent/content_buy_btn.dart';
 import 'package:prep_pro/ui/home/MockTests/widgets/test_grid.dart';
 import 'package:prep_pro/ui/widgets/m_appbar.dart';

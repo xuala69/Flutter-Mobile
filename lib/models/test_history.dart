@@ -1,4 +1,4 @@
-import 'package:prep_pro/models/test.dart';
+import 'package:prep_pro/models/mock_test.dart';
 
 class TestHistory {
   late int id;

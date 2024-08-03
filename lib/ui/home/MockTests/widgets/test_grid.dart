@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:prep_pro/models/test.dart';
+import 'package:prep_pro/models/mock_test.dart';
 import 'package:prep_pro/ui/home/MockTests/SingleTest/test_detail_page.dart';
 import 'package:prep_pro/utils/colors.dart';
 import 'package:prep_pro/utils/numbers_function.dart';

@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:prep_pro/controllers/dio_controller.dart';
 import 'package:prep_pro/models/question_bank.dart';
-import 'package:prep_pro/models/test.dart';
+import 'package:prep_pro/models/mock_test.dart';
 import 'package:prep_pro/utils/strings.dart';
 import '../ui/widgets/function_widgets.dart';
 import 'get_storage_controller.dart';

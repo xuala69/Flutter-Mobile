@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:prep_pro/controllers/tests_controller.dart';
 import 'package:prep_pro/models/question_bank.dart';
-import 'package:prep_pro/models/test.dart';
+import 'package:prep_pro/models/mock_test.dart';
 import 'package:prep_pro/ui/home/MockTests/SingleTest/testing_page.dart';
 import 'package:prep_pro/ui/widgets/dialogs/focus_lost_warning.dart';
 
